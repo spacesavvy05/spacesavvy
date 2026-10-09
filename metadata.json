@@ -1,0 +1,6 @@
+{
+  "name": "SpaceSavvy - Small Apartment Organization & Home Hacks",
+  "description": "High-performance warm-editorial publication offering space-saving solutions, clever apartment hacks, and budget-friendly decor ideas for renters and micro-living.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

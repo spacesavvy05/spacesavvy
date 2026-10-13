@@ -656,87 +656,79 @@ export const posts: Post[] = [
     ]
   },
 
-  // 13. SMALL SPACE LIVING: CHRISTMAS TREE GUIDE
+  // 13. CHRISTMAS TREE GUIDE
   {
     slug: "small-apartment-christmas-tree-ideas",
     title: "5 Small Space Christmas Tree Ideas That Fit Tiny Living Rooms Without Blocking Walkways",
-    excerpt: "No floor room for a bushy 50-inch pine? Here is how to fit holiday cheer into a 500 sq ft rental using the 30-inch clearance rule, slim pencil profiles, and zero-footprint wall hacks.",
+    excerpt: "Living in under 600 square feet means every inch of floor space counts. Here is how to style holiday decor without turning your living room into an obstacle course.",
     category: "Small Space Living",
     publishDate: "October 14, 2026",
-    readTime: "7 min read",
-    takeaway: "Maintain at least 30 inches of clear walkway beside your tree and swap 40-inch skirts for slim woven baskets to protect circulation paths.",
-    featuredImageAlt: "Warm cozy small apartment living room decorated for Christmas with a slim pencil tree glowing in the corner",
+    readTime: "6 min read",
+    takeaway: "Tape down your tree base dimensions before buying. Keeping 30 inches of walking clearance around furniture prevents clutter in rental floor plans.",
+    featuredImageAlt: "Warm small apartment living room decorated for Christmas with a compact tree glowing in the corner",
     featuredImageSrc: "/images/small-apartment-christmas-tree.png",
     sections: [
       {
-        title: "The 30-Inch Clearance Rule for Rentals",
-        body: "Before ordering any tree, tape its listed base width onto your floor and live with it for twenty-four hours. You need at least 30 inches of clear, unblocked path on the side you walk through most often. If your bathroom or kitchen door swings near that corner, factor in the full door arc. In a tight apartment, a tree that cramps the main pathway turns holiday decor into an obstacle course.",
+        title: "1. The 30 Inch Floor Clearance Rule",
+        body: "Before ordering any tree online, measure the base width and mark it on your floor using blue painter tape. You need a full 30 inches of clear space along your main walkway. If a cupboard or bathroom door swings into that area, make sure the door opens all the way without hitting the branches.",
         image: "/images/small-apartment-christmas-tree.png",
         product: {
-          name: "Command Large Clear Adhesive Wall Hooks for Renter Hanging",
+          name: "Command Large Clear Adhesive Wall Hooks",
           price: "$9.98",
           dimensions: "Holds up to 5 lbs per hook",
-          material: "Damage-Free Clear Polycarbonate Strips",
+          material: "Damage-free clear polycarbonate",
           rating: "4.7/5",
-          affiliateUrl: "https://amazon.com/dp/B0751V8PHV?tag=spacesavvy-20",
-          image: "/images/small-apartment-christmas-tree.png"
+          affiliateUrl: "https://amazon.com/dp/B0751V8PHV?tag=spacesavvy-20"
         }
       },
       {
-        title: "1. The 6-Foot Ultra-Slim Pencil Pine",
-        body: "When you want classic ceiling-height presence without losing half your living room rug, an ultra-slim pencil pine is the simplest fix. Unlike conical trees that fan out to 48 inches, a true pencil profile stays under 22 inches in diameter. You get full vertical impact while tucking neatly between a sofa arm and the window frame.",
-        image: "/images/pencil-christmas-tree-small-apartment-corner.png",
+        title: "2. Ultra-Slim Pencil Pine Trees",
+        body: "Full trees often spread 45 to 50 inches wide, taking over half a compact living area. A pencil profile stays under 22 inches in diameter. You get full ceiling height and festive presence while keeping the floor area around your couch completely clear.",
+        image: "/images/small-apartment-christmas-tree.png",
         product: {
-          name: "National Tree Company 6-Foot Kingswood Slim Pencil Pine",
+          name: "National Tree Company 6-Foot Kingswood Pencil Pine",
           price: "$49.99",
-          dimensions: "28\" Diameter x 72\" Height",
-          material: "Flame-Resistant PVC, Folding Metal Stand",
+          dimensions: "28 inch diameter by 72 inch height",
+          material: "Flame resistant PVC with folding stand",
           rating: "4.6/5",
-          affiliateUrl: "https://amazon.com/dp/B00422O7N4?tag=spacesavvy-20",
-          image: "/images/pencil-christmas-tree-small-apartment-corner.png"
+          affiliateUrl: "https://amazon.com/dp/B00422O7N4?tag=spacesavvy-20"
         }
       },
       {
-        title: "2. Wall-Mounted Birch Hanging Trees",
-        body: "If your layout has zero free floor square inches, look at the wall. A hanging ladder tree made from natural birch rungs and jute rope suspends completely flat against drywall on a single clear adhesive hook. You keep every inch of floor open for everyday living while still displaying ornaments and fairy lights.",
+        title: "3. Wall Mounted Hanging Birch Trees",
+        body: "If you have zero free floor space, take it to the wall. A hanging ladder tree built with natural birch branches and jute rope hangs flush against the drywall using a single adhesive hook. You keep the entire rug open while still having a spot for ornaments and warm string lights.",
         image: "/images/wall-hanging-birch-ladder-tree-rental.png",
         product: {
-          name: "Handcrafted Birch Branch Wall-Mounted Hanging Tree",
+          name: "Handcrafted Birch Branch Wall Hanging Tree",
           price: "$28.50",
-          dimensions: "22\" Wide x 36\" Tall (0\" Floor Depth)",
-          material: "Natural Birch Wood Rungs, Jute Rope",
+          dimensions: "22 inches wide by 36 inches tall",
+          material: "Natural birch wood rungs and jute rope",
           rating: "4.7/5",
-          affiliateUrl: "https://amazon.com/dp/B08HJ29LKM?tag=spacesavvy-20",
-          image: "/images/wall-hanging-birch-ladder-tree-rental.png"
+          affiliateUrl: "https://amazon.com/dp/B08HJ29LKM?tag=spacesavvy-20"
         }
       },
       {
-        title: "3. Swap Bulky Skirts for Woven Tree Collars",
-        body: "Traditional fabric tree skirts spread 36 to 48 inches across your rug, eating the floor space you saved by buying a pencil tree. A structured woven seagrass collar keeps the footprint confined strictly to the metal stand diameter and stops fabric from bunching into walking routes.",
-        image: "/images/pencil-christmas-tree-small-apartment-corner.png",
+        title: "4. Structured Woven Tree Collars",
+        body: "Standard fabric tree skirts drape 40 inches outward, collecting dust and eating up prime carpet area. A woven seagrass collar locks strictly to the base diameter of the stand, keeping walking paths tidy and clean.",
+        image: "/images/wall-hanging-birch-ladder-tree-rental.png",
         product: {
-          name: "Natural Woven Seagrass Folding Christmas Tree Collar",
+          name: "Natural Woven Seagrass Folding Tree Collar",
           price: "$34.99",
-          dimensions: "22\" Base Diameter x 9\" Height",
-          material: "Hand-Woven Natural Seagrass over Metal Frame",
+          dimensions: "22 inch base diameter by 9 inch height",
+          material: "Woven natural seagrass over metal frame",
           rating: "4.5/5",
-          affiliateUrl: "https://amazon.com/dp/B08DFN7S9M?tag=spacesavvy-20",
-          image: "/images/pencil-christmas-tree-small-apartment-corner.png"
+          affiliateUrl: "https://amazon.com/dp/B08DFN7S9M?tag=spacesavvy-20"
         }
       }
     ],
     faqs: [
       {
-        question: "What size Christmas tree is best for a small studio apartment?",
-        answer: "A 6-foot pencil pine with a base diameter under 22 inches gives full vertical presence while maintaining at least 30 inches of walking clearance around furniture."
+        question: "What tree size works best in a 500 sq ft apartment?",
+        answer: "A pencil tree with a base under 24 inches gives vertical height without taking over valuable walkway room."
       },
       {
-        question: "Can I hang a wall Christmas tree without damaging rental drywall?",
-        answer: "Yes, use clear 5-pound rated adhesive hooks. Clean the wall with rubbing alcohol beforehand and pull the removal strip downward flush to the wall when packing down."
-      },
-      {
-        question: "How do I keep a slim tree from tipping over around pets?",
-        answer: "Anchor the top of the center pole to the adjacent wall using clear fishing monofilament line tied to a clear adhesive hook mounted at eye level."
+        question: "Can I hang a wall tree on rental paint without nails?",
+        answer: "Yes. Use heavy duty clear adhesive strips rated for at least 5 pounds. Press firmly for 30 seconds and pull downward when taking it down."
       }
     ]
   }

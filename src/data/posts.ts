@@ -198,7 +198,7 @@ export const posts: Post[] = [
     ]
   },
 
-  // 3. KITCHEN & DINING 1 (CAREFULLY VERIFIED IMAGES AS PER USER SPECIFICATION)
+  // 3. KITCHEN & DINING 1
   {
     slug: "10-open-cabinet-kitchen-decor-ideas",
     title: "10 Open Cabinet Kitchen Decor Ideas For Small Apartments",
@@ -213,7 +213,6 @@ export const posts: Post[] = [
       {
         title: "1. The Stackable Acacia Wood Counter Shelf Riser",
         body: "Standard kitchen cabinets leave 8 to 10 inches of wasted vertical airspace above bowls and plates. Adding stackable acacia wood risers creates a second tier of storage, doubling your cabinet capacity without stacking plates dangerously high.",
-        // Clean kitchen cabinet interior with wooden risers and stacked ceramic bowls
         image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=800",
         product: {
           name: "Wuligirl 2-Tier Stackable Acacia Wood Counter Riser",
@@ -222,14 +221,12 @@ export const posts: Post[] = [
           material: "Solid Acacia Wood & Matte Black Steel",
           rating: "4.8/5",
           affiliateUrl: "https://www.amazon.com/s?k=acacia+kitchen+cabinet+shelf+riser",
-          // Clean product photo of an acacia wood shelf riser
           image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=800"
         }
       },
       {
         title: "2. The Under-Shelf Sliding Wire Stemware & Mug Rack",
         body: "Instead of letting everyday ceramic mugs take up valuable shelf footprint, slide this tension bracket over any existing cabinet shelf. It secures in seconds with zero screws and suspends six mugs cleanly over counter space.",
-        // Under-cabinet rack holding coffee mugs cleanly off the counter
         image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=800",
         product: {
           name: "SimpleHouseware Under Cabinet Mug Hook Hanger",
@@ -238,14 +235,12 @@ export const posts: Post[] = [
           material: "Heavy-Gauge Welded Steel, White Coating",
           rating: "4.6/5",
           affiliateUrl: "https://www.amazon.com/s?k=under+cabinet+mug+holder+slide+on",
-          // Metal under-shelf sliding mug holder
           image: "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&q=80&w=800"
         }
       },
       {
         title: "3. The Magnetic Acacia Knife & Tool Bar",
         body: "Bulky wooden countertop knife blocks eat up prime prep space on rental counters. A slim magnetic bar holds your chef knives, shears, and bottle openers on the tile backsplash using heavy-duty renter safe adhesive tape.",
-        // Wooden magnetic strip mounted on kitchen backsplash holding knives (strictly NO faucet or sink)
         image: "https://images.unsplash.com/photo-1593618998160-e34014e67546?auto=format&fit=crop&q=80&w=800",
         product: {
           name: "Coninx Magnetic Knife Strip with Heavy-Duty Adhesive",
@@ -254,7 +249,6 @@ export const posts: Post[] = [
           material: "Natural Acacia Wood with Neodymium Magnets",
           rating: "4.9/5",
           affiliateUrl: "https://www.amazon.com/s?k=magnetic+knife+strip+adhesive+wood",
-          // Acacia wood magnetic knife strip
           image: "https://images.unsplash.com/photo-1589365278144-c9e705f843ba?auto=format&fit=crop&q=80&w=800"
         }
       }
@@ -658,6 +652,91 @@ export const posts: Post[] = [
       {
         question: "Can I mount a floating desk on drywall without studs?",
         answer: "We strongly advise anchoring at least two bracket screws into timber wall studs. If no studs align with your corner, use heavy-duty toggle bolts rated for at least 70 pounds per anchor."
+      }
+    ]
+  },
+
+  // 13. SMALL SPACE LIVING: CHRISTMAS TREE GUIDE
+  {
+    slug: "small-apartment-christmas-tree-ideas",
+    title: "5 Small Space Christmas Tree Ideas That Fit Tiny Living Rooms Without Blocking Walkways",
+    excerpt: "No floor room for a bushy 50-inch pine? Here is how to fit holiday cheer into a 500 sq ft rental using the 30-inch clearance rule, slim pencil profiles, and zero-footprint wall hacks.",
+    category: "Small Space Living",
+    publishDate: "October 14, 2026",
+    readTime: "7 min read",
+    takeaway: "Maintain at least 30 inches of clear walkway beside your tree and swap 40-inch skirts for slim woven baskets to protect circulation paths.",
+    featuredImageAlt: "Warm cozy small apartment living room decorated for Christmas with a slim pencil tree glowing in the corner",
+    featuredImageSrc: "/images/small-apartment-christmas-tree.png",
+    sections: [
+      {
+        title: "The 30-Inch Clearance Rule for Rentals",
+        body: "Before ordering any tree, tape its listed base width onto your floor and live with it for twenty-four hours. You need at least 30 inches of clear, unblocked path on the side you walk through most often. If your bathroom or kitchen door swings near that corner, factor in the full door arc. In a tight apartment, a tree that cramps the main pathway turns holiday decor into an obstacle course.",
+        image: "/images/small-apartment-christmas-tree.png",
+        product: {
+          name: "Command Large Clear Adhesive Wall Hooks for Renter Hanging",
+          price: "$9.98",
+          dimensions: "Holds up to 5 lbs per hook",
+          material: "Damage-Free Clear Polycarbonate Strips",
+          rating: "4.7/5",
+          affiliateUrl: "https://amazon.com/dp/B0751V8PHV?tag=spacesavvy-20",
+          image: "/images/small-apartment-christmas-tree.png"
+        }
+      },
+      {
+        title: "1. The 6-Foot Ultra-Slim Pencil Pine",
+        body: "When you want classic ceiling-height presence without losing half your living room rug, an ultra-slim pencil pine is the simplest fix. Unlike conical trees that fan out to 48 inches, a true pencil profile stays under 22 inches in diameter. You get full vertical impact while tucking neatly between a sofa arm and the window frame.",
+        image: "/images/pencil-christmas-tree-small-apartment-corner.png",
+        product: {
+          name: "National Tree Company 6-Foot Kingswood Slim Pencil Pine",
+          price: "$49.99",
+          dimensions: "28\" Diameter x 72\" Height",
+          material: "Flame-Resistant PVC, Folding Metal Stand",
+          rating: "4.6/5",
+          affiliateUrl: "https://amazon.com/dp/B00422O7N4?tag=spacesavvy-20",
+          image: "/images/pencil-christmas-tree-small-apartment-corner.png"
+        }
+      },
+      {
+        title: "2. Wall-Mounted Birch Hanging Trees",
+        body: "If your layout has zero free floor square inches, look at the wall. A hanging ladder tree made from natural birch rungs and jute rope suspends completely flat against drywall on a single clear adhesive hook. You keep every inch of floor open for everyday living while still displaying ornaments and fairy lights.",
+        image: "/images/wall-hanging-birch-ladder-tree-rental.png",
+        product: {
+          name: "Handcrafted Birch Branch Wall-Mounted Hanging Tree",
+          price: "$28.50",
+          dimensions: "22\" Wide x 36\" Tall (0\" Floor Depth)",
+          material: "Natural Birch Wood Rungs, Jute Rope",
+          rating: "4.7/5",
+          affiliateUrl: "https://amazon.com/dp/B08HJ29LKM?tag=spacesavvy-20",
+          image: "/images/wall-hanging-birch-ladder-tree-rental.png"
+        }
+      },
+      {
+        title: "3. Swap Bulky Skirts for Woven Tree Collars",
+        body: "Traditional fabric tree skirts spread 36 to 48 inches across your rug, eating the floor space you saved by buying a pencil tree. A structured woven seagrass collar keeps the footprint confined strictly to the metal stand diameter and stops fabric from bunching into walking routes.",
+        image: "/images/pencil-christmas-tree-small-apartment-corner.png",
+        product: {
+          name: "Natural Woven Seagrass Folding Christmas Tree Collar",
+          price: "$34.99",
+          dimensions: "22\" Base Diameter x 9\" Height",
+          material: "Hand-Woven Natural Seagrass over Metal Frame",
+          rating: "4.5/5",
+          affiliateUrl: "https://amazon.com/dp/B08DFN7S9M?tag=spacesavvy-20",
+          image: "/images/pencil-christmas-tree-small-apartment-corner.png"
+        }
+      }
+    ],
+    faqs: [
+      {
+        question: "What size Christmas tree is best for a small studio apartment?",
+        answer: "A 6-foot pencil pine with a base diameter under 22 inches gives full vertical presence while maintaining at least 30 inches of walking clearance around furniture."
+      },
+      {
+        question: "Can I hang a wall Christmas tree without damaging rental drywall?",
+        answer: "Yes, use clear 5-pound rated adhesive hooks. Clean the wall with rubbing alcohol beforehand and pull the removal strip downward flush to the wall when packing down."
+      },
+      {
+        question: "How do I keep a slim tree from tipping over around pets?",
+        answer: "Anchor the top of the center pole to the adjacent wall using clear fishing monofilament line tied to a clear adhesive hook mounted at eye level."
       }
     ]
   }

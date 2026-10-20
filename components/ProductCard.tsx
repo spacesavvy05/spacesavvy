@@ -29,10 +29,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             loading="lazy"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
           />
-          {/* Floating Rating Pill */}
-          <span className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-stone-950 text-xs font-black px-2.5 py-1 rounded-lg shadow-sm border border-stone-200/60">
-            ★ {product.rating}
-          </span>
         </div>
 
         {/* Category Eyebrow */}
@@ -53,14 +49,9 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       {/* High-Impact Price & Animated Amber Button */}
       <div className="flex items-center justify-between pt-4 border-t border-stone-200/80 mt-auto">
-        <div className="flex flex-col">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400">Price</span>
-          <span className="font-serif text-2xl sm:text-3xl font-black text-stone-950 tracking-tight leading-none">
-            {product.price}
-          </span>
-        </div>
+        <span className="text-[11px] font-semibold text-stone-500">See price on Amazon</span>
         <span className="relative inline-flex items-center gap-2 bg-amber-600 group-hover:bg-amber-700 text-white font-black text-xs uppercase tracking-wider px-5 py-3 rounded-full shadow-sm group-hover:shadow-md group-hover:scale-105 active:scale-95 transition-all duration-200 ease-out">
-          <span>View Item</span>
+          <span>Check Price</span>
           <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-0.5 text-sm">
             ↗
           </span>

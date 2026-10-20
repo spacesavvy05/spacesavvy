@@ -5,6 +5,6 @@ export default function robots() {
       allow: '/',
       disallow: ['/api/', '/_next/', '/admin/'],
     },
-    sitemap: 'https://spacesavvy.com/sitemap.xml',
+    sitemap: 'https://spacesavvy-olive.vercel.app/sitemap.xml',
   };
 }

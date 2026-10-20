@@ -1,11 +1,71 @@
-import React, { useState } from 'react';
-import { ArrowRight, ThumbsUp, Award, ShieldCheck, Filter, X, Check, Star, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, ShieldCheck, Filter, X, Check, Star, Sparkles } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { posts } from '../src/data/posts';
+import { posts as staticPosts, Post } from '../src/data/posts';
+import { client } from '../src/lib/sanity';
+import { subscribeEmail } from '../src/lib/subscribe';
 import ArticleCard from '../src/components/ArticleCard';
 import SEOHead from '../src/components/SEOHead';
 
 export default function HomePage() {
+  const [allPosts, setAllPosts] = useState<Post[]>(staticPosts);
+
+  useEffect(() => {
+    async function loadSanityPosts() {
+      try {
+        // Fetches both your current Sanity post format AND any future simplified posts
+        const sanityData = await client.fetch(`*[_type == "post" && defined(slug.current)] | order(_createdAt desc){
+          "slug": slug.current,
+          "title": coalesce(title, postTitle),
+          category,
+          readTime,
+          "takeaway": coalesce(takeaway, keyTakeaway),
+          "excerpt": coalesce(excerpt, seoDescription, keyTakeaway, "Read the full space-saving guide inside."),
+          "publishDate": coalesce(publishDate, publishedAt),
+          "featuredImageSrc": coalesce(featuredImage.asset->url, mainImage.asset->url),
+          "featuredImageAlt": coalesce(featuredImage.alt, mainImage.alt, title, postTitle)
+        }`);
+
+        if (sanityData && sanityData.length > 0) {
+          const formattedSanityPosts: Post[] = sanityData.map((p: any) => {
+            // Map Sanity category to match homepage shelves
+            let mappedCategory: Post['category'] = 'Compact Workspaces';
+            const rawCat = (p.category || '').toLowerCase();
+            if (rawCat.includes('kitchen')) mappedCategory = 'Kitchen & Dining';
+            else if (rawCat.includes('amazon') || rawCat.includes('find')) mappedCategory = 'Curated Amazon Finds';
+            else if (rawCat.includes('small') || rawCat.includes('living') || rawCat.includes('studio')) mappedCategory = 'Small Space Living';
+            else if (rawCat.includes('workspace') || rawCat.includes('desk') || rawCat.includes('gaming')) mappedCategory = 'Compact Workspaces';
+
+            return {
+              slug: p.slug,
+              title: p.title || 'Untitled Guide',
+              category: mappedCategory,
+              readTime: p.readTime || '5 min read',
+              takeaway: p.takeaway || '',
+              excerpt: p.excerpt,
+              publishDate: p.publishDate
+                ? new Date(p.publishDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+                : 'October 14, 2026',
+              featuredImageSrc: p.featuredImageSrc || 'https://images.unsplash.com/photo-1593062096033-9a26b09da705?auto=format&fit=crop&q=80&w=800',
+              featuredImageAlt: p.featuredImageAlt || p.title || 'SpaceSavvy Guide',
+              sections: []
+            };
+          });
+
+          const sanitySlugs = new Set(formattedSanityPosts.map(p => p.slug));
+          const merged = [
+            ...formattedSanityPosts,
+            ...staticPosts.filter(sp => !sanitySlugs.has(sp.slug))
+          ];
+          setAllPosts(merged);
+        }
+      } catch (err) {
+        console.error('Sanity fetch error (check CORS settings if blocked):', err);
+      }
+    }
+    loadSanityPosts();
+  }, []);
+
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const activeCategoryParam = searchParams.get('category');
@@ -13,7 +73,7 @@ export default function HomePage() {
   // Filtered view if user navigated to a category from the top nav
   const isFiltered = Boolean(activeCategoryParam);
   const filteredPosts = isFiltered
-    ? posts.filter(
+    ? allPosts.filter(
         p =>
           p.category.toLowerCase().includes(activeCategoryParam!.toLowerCase()) ||
           activeCategoryParam!.toLowerCase().includes(p.category.toLowerCase())
@@ -21,20 +81,27 @@ export default function HomePage() {
     : [];
 
   // Grouped posts for dedicated editorial shelves (4 distinct articles per shelf)
-  const latestPosts = posts.slice(0, 4);
-  const kitchenPosts = posts.filter(p => p.category === 'Kitchen & Dining').slice(0, 4);
-  const workspacePosts = posts.filter(p => p.category === 'Compact Workspaces').slice(0, 4);
-  const budgetPosts = posts.filter(p => p.category === 'Curated Amazon Finds').slice(0, 4);
-  const smallSpacePosts = posts.filter(p => p.category === 'Small Space Living').slice(0, 4);
+  const latestPosts = allPosts.slice(0, 4);
+  const kitchenPosts = allPosts.filter(p => p.category === 'Kitchen & Dining').slice(0, 4);
+  const workspacePosts = allPosts.filter(p => p.category === 'Compact Workspaces').slice(0, 4);
+  const budgetPosts = allPosts.filter(p => p.category === 'Curated Amazon Finds').slice(0, 4);
+  const smallSpacePosts = allPosts.filter(p => p.category === 'Small Space Living').slice(0, 4);
 
   // Newsletter Lead Magnet state
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [subSending, setSubSending] = useState(false);
+  const [subError, setSubError] = useState('');
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !email.includes('@')) return;
-    setSubscribed(true);
+    if (!email || !email.includes('@') || subSending) return;
+    setSubSending(true);
+    setSubError('');
+    const ok = await subscribeEmail(email);
+    setSubSending(false);
+    if (ok) setSubscribed(true);
+    else setSubError('Something went wrong. Please try again.');
   };
 
   return (
@@ -135,7 +202,7 @@ export default function HomePage() {
             </span>
             <h2 className="text-3xl font-serif text-stone-900 font-medium">The Latest Guides</h2>
           </div>
-          <span className="text-xs font-mono text-stone-500">Updated Weekly · 16 Curated Blueprints</span>
+          <span className="text-xs font-mono text-stone-500">Updated Weekly · {allPosts.length} Curated Blueprints</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -181,7 +248,7 @@ export default function HomePage() {
               Simple setups for a calmer, better-organized home.
             </h2>
             <p className="text-sm md:text-base text-stone-600 leading-relaxed max-w-xl">
-              Finding good home pieces shouldn't take hours of digging through cheap junk or dealing with complicated renovations. We do the heavy research for you—filtering through thousands of verified reviews, dimensions, and easy setups that real people already use and love. Simple, stylish ideas to help you clear clutter, style your spaces, and make every room work better.
+              Finding good home pieces shouldn't take hours of digging through cheap junk or dealing with complicated renovations. We do the heavy research for you—reading through customer reviews, dimensions, and easy setups that real people already use and love. Simple, stylish ideas to help you clear clutter, style your spaces, and make every room work better.
             </p>
 
             {/* 3 High-Converting Elevated Feature Stat Cards with Tactile Hover Animations */}
@@ -217,7 +284,7 @@ export default function HomePage() {
                     COMMUNITY-VETTED
                   </span>
                   <p className="text-[12px] text-stone-500 leading-snug mt-1">
-                    Filtered by real customer photos, verified ratings, and durable everyday quality.
+                    Chosen using real customer reviews, product specs, and everyday practicality.
                   </p>
                 </div>
               </div>
@@ -284,7 +351,7 @@ export default function HomePage() {
         <div className="flex flex-col sm:flex-row items-baseline justify-between gap-2 border-b border-stone-200/80 pb-4">
           <div>
             <span className="text-xs uppercase tracking-widest font-mono text-amber-700 font-bold block mb-1">
-              Affordable Gear & Tested Hardware
+              Affordable, Renter-Friendly Gear
             </span>
             <h2 className="text-3xl font-serif text-stone-900 font-medium">Curated Amazon Finds</h2>
           </div>
@@ -354,8 +421,8 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-base font-bold text-stone-900 font-serif">Check your inbox</h3>
                 <p className="text-xs text-stone-600 leading-relaxed">
-                  The Small Space Checklist is heading your way to{' '}
-                  <span className="font-semibold text-stone-800">{email}</span>.
+                  We just sent a confirmation email to{' '}
+                  <span className="font-semibold text-stone-800">{email}</span>. Click the link inside and your Small Space Checklist will follow.
                 </p>
               </div>
             ) : (
@@ -372,8 +439,9 @@ export default function HomePage() {
                   type="submit"
                   className="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider px-7 py-3.5 rounded-full shadow-md transition-all duration-200 active:scale-95 hover:shadow-lg hover:-translate-y-0.5 whitespace-nowrap cursor-pointer"
                 >
-                  GET THE CHECKLIST →
+                  {subSending ? 'SENDING…' : 'GET THE CHECKLIST →'}
                 </button>
+                {subError && <p className="text-xs text-red-600 w-full text-center">{subError}</p>}
               </form>
             )}
 

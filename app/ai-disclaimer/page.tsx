@@ -43,7 +43,7 @@ export default function AIDisclaimerPage() {
           1. AI-Assisted Research & Human Curation
         </h2>
         <p>
-          We leverage generative technology to research layout configurations, structure ideas, and generate first drafts. Every recommendation is subsequently verified to ensure real-world utility: checking accurate product measurements, rental-friendly mounting specifications, and realistic spatial clearances before anything goes live.
+          We leverage generative technology to research layout configurations, structure ideas, and generate first drafts. Every product is then checked against its live Amazon listing (name, size and materials), and anything that needs drilling or has a known limitation is flagged in the article before it goes live.
         </p>
 
         <h2 className="text-xl md:text-2xl font-serif font-bold text-stone-900 pt-4">

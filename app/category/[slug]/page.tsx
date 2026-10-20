@@ -95,13 +95,13 @@ export default function CategoryPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://spacesavvy.com"
+        "item": "https://spacesavvy-olive.vercel.app"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": categoryInfo?.title || 'Category',
-        "item": `https://spacesavvy.com/category/${slug || 'all'}`
+        "item": `https://spacesavvy-olive.vercel.app/category/${slug || 'all'}`
       }
     ]
   };

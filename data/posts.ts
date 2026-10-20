@@ -678,7 +678,7 @@ export const posts: Post[] = [
           dimensions: "Holds up to 5 lbs per hook",
           material: "Damage-free clear polycarbonate",
           rating: "4.7/5",
-          affiliateUrl: "https://amazon.com/dp/B0751V8PHV?tag=spacesavvy-20"
+          affiliateUrl: "https://amazon.com/dp/B0751V8PHV?tag=spacesavvy07-20"
         }
       },
       {
@@ -691,7 +691,7 @@ export const posts: Post[] = [
           dimensions: "28 inch diameter by 72 inch height",
           material: "Flame resistant PVC with folding stand",
           rating: "4.6/5",
-          affiliateUrl: "https://amazon.com/dp/B00422O7N4?tag=spacesavvy-20"
+          affiliateUrl: "https://amazon.com/dp/B00422O7N4?tag=spacesavvy07-20"
         }
       },
       {
@@ -704,7 +704,7 @@ export const posts: Post[] = [
           dimensions: "22 inches wide by 36 inches tall",
           material: "Natural birch wood rungs and jute rope",
           rating: "4.7/5",
-          affiliateUrl: "https://amazon.com/dp/B08HJ29LKM?tag=spacesavvy-20"
+          affiliateUrl: "https://amazon.com/dp/B08HJ29LKM?tag=spacesavvy07-20"
         }
       },
       {
@@ -717,7 +717,7 @@ export const posts: Post[] = [
           dimensions: "22 inch base diameter by 9 inch height",
           material: "Woven natural seagrass over metal frame",
           rating: "4.5/5",
-          affiliateUrl: "https://amazon.com/dp/B08DFN7S9M?tag=spacesavvy-20"
+          affiliateUrl: "https://amazon.com/dp/B08DFN7S9M?tag=spacesavvy07-20"
         }
       }
     ],

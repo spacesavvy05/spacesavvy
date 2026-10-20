@@ -44,7 +44,7 @@ export default function SEOHead({
     setMeta('name', 'twitter:image', ogImage);
 
     // 3. Update canonical URL
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://spacesavvy.com';
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://spacesavvy-olive.vercel.app';
     const targetUrl = canonicalPath ? `${origin}${canonicalPath}` : `${origin}${location.pathname}`;
     setMeta('property', 'og:url', targetUrl);
 

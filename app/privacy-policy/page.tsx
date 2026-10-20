@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
 
       <div className="prose prose-stone max-w-none text-stone-600 space-y-6 leading-relaxed font-sans text-sm md:text-base">
         <p>
-          At SpaceSavvy (accessible from spacesavvy.com and related web endpoints), the privacy of our visitors is of paramount importance. This Privacy Policy document outlines the types of information collected and recorded by SpaceSavvy and how we utilize it.
+          At SpaceSavvy (accessible from spacesavvy-olive.vercel.app and related web endpoints), the privacy of our visitors is of paramount importance. This Privacy Policy document outlines the types of information collected and recorded by SpaceSavvy and how we utilize it.
         </p>
 
         <h2 className="text-xl md:text-2xl font-serif font-bold text-stone-900 pt-2">

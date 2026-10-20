@@ -19,20 +19,17 @@ export default function ProductCallout({ product }: ProductCalloutProps) {
             editor pick
           </span>
         </div>
-        <span className="text-[11px] font-mono text-stone-600 bg-white px-3 py-1 rounded-full border border-stone-200/60 font-medium">
-          verified spec • rating {product.rating}
-        </span>
       </div>
 
-      {/* large full-width product image */}
+      {/* large full-width product image (fits any resolution without cropping) */}
       {product.image && !imgError && (
-        <div className="w-full aspect-[4/3] bg-stone-50 overflow-hidden relative group border-b border-stone-100">
+        <div className="w-full bg-white overflow-hidden relative group border-b border-stone-100 p-4 flex items-center justify-center">
           <img
             src={product.image}
             alt={product.name}
             referrerPolicy="no-referrer"
             onError={() => setImgError(true)}
-            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+            className="w-full h-auto max-h-[380px] object-contain object-center group-hover:scale-[1.03] transition-transform duration-500 ease-out"
           />
         </div>
       )}
@@ -48,27 +45,27 @@ export default function ProductCallout({ product }: ProductCalloutProps) {
           </h4>
         </div>
 
-        <div className="flex items-baseline gap-2">
-          <span className="text-3xl font-black text-stone-900 font-serif">
-            {product.price}
-          </span>
-        </div>
-
-        {/* dimensions and material pills */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-          <div className="bg-stone-50 p-3 rounded-2xl border border-stone-200/60">
-            <span className="text-[10px] uppercase font-mono tracking-wider text-stone-400 block mb-0.5">
-              dimensions
-            </span>
-            <span className="font-medium text-stone-800">{product.dimensions}</span>
+        {/* dimensions and material pills (hidden when empty) */}
+        {(product.dimensions || product.material) && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            {product.dimensions && (
+              <div className="bg-stone-50 p-3 rounded-2xl border border-stone-200/60">
+                <span className="text-[10px] uppercase font-mono tracking-wider text-stone-400 block mb-0.5">
+                  dimensions
+                </span>
+                <span className="font-medium text-stone-800">{product.dimensions}</span>
+              </div>
+            )}
+            {product.material && (
+              <div className="bg-stone-50 p-3 rounded-2xl border border-stone-200/60">
+                <span className="text-[10px] uppercase font-mono tracking-wider text-stone-400 block mb-0.5">
+                  material
+                </span>
+                <span className="font-medium text-stone-800">{product.material}</span>
+              </div>
+            )}
           </div>
-          <div className="bg-stone-50 p-3 rounded-2xl border border-stone-200/60">
-            <span className="text-[10px] uppercase font-mono tracking-wider text-stone-400 block mb-0.5">
-              material
-            </span>
-            <span className="font-medium text-stone-800">{product.material}</span>
-          </div>
-        </div>
+        )}
 
         {/* full-width call to action button */}
         <div className="pt-2">
@@ -78,7 +75,7 @@ export default function ProductCallout({ product }: ProductCalloutProps) {
             rel="sponsored nofollow noopener noreferrer"
             className="w-full inline-flex items-center justify-center gap-2 bg-stone-900 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider py-4 px-6 rounded-2xl shadow-sm transition-all duration-200 cursor-pointer text-center"
           >
-            <span>view verified item on amazon</span>
+            <span>check price on amazon</span>
             <span aria-hidden="true">↗</span>
           </a>
         </div>

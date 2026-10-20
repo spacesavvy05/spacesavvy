@@ -117,7 +117,7 @@ export default function PinImage({
         </div>
         <div className="my-auto space-y-2">
           <span className="text-[10px] font-mono uppercase tracking-wider text-amber-800 font-bold block">
-            Staged & Verified
+            SpaceSavvy Idea
           </span>
           <p className="text-lg sm:text-xl font-serif font-black text-stone-900 leading-tight">
             {title}

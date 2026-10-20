@@ -4,4 +4,4 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
 
-Sitemap: https://spacesavvy.com/sitemap.xml
+Sitemap: https://spacesavvy-olive.vercel.app/sitemap.xml

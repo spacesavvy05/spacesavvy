@@ -65,7 +65,7 @@ export default function SitemapPage() {
       </h1>
 
       <p className="text-stone-500 text-xs sm:text-sm font-mono mb-10 pb-6 border-b border-stone-200">
-        Host: spacesavvy.com · Validated for Search Engine Crawlers & Readers
+        Host: spacesavvy-olive.vercel.app · Validated for Search Engine Crawlers & Readers
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
@@ -89,7 +89,7 @@ export default function SitemapPage() {
                       <div className="space-y-0.5">
                         <span className="font-sans font-medium">{link.name}</span>
                         <p className="text-[10px] text-stone-400 font-mono tracking-tight break-all">
-                          https://spacesavvy.com{link.path}
+                          https://spacesavvy-olive.vercel.app{link.path}
                         </p>
                       </div>
                     </Link>

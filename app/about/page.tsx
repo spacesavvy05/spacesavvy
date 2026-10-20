@@ -33,7 +33,7 @@ export default function AboutPage() {
             Finding practical pieces for your home shouldn&apos;t involve endless scrolling through low-quality junk or dealing with complicated renovations. Most design publications push custom built-ins that cost thousands, while discount sites offer flimsy organizers that warp within months.
           </p>
           <p>
-            We focus on the sweet spot of thoughtful home styling paired with practical, durable solutions. We spend hours researching verified customer reviews, exact dimensions, and easy setups so you can clear clutter and style your home with confidence.
+            We focus on the sweet spot of thoughtful home styling paired with practical, durable solutions. We spend hours reading customer reviews, exact dimensions, and easy setups so you can clear clutter and style your home with confidence.
           </p>
         </div>
 

@@ -56,7 +56,7 @@ export default function ShopPage() {
     "@type": "CollectionPage",
     "name": "Curated Home Essentials | SpaceSavvy",
     "description": "Smart storage solutions, compact furniture, and functional organizers to help you clear clutter and streamline your space.",
-    "url": "https://spacesavvy.com/shop",
+    "url": "https://spacesavvy-olive.vercel.app/shop",
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": shopProducts.slice(0, 15).map((prod, idx) => ({
@@ -66,13 +66,7 @@ export default function ShopPage() {
           "@type": "Product",
           "name": prod.name,
           "image": prod.image,
-          "description": prod.description,
-          "offers": {
-            "@type": "Offer",
-            "price": prod.price.replace('$', ''),
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-          }
+          "description": prod.description
         }
       }))
     }
@@ -169,9 +163,6 @@ export default function ShopPage() {
               className="text-xs sm:text-sm bg-white border border-stone-200/90 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:ring-2 focus:ring-amber-600/30 focus:border-amber-700"
             >
               <option value="featured">Featured Curations</option>
-              <option value="rating">Highest Rated</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
             </select>
           </div>
         </div>
@@ -185,7 +176,7 @@ export default function ShopPage() {
             <span> in <strong className="text-amber-800">{activeCategory}</strong></span>
           )}
         </p>
-        <span className="text-[11px] font-mono text-stone-400">Verified Quality · Easy Setup</span>
+        <span className="text-[11px] font-mono text-stone-400">Renter-Friendly · Easy Setup</span>
       </div>
 
       {/* 4. Product Grid */}
@@ -231,7 +222,7 @@ export default function ShopPage() {
           </div>
           <div className="flex items-center gap-2 text-xs font-medium text-stone-600 bg-white border border-stone-200/80 px-4 py-3 rounded-xl shadow-xs shrink-0">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-            <span>Updated weekly with verified inventory</span>
+            <span>Links checked regularly</span>
           </div>
         </div>
       </section>

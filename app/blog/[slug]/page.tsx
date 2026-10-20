@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   ChevronRight,
@@ -7,11 +7,13 @@ import {
   CheckCircle2,
   Check,
   ArrowRight,
-  ChevronDown,
-  ListOrdered
+  ArrowUp
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { posts, Post, Section } from '../../../src/data/posts';
+import { client } from '../../../src/lib/sanity';
+import { subscribeEmail } from '../../../src/lib/subscribe';
+import { PortableText } from '@portabletext/react';
 import ArticleCard from '../../../src/components/ArticleCard';
 import FaqAccordion from '../../../src/components/FaqAccordion';
 import ProductCallout from '../../../src/components/ProductCallout';
@@ -23,12 +25,60 @@ interface PageProps {
   };
 }
 
-// Interactive 2:3 Vertical Visual with Framer Motion Pinterest Pulse & Toast
-function ArticleImage({ section, postTitle, postCategory, postSlug }: {
-  section: Section;
-  postTitle: string;
+interface TocItem {
+  id: string;
+  text: string;
+}
+
+function slugifyHeading(text: string, index: number): string {
+  const clean = text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+  return clean || `section-${index + 1}`;
+}
+
+// Capitalizes the first letter of sentences and cleans up lowercase titles
+function formatSentenceCase(text?: string): string {
+  if (!text) return '';
+  const trimmed = text.trim();
+  if (!trimmed) return '';
+  return trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+}
+
+// Automatically numbers section titles ("1. Title") and capitalizes key words if all lowercase
+function formatSectionHeading(title?: string, index?: number): string {
+  if (!title) return '';
+  let clean = title.trim();
+
+  // If the heading is entirely lowercase, convert to clean Title Case
+  if (clean === clean.toLowerCase()) {
+    const minorWords = new Set(['a', 'an', 'the', 'and', 'but', 'or', 'for', 'nor', 'on', 'at', 'to', 'from', 'by', 'with', 'in', 'of']);
+    clean = clean
+      .split(' ')
+      .map((word, idx) => {
+        if (idx > 0 && minorWords.has(word)) return word;
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
+      .join(' ');
+  } else {
+    clean = clean.charAt(0).toUpperCase() + clean.slice(1);
+  }
+
+  // Add "1. ", "2. " prefix if it doesn't already start with a number
+  if (typeof index === 'number' && !/^\d+[\.\)]/.test(clean)) {
+    return `${index + 1}. ${clean}`;
+  }
+  return clean;
+}
+
+// Fits any image resolution cleanly without cutting off edges
+function ArticleImage({ imageUrl, title, postCategory, postSlug, productName }: {
+  imageUrl: string;
+  title: string;
   postCategory: string;
   postSlug: string;
+  productName?: string;
 }) {
   const [pinned, setPinned] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -41,8 +91,8 @@ function ArticleImage({ section, postTitle, postCategory, postSlug }: {
     if (typeof window === 'undefined') return;
 
     const targetUrl = new URL(`/blog/${postSlug}`, window.location.origin).href;
-    const mediaUrl = section.image;
-    const desc = `${section.title}. ${section.product.name} | SpaceSavvy Small Apartment Living Hacks #SpaceSavvy #SmallApartment #ApartmentHacks #InteriorStyling #HomeOrganization`;
+    const mediaUrl = imageUrl;
+    const desc = `${title}${productName ? `. ${productName}` : ''} | SpaceSavvy Small Apartment Living Hacks #SpaceSavvy #SmallApartment #ApartmentHacks #InteriorStyling #HomeOrganization`;
 
     const params = new URLSearchParams({
       url: targetUrl,
@@ -78,31 +128,29 @@ function ArticleImage({ section, postTitle, postCategory, postSlug }: {
   };
 
   return (
-    <div className="relative w-full max-w-md mx-auto aspect-[2/3] rounded-2xl overflow-hidden my-6 border border-stone-200 shadow-sm group bg-[#F5EFE6]">
-      {/* Real photo or graceful fallback */}
-      {!imgError ? (
+    <div className="relative w-full max-w-lg mx-auto rounded-2xl overflow-hidden my-6 border border-stone-200 shadow-sm group bg-white">
+      {!imgError && imageUrl ? (
         <img
-          src={section.image}
-          alt={section.title}
+          src={imageUrl}
+          alt={title}
           referrerPolicy="no-referrer"
           onError={() => setImgError(true)}
-          className="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+          className="w-full h-auto max-h-[540px] object-contain bg-white mx-auto transition-transform duration-500 ease-out group-hover:scale-[1.02]"
         />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FAF8F5] via-[#F4EFE6] to-[#EAE2D5] p-6 flex flex-col justify-between select-none">
+        <div className="aspect-[4/3] bg-gradient-to-br from-[#FAF8F5] via-[#F4EFE6] to-[#EAE2D5] p-6 flex flex-col justify-between select-none">
           <span className="text-[10px] font-mono uppercase tracking-widest text-stone-500 font-bold">
             {postCategory}
           </span>
           <p className="font-serif font-bold text-stone-900 text-lg leading-snug">
-            {section.title}
+            {title}
           </p>
           <span className="text-xs text-amber-800 font-mono font-bold">
-            SpaceSavvy Verified Spec
+            SpaceSavvy Idea
           </span>
         </div>
       )}
 
-      {/* Floating Red Pinterest '📌 Save' Button with hover pulse */}
       <motion.button
         type="button"
         onClick={handlePin}
@@ -119,8 +167,8 @@ function ArticleImage({ section, postTitle, postCategory, postSlug }: {
         className={`absolute top-3.5 right-3.5 z-20 flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold text-white shadow-md transition-colors duration-200 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 ${
           pinned ? 'bg-stone-900' : 'bg-red-600 hover:bg-red-700'
         } opacity-95 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100`}
-        title={`Save "${section.title}" to Pinterest`}
-        aria-label={`Save "${section.title}" to Pinterest`}
+        title={`Save "${title}" to Pinterest`}
+        aria-label={`Save "${title}" to Pinterest`}
       >
         {pinned ? (
           <>
@@ -135,7 +183,6 @@ function ArticleImage({ section, postTitle, postCategory, postSlug }: {
         )}
       </motion.button>
 
-      {/* Toast Feedback */}
       <AnimatePresence>
         {showToast && (
           <motion.div
@@ -158,19 +205,133 @@ function ArticleImage({ section, postTitle, postCategory, postSlug }: {
 export default function ArticleTemplate({ params }: PageProps = {}) {
   const routerParams = useParams<{ slug?: string }>();
   const slug = params?.slug || routerParams.slug;
-  const post: Post | undefined = posts.find(p => p.slug === slug) || posts[0];
 
-  // Sidebar newsletter state
-  const [sidebarEmail, setSidebarEmail] = useState('');
-  const [sidebarSubscribed, setSidebarSubscribed] = useState(false);
-
-  // Table of Contents collapse toggle (open by default)
-  const [tocOpen, setTocOpen] = useState(true);
-
-  // Reading progress indicator
-  const [readingProgress, setReadingProgress] = useState(0);
+  const staticMatch = posts.find(p => p.slug === slug);
+  const [sanityPost, setSanityPost] = useState<any | null>(null);
+  const [loadingSanity, setLoadingSanity] = useState(!staticMatch);
 
   useEffect(() => {
+    async function fetchSanityArticle() {
+      if (!slug) return;
+      try {
+        setLoadingSanity(true);
+        const data = await client.fetch(
+          `*[_type == "post" && slug.current == $slug][0]{
+            "slug": slug.current,
+            "title": coalesce(title, postTitle),
+            seoTitle,
+            seoDescription,
+            category,
+            readTime,
+            "takeaway": coalesce(takeaway, keyTakeaway),
+            "excerpt": coalesce(seoDescription, excerpt, takeaway, keyTakeaway),
+            "publishDate": coalesce(publishedAt, publishDate),
+            "featuredImageSrc": coalesce(mainImage.asset->url, featuredImage.asset->url),
+            "featuredImageAlt": coalesce(mainImage.alt, featuredImage.alt, title, postTitle),
+            body[]{
+              ...,
+              _type == "image" => {
+                "imageUrl": asset->url,
+                alt
+              },
+              _type == "productCard" => {
+                productName,
+                price,
+                dimensions,
+                material,
+                rating,
+                affiliateUrl,
+                "productImageUrl": productImage.asset->url
+              }
+            },
+            "sections": coalesce(sections, articleSections)[]{
+              "title": coalesce(title, sectionTitle),
+              "body": coalesce(body, bodyText),
+              "image": coalesce(image.asset->url, sectionImage.asset->url),
+              "product": {
+                "name": coalesce(product.name, amazonProductCallout.productName),
+                "price": coalesce(product.price, amazonProductCallout.price),
+                "dimensions": coalesce(product.dimensions, amazonProductCallout.dimensions),
+                "material": coalesce(product.material, amazonProductCallout.material),
+                "rating": coalesce(product.rating, amazonProductCallout.rating),
+                "affiliateUrl": coalesce(product.affiliateUrl, amazonProductCallout.amazonAffiliateUrl),
+                "image": coalesce(product.productImage.asset->url, amazonProductCallout.productWhiteBgPhoto.asset->url)
+              }
+            },
+            faqs[]{
+              question,
+              answer
+            }
+          }`,
+          { slug }
+        );
+
+        if (data) {
+          setSanityPost(data);
+        } else {
+          setSanityPost(null);
+        }
+      } catch (err) {
+        console.error('Error fetching post from Sanity:', err);
+      } finally {
+        setLoadingSanity(false);
+      }
+    }
+
+    fetchSanityArticle();
+  }, [slug]);
+
+  const activePost = sanityPost || staticMatch;
+
+  // Automatically build Table of Contents from H2/H3 blocks OR structured sections
+  const tocItems: TocItem[] = useMemo(() => {
+    if (!activePost) return [];
+
+    if (activePost.body && Array.isArray(activePost.body) && activePost.body.length > 0) {
+      const headings: TocItem[] = [];
+      let h2Index = 0;
+      activePost.body.forEach((block: any) => {
+        if (block._type === 'block' && (block.style === 'h2' || block.style === 'h3')) {
+          const rawText = (block.children || []).map((c: any) => c.text).join('').trim();
+          if (rawText) {
+            const formattedText = block.style === 'h2'
+              ? formatSectionHeading(rawText, h2Index++)
+              : formatSectionHeading(rawText);
+            headings.push({
+              id: slugifyHeading(rawText, headings.length),
+              text: formattedText
+            });
+          }
+        }
+      });
+      return headings;
+    }
+
+    if (activePost.sections && Array.isArray(activePost.sections)) {
+      return activePost.sections
+        .filter((s: any) => s && s.title)
+        .map((s: any, idx: number) => ({
+          id: slugifyHeading(s.title, idx),
+          text: formatSectionHeading(s.title, idx)
+        }));
+    }
+
+    return [];
+  }, [activePost]);
+
+  const [activeId, setActiveId] = useState<string>('');
+  const [sidebarEmail, setSidebarEmail] = useState('');
+  const [sidebarSubscribed, setSidebarSubscribed] = useState(false);
+  const [sidebarSending, setSidebarSending] = useState(false);
+  const [sidebarError, setSidebarError] = useState('');
+  const [readingProgress, setReadingProgress] = useState(0);
+
+  // Scroll spy for sticky right-hand Table of Contents
+  useEffect(() => {
+    if (tocItems.length > 0 && !activeId) {
+      setActiveId(tocItems[0].id);
+    }
+
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (totalHeight > 0) {
@@ -178,49 +339,60 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
         const progress = Math.min(100, Math.max(0, (currentScroll / totalHeight) * 100));
         setReadingProgress(progress);
       }
+
+      const scrollPosition = window.scrollY + 180;
+      let currentActive = tocItems[0]?.id || '';
+
+      for (const item of tocItems) {
+        const el = document.getElementById(item.id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY;
+          if (scrollPosition >= top) {
+            currentActive = item.id;
+          }
+        }
+      }
+      if (currentActive) {
+        setActiveId(currentActive);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [tocItems]);
 
-  const handleSidebarNewsletter = (e: React.FormEvent) => {
+  const scrollToHeading = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
-    if (!sidebarEmail || !sidebarEmail.includes('@')) return;
-    setSidebarSubscribed(true);
+    const element = document.getElementById(id);
+    if (element) {
+      const y = element.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      setActiveId(id);
+      window.history.replaceState(null, '', `#${id}`);
+    }
   };
 
-  // Trending Renter Guides: List of 3 popular articles
-  const trendingArticles = posts
-    .filter(p => p.slug !== post?.slug)
-    .slice(0, 3);
+  const handleSidebarNewsletter = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!sidebarEmail || !sidebarEmail.includes('@') || sidebarSending) return;
+    setSidebarSending(true);
+    setSidebarError('');
+    const ok = await subscribeEmail(sidebarEmail);
+    setSidebarSending(false);
+    if (ok) setSidebarSubscribed(true);
+    else setSidebarError('Something went wrong. Please try again.');
+  };
 
-  // Related guides shelf: 4 articles from same category (or fallback to latest)
-  const relatedShelf = posts
-    .filter(p => p.category === post?.category && p.slug !== post?.slug)
-    .concat(posts.filter(p => p.slug !== post?.slug))
-    .slice(0, 4);
+  if (loadingSanity && !activePost) {
+    return (
+      <div className="max-w-3xl mx-auto px-6 py-24 text-center">
+        <p className="font-serif text-xl text-stone-500">Loading Blueprint...</p>
+      </div>
+    );
+  }
 
-  // Default fallback FAQs for Schema.org & Accordion if post lacks custom ones
-  const defaultFaqs = [
-    {
-      question: "Are these storage recommendations suitable for renters?",
-      answer: "Yes. Every solution highlighted features zero-drill tension mounting, stud-only hardware, or certified surface-safe adhesives that leave walls intact when moving out."
-    },
-    {
-      question: "How do I choose the right furniture dimensions for a compact apartment?",
-      answer: "Measure the primary door swing and floor pathways first. Keep a minimum 30-inch clearance for walking corridors, and prioritize vertical wall storage over deep floor footprints."
-    },
-    {
-      question: "Where can I find budget-friendly compact home decor?",
-      answer: "We curate verified Amazon finds that combine solid pine, powder-coated steel, and durable canvas organizers to maintain high visual appeal while staying under $25 to $60."
-    }
-  ];
-
-  const activeFaqs = post?.faqs && post.faqs.length > 0 ? post.faqs : defaultFaqs;
-
-  if (!post) {
+  if (!activePost) {
     return (
       <div className="max-w-3xl mx-auto px-6 py-20 text-center">
         <h1 className="font-serif text-3xl font-bold text-stone-900 mb-4">Guide Not Found</h1>
@@ -235,70 +407,131 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
     );
   }
 
-  // Schema.org Article JSON-LD
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": post.title,
-    "description": post.excerpt || post.takeaway,
-    "image": post.featuredImageSrc || post.sections[0]?.image,
-    "datePublished": "2026-10-01T08:00:00+00:00",
-    "dateModified": "2026-10-08T08:00:00+00:00",
-    "author": {
-      "@type": "Organization",
-      "name": "SpaceSavvy Editorial",
-      "url": "https://pinterest.com/spacesavvyhacks"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "SpaceSavvy",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=200"
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": typeof window !== 'undefined' ? window.location.href : `https://spacesavvy.com/blog/${post.slug}`
-    }
-  };
+  const title = activePost.title || 'Untitled Guide';
+  const seoTitle = activePost.seoTitle || title;
+  const category = activePost.category || 'Compact Workspaces';
+  const readTime = activePost.readTime
+    ? String(activePost.readTime).toLowerCase().includes('read')
+      ? activePost.readTime
+      : `${activePost.readTime} read`
+    : '6 min read';
+  const publishDate = activePost.publishDate
+    ? new Date(activePost.publishDate).toString() !== 'Invalid Date' && String(activePost.publishDate).includes('T')
+      ? new Date(activePost.publishDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+      : activePost.publishDate
+    : 'October 2026';
+  const takeaway = formatSentenceCase(activePost.takeaway || '');
+  const excerpt = formatSentenceCase(
+    activePost.seoDescription || activePost.excerpt || takeaway || 'Small space organization guide and apartment layout blueprint.'
+  );
+  const featuredImageSrc = activePost.featuredImageSrc || activePost.sections?.[0]?.image || '';
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://spacesavvy.com"
+  const trendingArticles = posts.filter(p => p.slug !== slug).slice(0, 3);
+  const relatedShelf = posts
+    .filter(p => p.category === category && p.slug !== slug)
+    .concat(posts.filter(p => p.slug !== slug))
+    .slice(0, 4);
+
+  const defaultFaqs = [
+    {
+      question: "Are these storage recommendations suitable for renters?",
+      answer: "Yes. Most picks use no-drill options like tension rods, clamps or removable adhesive. When something needs screws, we say so in its 'Watch out' note."
+    },
+    {
+      question: "How do I choose the right furniture dimensions for a compact apartment?",
+      answer: "Measure the primary door swing and floor pathways first. Leave a comfortable walkway (around 36 inches is a common guideline), and prioritize vertical wall storage over deep floor footprints."
+    },
+    {
+      question: "Where can I find budget-friendly compact home decor?",
+      answer: "We pick well-reviewed, renter-friendly Amazon finds and link straight to each product, so you can check the current price and reviews yourself."
+    }
+  ];
+
+  const rawFaqs = activePost.faqs && activePost.faqs.length > 0 ? activePost.faqs : defaultFaqs;
+  const activeFaqs = rawFaqs.map((f: any) => ({
+    question: formatSentenceCase(f.question),
+    answer: formatSentenceCase(f.answer)
+  }));
+
+  let headingCounter = 0;
+  let h2NumberCounter = 0;
+
+  const portableTextComponents = {
+    block: {
+      h2: ({ value }: any) => {
+        const rawText = (value.children || []).map((c: any) => c.text).join('').trim();
+        const id = slugifyHeading(rawText, headingCounter++);
+        const formattedHeading = formatSectionHeading(rawText, h2NumberCounter++);
+        return (
+          <h2
+            id={id}
+            className="font-serif text-2xl sm:text-3xl font-black text-stone-900 mt-12 mb-4 leading-tight tracking-tight scroll-mt-28"
+          >
+            {formattedHeading}
+          </h2>
+        );
       },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": post.category,
-        "item": `https://spacesavvy.com/category/${post.category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
+      h3: ({ value }: any) => {
+        const rawText = (value.children || []).map((c: any) => c.text).join('').trim();
+        const id = slugifyHeading(rawText, headingCounter++);
+        return (
+          <h3
+            id={id}
+            className="font-serif text-xl sm:text-2xl font-bold text-stone-900 mt-8 mb-3 leading-snug scroll-mt-28"
+          >
+            {formatSectionHeading(rawText)}
+          </h3>
+        );
       },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": post.title,
-        "item": `https://spacesavvy.com/blog/${post.slug}`
-      }
-    ]
+      normal: ({ children }: any) => (
+        <p className="text-stone-700 leading-relaxed text-base sm:text-lg mb-6">
+          {children}
+        </p>
+      ),
+      blockquote: ({ children }: any) => (
+        <blockquote className="border-l-4 border-amber-600 bg-amber-50/50 pl-5 py-3 my-6 italic font-serif text-stone-800 rounded-r-xl">
+          {children}
+        </blockquote>
+      ),
+    },
+    types: {
+      image: ({ value }: any) => (
+        <ArticleImage
+          imageUrl={value.imageUrl}
+          title={formatSentenceCase(value.alt || title)}
+          postCategory={category}
+          postSlug={slug || ''}
+        />
+      ),
+      productCard: ({ value }: any) => (
+        <div className="my-8">
+          <ProductCallout
+            product={{
+              name: value.productName || 'Recommended Space-Saving Essential',
+              price: '',
+              dimensions: value.dimensions || '',
+              material: value.material || '',
+              rating: '',
+              affiliateUrl: value.affiliateUrl || 'https://www.amazon.com',
+              image: value.productImageUrl || ''
+            }}
+          />
+        </div>
+      ),
+    },
   };
 
   return (
     <div className="bg-[#FAF8F5] min-h-screen text-stone-800">
       <SEOHead
-        title={post.title}
-        description={post.excerpt || post.takeaway || 'Small space organization guide and apartment layout blueprint.'}
-        canonicalPath={`/blog/${post.slug}`}
-        ogImage={post.featuredImageSrc || post.sections[0]?.image}
+        title={seoTitle}
+        description={excerpt}
+        canonicalPath={`/blog/${slug}`}
+        ogImage={featuredImageSrc}
         ogType="article"
       />
 
-      {/* Reading Progress Indicator */}
+      {/* Reading Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-amber-500/20 z-[60] pointer-events-none">
         <div
           className="h-full bg-amber-600 transition-all duration-100 ease-out"
@@ -306,165 +539,201 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
         />
       </div>
 
-      {/* Schema.org Article Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      {/* Schema.org BreadcrumbList Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-
       {/* 2-COLUMN DESKTOP GRID */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-3 sm:pt-5 pb-12 grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-3 sm:pt-5 pb-4 grid grid-cols-1 lg:grid-cols-12 gap-10">
         
         {/* ============================================================== */}
-        {/* MAIN ARTICLE RAIL (lg:col-span-8 space-y-8) */}
+        {/* MAIN ARTICLE RAIL (lg:col-span-8 space-y-8)                    */}
         {/* ============================================================== */}
-        <main className="lg:col-span-8 space-y-8 min-w-0">
-          
-          {/* Breadcrumbs */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono text-stone-500 mb-4 flex-wrap">
+        <main className="lg:col-span-8 space-y-6 min-w-0">
+          {/* TWEAK 1: Breadcrumb font changed from font-mono to font-sans and truncation removed */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-sans text-stone-500 mb-3 flex-wrap">
             <Link to="/" className="hover:text-amber-700 transition-colors">
               Home
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-stone-400 shrink-0" />
             <Link 
-              to={`/?category=${encodeURIComponent(post.category)}`}
+              to={`/?category=${encodeURIComponent(category)}`}
               className="hover:text-amber-700 transition-colors"
             >
-              {post.category}
+              {category}
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-stone-400 shrink-0" />
-            <span className="text-stone-800 font-semibold truncate max-w-xs sm:max-w-md">
-              {post.title}
+            <span className="text-stone-800 font-medium">
+              {title}
             </span>
           </nav>
 
-          {/* H1 Headline */}
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-black text-stone-900 leading-[1.18] mb-3 tracking-tight">
-            {post.title}
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-black text-stone-900 leading-[1.18] mb-2 tracking-tight">
+            {title}
           </h1>
 
-          {/* Meta Row: Date, read time, and "Renter-Approved Specs" badge */}
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4 py-3 border-y border-stone-200 text-xs text-stone-600 mb-8">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 py-3 border-y border-stone-200 text-xs text-stone-600">
+            <span className="font-semibold text-stone-800">
+              By SpaceSavvy
+            </span>
+            <span className="text-stone-300" aria-hidden="true">•</span>
             <div className="flex items-center gap-1.5 font-medium">
               <Calendar className="w-3.5 h-3.5 text-stone-400 shrink-0" />
-              <span>{post.publishDate || "October 2026"}</span>
+              <span>{publishDate}</span>
             </div>
             <span className="text-stone-300" aria-hidden="true">•</span>
             <div className="flex items-center gap-1.5 font-medium">
               <Clock className="w-3.5 h-3.5 text-stone-400 shrink-0" />
-              <span>{post.readTime}</span>
+              <span>{readTime}</span>
             </div>
             <span className="text-stone-300" aria-hidden="true">•</span>
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/80 font-bold text-[11px]">
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-              Renter-Approved Specs
+              Editor Picks
             </span>
           </div>
 
-          {/* Quick Takeaway Box */}
-          <section className="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-5 mb-8 shadow-xs">
-            <span className="text-[11px] font-bold tracking-widest text-amber-800 uppercase font-mono block mb-2">
-              THE SPACESAVVY TAKEAWAY
-            </span>
-            <p className="font-serif text-base sm:text-lg text-stone-800 leading-relaxed font-medium">
-              {post.takeaway}
-            </p>
-          </section>
+          <p className="text-sm text-stone-700 leading-relaxed bg-stone-100/80 border border-stone-200 rounded-xl px-4 py-2.5">
+            <strong className="font-semibold text-stone-900">As an Amazon Associate I earn from qualifying purchases.</strong> SpaceSavvy is reader-supported, at no extra cost to you.{' '}
+            <Link to="/affiliate-disclosure" className="underline hover:text-stone-800">
+              Learn more
+            </Link>.
+          </p>
 
-          {/* Interactive Editorial Table of Contents */}
-          <nav 
-            aria-label="Table of Contents"
-            className="bg-[#F9F7F4] border border-stone-200/90 rounded-2xl p-5 sm:p-6 mb-10 shadow-sm transition"
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-amber-600 inline-block" aria-hidden="true" />
-                <span className="font-serif text-lg font-bold text-stone-900 flex items-center gap-2">
-                  <ListOrdered className="w-4 h-4 text-amber-700" />
-                  In This Guide (Table of Contents)
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={() => setTocOpen(!tocOpen)}
-                className="text-xs font-semibold text-stone-500 hover:text-stone-900 flex items-center gap-1 transition-colors px-2 py-1 rounded hover:bg-stone-200/50 cursor-pointer"
-                aria-expanded={tocOpen}
-                aria-controls="table-of-contents-list"
-              >
-                <span>{tocOpen ? 'Hide' : 'Show'}</span>
-                <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    tocOpen ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
+          {/* TWEAK 3: Takeaway box with leading-relaxed */}
+          {takeaway && (
+            <section className="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-5 mb-8 shadow-xs">
+              <span className="text-[11px] font-bold tracking-widest text-amber-800 uppercase font-mono block mb-2">
+                THE SPACESAVVY TAKEAWAY
+              </span>
+              <p className="font-serif text-base sm:text-lg text-stone-800 leading-relaxed font-medium">
+                {takeaway}
+              </p>
+            </section>
+          )}
+
+          {activePost.body && Array.isArray(activePost.body) && activePost.body.length > 0 ? (
+            <div className="space-y-4">
+              <PortableText value={activePost.body} components={portableTextComponents} />
             </div>
+          ) : activePost.sections && activePost.sections.length > 0 ? (
+            <div className="space-y-12">
+              {activePost.sections.map((section: Section, idx: number) => {
+                const secId = slugifyHeading(section.title, idx);
+                const formattedTitle = formatSectionHeading(section.title, idx);
+                const formattedBody = formatSentenceCase(section.body);
 
-            {tocOpen && (
-              <ol
-                id="table-of-contents-list"
-                className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 mt-4 pt-4 border-t border-stone-200/60 list-decimal list-inside text-sm text-stone-700 font-medium"
-              >
-                {post.sections.map((section, index) => (
-                  <li key={index} className="truncate">
-                    <a
-                      href={`#section-${index + 1}`}
-                      className="hover:text-amber-700 hover:underline transition"
-                    >
-                      {section.title}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            )}
-          </nav>
+                const isDuplicatePhoto =
+                  Boolean(section.image) &&
+                  Boolean(section.product?.image) &&
+                  section.image === section.product?.image;
 
-          {/* Section Loop (Each Design Idea) */}
-          <div className="space-y-12">
-            {post.sections.map((section, idx) => (
-              <article 
-                key={idx} 
-                id={`section-${idx + 1}`}
-                className="border-b border-stone-200/80 pb-12 last:border-b-0 last:pb-0 scroll-mt-24"
-              >
-                {/* Subheading */}
-                <h2 className="font-serif text-2xl sm:text-3xl font-black text-stone-900 mt-12 mb-4 leading-tight tracking-tight">
-                  {section.title}
-                </h2>
+                return (
+                  <article 
+                    key={idx} 
+                    id={secId}
+                    className="border-b border-stone-200/80 pb-12 last:border-b-0 last:pb-0 scroll-mt-28"
+                  >
+                    <h2 className="font-serif text-2xl sm:text-3xl font-black text-stone-900 mt-10 mb-4 leading-tight tracking-tight">
+                      {formattedTitle}
+                    </h2>
 
-                {/* Paragraph: Natural, human editorial copy */}
-                <p className="text-stone-700 leading-relaxed text-base sm:text-lg mb-6">
-                  {section.body}
-                </p>
+                    {formattedBody.split(/\n\s*\n/).map((para: string, pIdx: number) => {
+                      const labelMatch = para.match(/^(Renter tip:|Watch out:)\s*/);
+                      if (labelMatch) {
+                        const isTip = labelMatch[1] === 'Renter tip:';
+                        return (
+                          <p
+                            key={pIdx}
+                            className={`text-stone-700 leading-relaxed text-sm sm:text-base mb-3 pl-4 border-l-4 ${isTip ? 'border-emerald-500' : 'border-amber-500'}`}
+                          >
+                            <strong className="text-stone-900">{isTip ? 'Renter tip:' : 'Watch out:'}</strong>{' '}
+                            {para.slice(labelMatch[0].length)}
+                          </p>
+                        );
+                      }
+                      return (
+                        <p key={pIdx} className="text-stone-700 leading-relaxed text-base sm:text-lg mb-6">
+                          {para}
+                        </p>
+                      );
+                    })}
 
-                {/* Vertical 2:3 Visual Frame */}
-                <ArticleImage
-                  section={section}
-                  postTitle={post.title}
-                  postCategory={post.category}
-                  postSlug={post.slug}
-                />
+                    {!isDuplicatePhoto && section.image && (
+                      <ArticleImage
+                        imageUrl={section.image}
+                        title={formattedTitle}
+                        postCategory={category}
+                        postSlug={slug || ''}
+                        productName={section.product?.name}
+                      />
+                    )}
 
-                {/* In-Article Product Callout Card */}
-                <ProductCallout product={section.product} />
-              </article>
-            ))}
-          </div>
+                    {section.product && <ProductCallout product={section.product} />}
+                  </article>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="bg-white border border-stone-200/90 rounded-2xl p-8 text-center my-8">
+              <p className="font-serif text-lg font-bold text-stone-800 mb-1">
+                Ready for your article content
+              </p>
+              <p className="text-xs text-stone-500">
+                Open Sanity Studio (localhost:3333), paste your article into the "Article Content" box, and hit Publish.
+              </p>
+            </div>
+          )}
 
+          {/* AUTHOR BOX */}
+          <section className="mt-12 bg-white border border-stone-200/90 rounded-2xl p-5 sm:p-6 flex gap-4 items-start">
+            <div className="w-12 h-12 rounded-full bg-amber-100 text-amber-800 font-serif font-black text-xl flex items-center justify-center shrink-0" aria-hidden="true">
+              S
+            </div>
+            <div>
+              <p className="text-[11px] font-mono uppercase tracking-widest text-amber-700 font-bold mb-1">Written by</p>
+              <p className="font-serif text-lg font-bold text-stone-900 mb-1">SpaceSavvy</p>
+              <p className="text-sm text-stone-600 leading-relaxed">
+                SpaceSavvy is a small-space blog for renters. We pick products by comparing specs, Amazon listings and customer reviews. We don't physically test every item, and we always flag anything that needs drilling.{' '}
+                <Link to="/about" className="text-amber-800 font-semibold underline">More about us</Link>.
+              </p>
+            </div>
+          </section>
         </main>
 
         {/* ============================================================== */}
-        {/* STICKY SIDEBAR RAIL (lg:col-span-4 hidden lg:block) */}
+        {/* STICKY RIGHT SIDEBAR WITH ACTIVE-SCROLL TABLE OF CONTENTS      */}
         {/* ============================================================== */}
         <aside className="lg:col-span-4 hidden lg:block">
-          <div className="space-y-8 sticky top-24 self-start">
+          <div className="space-y-6 sticky top-24 self-start">
             
-            {/* 1. Editorial Studio Card */}
+            {/* TWEAK 2: TOC with py-2.5 spacing, bold active states, and relaxed line height */}
+            {tocItems.length > 0 && (
+              <div className="bg-white rounded-2xl p-5 border border-stone-200/90 shadow-sm text-left">
+                <h3 className="font-sans text-sm font-bold text-stone-900 pb-3 mb-3 border-b border-stone-100">
+                  Table of Contents
+                </h3>
+                <nav
+                  aria-label="Table of Contents"
+                  className="max-h-[340px] overflow-y-auto pr-1 space-y-1"
+                >
+                  {tocItems.map((item) => {
+                    const isActive = activeId === item.id;
+                    return (
+                      <a
+                        key={item.id}
+                        href={`#${item.id}`}
+                        onClick={(e) => scrollToHeading(e, item.id)}
+                        className={`block text-[13px] leading-relaxed py-2.5 px-3 rounded-xl transition-all duration-150 border-l-[3px] ${
+                          isActive
+                            ? 'bg-amber-50/90 text-amber-900 font-bold border-amber-600 shadow-2xs'
+                            : 'border-transparent text-stone-600 hover:text-stone-900 hover:bg-stone-50'
+                        }`}
+                      >
+                        {item.text}
+                      </a>
+                    );
+                  })}
+                </nav>
+              </div>
+            )}
+
             <div className="bg-white rounded-2xl p-6 border border-stone-200/90 shadow-sm text-left">
               <span className="text-[10px] uppercase font-mono tracking-wider text-amber-700 font-bold block mb-1">
                 EDITORIAL CURATION
@@ -488,7 +757,6 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
               </a>
             </div>
 
-            {/* 2. Trending Renter Guides: List of 3 popular articles */}
             <div className="bg-white rounded-2xl p-6 border border-stone-200/90 shadow-sm text-left">
               <span className="text-[10px] uppercase font-mono tracking-wider text-amber-700 font-bold block mb-3">
                 TRENDING RENTER GUIDES
@@ -523,7 +791,6 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
               </div>
             </div>
 
-            {/* 3. Weekly Checklist Box */}
             <div className="bg-gradient-to-br from-[#FFF4E6] via-[#FAF3EA] to-[#FDE8D0] rounded-2xl p-6 border border-amber-300/70 shadow-sm text-left">
               <span className="text-[10px] font-bold tracking-widest text-amber-800 uppercase font-mono block mb-1">
                 FREE WEEKLY CHEAT SHEET
@@ -537,7 +804,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
               {sidebarSubscribed ? (
                 <div className="py-2.5 px-3 bg-white/90 border border-emerald-300 rounded-xl text-emerald-800 text-xs font-semibold flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Check your inbox. Sent!</span>
+                  <span>Almost done! Check your inbox to confirm.</span>
                 </div>
               ) : (
                 <form onSubmit={handleSidebarNewsletter} className="space-y-2.5">
@@ -553,28 +820,33 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                     type="submit"
                     className="w-full py-2.5 rounded-full bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs cursor-pointer"
                   >
-                    GET THE CHECKLIST →
+                    {sidebarSending ? 'SENDING…' : 'GET THE CHECKLIST →'}
                   </button>
+                  {sidebarError && <p className="text-[11px] text-red-600">{sidebarError}</p>}
                 </form>
               )}
             </div>
 
           </div>
         </aside>
-
       </div>
 
-      {/* ============================================================== */}
-      {/* BOTTOM SECTIONS (FULL WIDTH) */}
-      {/* ============================================================== */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-16 space-y-16">
-        
-        {/* 1. FAQ Accordion with Schema.org JSON-LD Output */}
+      {readingProgress > 15 && (
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-amber-600 hover:bg-amber-700 text-white shadow-lg flex items-center justify-center transition-transform hover:scale-105 cursor-pointer"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp className="w-5 h-5" />
+        </button>
+      )}
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-2 pb-16 space-y-16">
         <section className="border-t border-stone-200 pt-10">
           <FaqAccordion items={activeFaqs} />
         </section>
 
-        {/* 2. Related Guides: 4 Article Cards */}
         {relatedShelf.length > 0 && (
           <section className="border-t border-stone-200 pt-10">
             <div className="flex items-center justify-between mb-8">
@@ -587,7 +859,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                 </h2>
               </div>
               <Link
-                to={`/?category=${encodeURIComponent(post.category)}`}
+                to={`/?category=${encodeURIComponent(category)}`}
                 className="text-xs font-bold text-amber-700 hover:text-amber-800 flex items-center gap-1 transition-colors"
               >
                 <span>View all</span>
@@ -602,7 +874,6 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
             </div>
           </section>
         )}
-
       </div>
     </div>
   );

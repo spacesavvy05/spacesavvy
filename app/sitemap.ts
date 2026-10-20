@@ -1,7 +1,7 @@
 import { posts } from '../data/posts';
 
 export default function sitemap() {
-  const baseUrl = 'https://spacesavvy.com';
+  const baseUrl = 'https://spacesavvy-olive.vercel.app';
   const currentDate = new Date();
 
   // Core static pages

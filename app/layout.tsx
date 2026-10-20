@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const metadata = {
-  metadataBase: new URL('https://spacesavvy.com'),
+  metadataBase: new URL('https://spacesavvy-olive.vercel.app'),
   title: {
     default: 'SpaceSavvy - Small Apartment Organization & Home Hacks',
     template: '%s | SpaceSavvy',
@@ -16,7 +16,7 @@ export const metadata = {
     title: 'SpaceSavvy - Small Apartment Organization & Home Hacks',
     description:
       'High-performance Scandi-inspired spatial guides, DIY budget decor hacks, and product recommendations to make every square metre count.',
-    url: 'https://spacesavvy.com',
+    url: 'https://spacesavvy-olive.vercel.app',
     siteName: 'SpaceSavvy',
     images: [
       {

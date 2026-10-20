@@ -35,7 +35,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'Solid Acacia Hardwood & Matte Black Iron',
     description: 'Doubles usable counter space by stacking ceramics and spices vertically above appliances.',
     image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=wuligirl+acacia+wood+counter+shelf+riser',
+    affiliateUrl: 'https://www.amazon.com/s?k=wuligirl+acacia+wood+counter+shelf+riser&tag=spacesavvy07-20',
     badge: 'Bestseller',
   },
   {
@@ -49,7 +49,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'Heavy Gauge Steel with Rustproof Chrome Finish',
     description: 'Slides onto existing 1-inch shelving with zero screws required; suspends 6 mugs off counters.',
     image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=under+cabinet+stemware+mug+holder',
+    affiliateUrl: 'https://www.amazon.com/s?k=under+cabinet+stemware+mug+holder&tag=spacesavvy07-20',
     badge: 'Essential',
   },
   {
@@ -63,7 +63,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'Solid Acacia Wood & Neodymium Rare-Earth Magnets',
     description: 'Replaces bulky countertop blocks. Mounts with damage-free heavy-duty 3M adhesive or hardware.',
     image: 'https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=coninx+magnetic+knife+strip+adhesive',
+    affiliateUrl: 'https://www.amazon.com/s?k=coninx+magnetic+knife+strip+adhesive&tag=spacesavvy07-20',
     badge: 'Top Rated',
   },
   {
@@ -77,7 +77,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'High-Density Polypropylene & 4 Glide Casters',
     description: 'Slides smoothly into the 5-inch gap between refrigerator and counter or washer and dryer.',
     image: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=spacekeeper+slim+storage+cart',
+    affiliateUrl: 'https://www.amazon.com/s?k=spacekeeper+slim+storage+cart&tag=spacesavvy07-20',
   },
   {
     id: 'hyacinth-baskets',
@@ -90,7 +90,7 @@ export const shopProducts: ShopProduct[] = [
     material: '100% Woven Natural Water Hyacinth on Iron Frame',
     description: 'Conceals dry baking goods and seasonal pantry inventory above cabinets with organic texture.',
     image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=water+hyacinth+storage+baskets',
+    affiliateUrl: 'https://www.amazon.com/s?k=water+hyacinth+storage+baskets&tag=spacesavvy07-20',
   },
   {
     id: 'drop-leaf-wall-desk',
@@ -103,7 +103,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'Solid Pine Top & Heavy-Duty Folding Steel Brackets',
     description: 'Folds completely flat against the wall (just 2 inches deep) when your workday concludes.',
     image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=wall+mounted+drop+leaf+table',
+    affiliateUrl: 'https://www.amazon.com/s?k=wall+mounted+drop+leaf+table&tag=spacesavvy07-20',
     badge: 'Space Saver',
   },
   {
@@ -117,7 +117,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'Solid Poplar Hardwood & Concealed Corner Stud Mounts',
     description: 'Turns awkward 90-degree bedroom corners into cozy laptop study stations.',
     image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=floating+corner+desk+small+spaces',
+    affiliateUrl: 'https://www.amazon.com/s?k=floating+corner+desk+small+spaces&tag=spacesavvy07-20',
   },
   {
     id: 'leaning-ladder-desk',
@@ -130,7 +130,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'Matte White Powder-Coated Metal & Warm Oak Shelves',
     description: 'Minimal floor footprint that soars vertically with 2 upper book and decor display tiers.',
     image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=nathan+james+theo+ladder+desk',
+    affiliateUrl: 'https://www.amazon.com/s?k=nathan+james+theo+ladder+desk&tag=spacesavvy07-20',
     badge: 'Design Award',
   },
   {
@@ -144,7 +144,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'Engineered Wood & Heavy Steel Brackets',
     description: 'Ultra-shallow 15.6-inch depth fits beside bedroom dressers with a concealed slide-out utility drawer.',
     image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=wall+mounted+floating+desk+with+drawer',
+    affiliateUrl: 'https://www.amazon.com/s?k=wall+mounted+floating+desk+with+drawer&tag=spacesavvy07-20',
   },
   {
     id: 'under-desk-cable-tray',
@@ -157,7 +157,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'Heavy Gauge Powder-Coated Alloy Steel',
     description: 'Clamp-on wire raceway conceals bulky multi-outlet surge protectors without drilling desktop holes.',
     image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=no+drill+under+desk+cable+tray',
+    affiliateUrl: 'https://www.amazon.com/s?k=no+drill+under+desk+cable+tray&tag=spacesavvy07-20',
   },
   {
     id: 'adhesive-wall-hooks',
@@ -170,7 +170,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'SUS304 Stainless Steel, Rustproof Matte Coating',
     description: 'Damage-free architectural hooks for hanging heavy winter coats, tote bags, and towels.',
     image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=kes+matte+black+adhesive+hooks',
+    affiliateUrl: 'https://www.amazon.com/s?k=kes+matte+black+adhesive+hooks&tag=spacesavvy07-20',
     badge: 'Hardware Pick',
   },
   {
@@ -184,7 +184,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'Alloy Steel with Anti-Scratch Vinyl Coating',
     description: 'Transforms dead door space into 6 tiers of vertical storage with customizable basket heights.',
     image: 'https://images.unsplash.com/photo-1558997519-83ea9252def8?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=over+the+door+organizer+6+tier',
+    affiliateUrl: 'https://www.amazon.com/s?k=over+the+door+organizer+6+tier&tag=spacesavvy07-20',
   },
   {
     id: 'underbed-containers',
@@ -197,7 +197,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'Reinforced Poly-Linen Fabric with Clear PVC Tops',
     description: 'Slim 4.5-inch low-profile bins slide under low platform beds to stow seasonal clothing and linens.',
     image: 'https://images.unsplash.com/photo-1540518614846-7ede433c4ef4?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=storageworks+underbed+storage',
+    affiliateUrl: 'https://www.amazon.com/s?k=storageworks+underbed+storage&tag=spacesavvy07-20',
   },
   {
     id: 'fluted-accent-credenza',
@@ -210,7 +210,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'Warm Oak Veneer & Powder-Coated Metal Base',
     description: 'Compact credenza with fluted tambour doors that hides entryway clutter or serves as a discreet cocktail bar.',
     image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=nathan+james+enloe+sideboard',
+    affiliateUrl: 'https://www.amazon.com/s?k=nathan+james+enloe+sideboard&tag=spacesavvy07-20',
     badge: 'Statement Piece',
   },
   {
@@ -224,7 +224,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'Non-Slip Velvet Coating & Swivel Chrome Hook',
     description: 'Ultra-slim 0.2-inch profile increases closet hanging capacity by up to 60% without shoulder bumps.',
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=amazon+basics+velvet+hangers+50',
+    affiliateUrl: 'https://www.amazon.com/s?k=amazon+basics+velvet+hangers+50&tag=spacesavvy07-20',
   },
   {
     id: 'under-sink-sliding-caddy',
@@ -237,7 +237,7 @@ export const shopProducts: ShopProduct[] = [
     material: 'Reinforced ABS Plastic with Rustproof Steel Tubes',
     description: 'Asymmetrical L-shape clears tricky P-trap plumbing pipes while bottom drawer slides forward effortlessly.',
     image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800',
-    affiliateUrl: 'https://www.amazon.com/s?k=delamu+under+sink+organizer+sliding',
+    affiliateUrl: 'https://www.amazon.com/s?k=delamu+under+sink+organizer+sliding&tag=spacesavvy07-20',
     badge: 'Editor Pick',
   },
 ];

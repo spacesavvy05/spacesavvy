@@ -130,7 +130,7 @@ export default function PinSaveImage({
         {/* Clean Typographic Minimalist Editorial Core */}
         <div className="my-auto text-left space-y-2">
           <span className="text-[10px] font-mono tracking-wider uppercase text-amber-800 font-bold block">
-            Staged & Verified
+            SpaceSavvy Idea
           </span>
           <p className="text-xl font-serif font-bold text-stone-900 leading-tight">
             {title}

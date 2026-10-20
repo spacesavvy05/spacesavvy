@@ -35,6 +35,20 @@ const CATEGORY_MAP: Record<string, CategoryMeta> = {
       'Ergonomic, clutter-free desk configurations designed specifically for apartment corners, nooks, and multi-functional living areas.',
     badge: 'Productivity Nooks',
   },
+  'gaming-setups': {
+    title: 'Gaming Setups',
+    subtitle: 'Small Gaming Rooms & Compact Battlestations',
+    description:
+      'Gaming room and desk setup ideas for small apartments and bedrooms, with clamp-on, no-drill gear that saves space.',
+    badge: 'Gaming Setups',
+  },
+  'holiday-decor': {
+    title: 'Holiday Decor',
+    subtitle: 'Renter-Friendly Holiday Ideas',
+    description:
+      'No-drill Christmas and holiday decor, small-space tree ideas and seasonal storage for apartments.',
+    badge: 'Holiday Decor',
+  },
   'amazon-finds': {
     title: 'Curated Amazon Finds',
     subtitle: 'Practical, Vetted Apartment Storage',

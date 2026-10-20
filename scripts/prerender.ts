@@ -21,6 +21,10 @@ const DIST = join(process.cwd(), 'dist');
 const template = readFileSync(join(DIST, 'index.html'), 'utf-8');
 const today = new Date().toISOString().slice(0, 10);
 
+// [text](url) -> <a> (applied to already-escaped text)
+const links = (s: string) => s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
+const plain = (s = '') => String(s).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '$1');
+
 const esc = (s = '') =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -33,6 +37,8 @@ const CATEGORY_SLUG: Record<string, string> = {
   'Small Space Living': 'small-spaces',
   'Kitchen & Dining': 'kitchen-dining',
   'Compact Workspaces': 'workspaces',
+  'Gaming Setups': 'gaming-setups',
+  'Holiday Decor': 'holiday-decor',
   'Curated Amazon Finds': 'amazon-finds',
 };
 
@@ -102,12 +108,17 @@ interface ArticleLike {
   image?: string;
   date?: string;
   takeaway?: string;
-  sections: { title: string; body: string; productName?: string; productUrl?: string }[];
+  intro?: string[];
+  atAGlance?: { label: string; pick: string }[];
+  sections: { title: string; body: string; productName?: string; productUrl?: string; image?: string; imageAlt?: string }[];
   faqs: { question: string; answer: string }[];
 }
 
+const abs = (u?: string) => (u && u.startsWith('/') ? SITE + u : u);
+
 function articlePage(a: ArticleLike): PageMeta {
   const url = `${SITE}/blog/${a.slug}`;
+  a = { ...a, image: abs(a.image) };
   const catSlug = CATEGORY_SLUG[a.category];
   const parsedDate = a.date ? new Date(a.date) : null;
   const isoDate = parsedDate && !isNaN(parsedDate.getTime()) ? parsedDate.toISOString() : undefined;
@@ -117,7 +128,7 @@ function articlePage(a: ArticleLike): PageMeta {
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: a.title,
-      description: clip(a.description),
+      description: clip(plain(a.description)),
       image: a.image ? [a.image] : undefined,
       datePublished: isoDate,
       dateModified: isoDate,
@@ -154,12 +165,13 @@ function articlePage(a: ArticleLike): PageMeta {
       const paras = String(s.body || '')
         .split(/\n\s*\n/)
         .filter(Boolean)
-        .map((p) => `<p>${esc(p)}</p>`)
+        .map((p) => `<p>${links(esc(p))}</p>`)
         .join('');
+      const img = s.image ? `<img src="${esc(s.image)}" alt="${esc(s.imageAlt || s.title)}" loading="lazy" style="max-width:100%;height:auto" />` : '';
       const product = s.productName
         ? `<p><a href="${esc(s.productUrl || '#')}" rel="sponsored nofollow noopener">${esc(s.productName)} – check price on Amazon</a></p>`
         : '';
-      return `<h2>${esc(s.title)}</h2>${paras}${product}`;
+      return `<h2>${esc(s.title)}</h2>${paras}${img}${product}`;
     })
     .join('');
   const faqHtml = a.faqs.length
@@ -171,6 +183,10 @@ function articlePage(a: ArticleLike): PageMeta {
     `<h1>${esc(a.title)}</h1><p>By SpaceSavvy</p>` +
     `<p><em>As an Amazon Associate I earn from qualifying purchases.</em></p>` +
     (a.takeaway ? `<p><strong>The SpaceSavvy Takeaway:</strong> ${esc(a.takeaway)}</p>` : '') +
+    (a.intro || []).map((p) => `<p>${links(esc(p))}</p>`).join('') +
+    (a.atAGlance?.length
+      ? `<h2>At a Glance: Our Top Picks</h2><ul>${a.atAGlance.map((g) => `<li><strong>${esc(g.label)}:</strong> ${links(esc(g.pick))}</li>`).join('')}</ul>`
+      : '') +
     sectionsHtml +
     faqHtml;
 
@@ -193,9 +209,13 @@ const fromStatic = (p: Post): ArticleLike => ({
   image: p.featuredImageSrc,
   date: p.publishDate,
   takeaway: p.takeaway,
+  intro: p.intro,
+  atAGlance: p.atAGlance,
   sections: p.sections.map((s) => ({
     title: s.title,
     body: s.body,
+    image: s.image,
+    imageAlt: s.imageAlt,
     productName: s.product?.name,
     productUrl: s.product?.affiliateUrl,
   })),
@@ -278,6 +298,8 @@ const categoryPages: PageMeta[] = [
   { path: '/category/small-spaces', title: 'Small Space Living Ideas for Studios & Apartments', description: 'Studio layouts, multipurpose furniture and renter-friendly styling ideas for small apartments.' },
   { path: '/category/kitchen-dining', title: 'Small Kitchen & Dining Organization Ideas', description: 'Counter risers, magnetic storage, pantry and cabinet organization ideas for small apartment kitchens.' },
   { path: '/category/workspaces', title: 'Compact Workspace & Small Desk Ideas', description: 'Desk setups for apartment corners and nooks, with clamp-on and no-drill gear for small spaces.' },
+  { path: '/category/gaming-setups', title: 'Small Gaming Room & Gaming Setup Ideas', description: 'Gaming room and desk setup ideas for small apartments and bedrooms, with clamp-on, no-drill gear that saves space.' },
+  { path: '/category/holiday-decor', title: 'Holiday Decor Ideas for Small Apartments', description: 'No-drill Christmas decor, small-space tree ideas and holiday storage for renters.' },
   { path: '/category/amazon-finds', title: 'Curated Amazon Finds for Small Apartments', description: 'Renter-friendly Amazon storage and organization picks for small apartments.' },
 ];
 

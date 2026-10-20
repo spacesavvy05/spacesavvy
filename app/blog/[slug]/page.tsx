@@ -73,12 +73,82 @@ function formatSectionHeading(title?: string, index?: number): string {
 }
 
 // Fits any image resolution cleanly without cutting off edges
-function ArticleImage({ imageUrl, title, postCategory, postSlug, productName }: {
+// Turns [text](/blog/slug) or [text](https://...) inside article text into real links
+function renderInline(text: string): React.ReactNode[] {
+  const out: React.ReactNode[] = [];
+  const re = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  let i = 0;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    const [, label, href] = m;
+    out.push(
+      href.startsWith('/') ? (
+        <Link key={`l${i++}`} to={href} className="text-amber-800 font-semibold underline underline-offset-2 hover:text-amber-900">
+          {label}
+        </Link>
+      ) : (
+        <a key={`l${i++}`} href={href} target="_blank" rel="noopener noreferrer" className="text-amber-800 font-semibold underline underline-offset-2 hover:text-amber-900">
+          {label}
+        </a>
+      )
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out;
+}
+
+// Mid-article newsletter box (shown after section 4)
+function InlineNewsletter() {
+  const [email, setEmail] = useState('');
+  const [done, setDone] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.includes('@') || sending) return;
+    setSending(true);
+    setError('');
+    const ok = await subscribeEmail(email);
+    setSending(false);
+    if (ok) setDone(true);
+    else setError('Something went wrong. Please try again.');
+  };
+  return (
+    <aside className="my-4 bg-gradient-to-br from-[#FFF4E6] via-[#FAF3EA] to-[#FDE8D0] border border-amber-300/70 rounded-2xl p-5 sm:p-6">
+      <p className="font-serif text-lg font-bold text-stone-900 mb-1">Get the free Small Space Checklist</p>
+      <p className="text-sm text-stone-600 mb-3 italic">Renter-friendly storage ideas and new guides, sent to your inbox. Unsubscribe anytime.</p>
+      {done ? (
+        <p className="text-sm font-semibold text-emerald-800">Almost done! Check your inbox to confirm and get the checklist.</p>
+      ) : (
+        <form onSubmit={submit} className="flex flex-col sm:flex-row gap-2">
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            className="flex-1 px-4 py-2.5 rounded-full border border-stone-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+          />
+          <button type="submit" className="px-5 py-2.5 rounded-full bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider cursor-pointer">
+            {sending ? 'Sending…' : 'Get the checklist →'}
+          </button>
+          {error && <p className="text-xs text-red-600 w-full">{error}</p>}
+        </form>
+      )}
+    </aside>
+  );
+}
+
+function ArticleImage({ imageUrl, title, postCategory, postSlug, productName, alt }: {
   imageUrl: string;
   title: string;
   postCategory: string;
   postSlug: string;
   productName?: string;
+  alt?: string;
 }) {
   const [pinned, setPinned] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -132,7 +202,9 @@ function ArticleImage({ imageUrl, title, postCategory, postSlug, productName }: 
       {!imgError && imageUrl ? (
         <img
           src={imageUrl}
-          alt={title}
+          alt={alt || title}
+          loading="lazy"
+          decoding="async"
           referrerPolicy="no-referrer"
           onError={() => setImgError(true)}
           className="w-full h-auto max-h-[540px] object-contain bg-white mx-auto transition-transform duration-500 ease-out group-hover:scale-[1.02]"
@@ -213,6 +285,10 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
   useEffect(() => {
     async function fetchSanityArticle() {
       if (!slug) return;
+      if (posts.some(p => p.slug === slug)) {
+        setLoadingSanity(false);
+        return;
+      }
       try {
         setLoadingSanity(true);
         const data = await client.fetch(
@@ -281,7 +357,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
     fetchSanityArticle();
   }, [slug]);
 
-  const activePost = sanityPost || staticMatch;
+  const activePost = staticMatch || sanityPost;
 
   // Automatically build Table of Contents from H2/H3 blocks OR structured sections
   const tocItems: TocItem[] = useMemo(() => {
@@ -608,6 +684,31 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
             </section>
           )}
 
+          {Array.isArray(activePost.intro) && activePost.intro.length > 0 && (
+            <div className="mb-6">
+              {activePost.intro.map((para: string, i: number) => (
+                <p key={i} className="text-stone-700 leading-relaxed text-base sm:text-lg mb-5">
+                  {renderInline(para)}
+                </p>
+              ))}
+            </div>
+          )}
+
+          {Array.isArray(activePost.atAGlance) && activePost.atAGlance.length > 0 && (
+            <section className="bg-white border border-stone-200/90 rounded-2xl p-5 mb-8 shadow-xs">
+              <span className="text-[11px] font-bold tracking-widest text-amber-800 uppercase font-mono block mb-3">
+                AT A GLANCE: OUR TOP PICKS
+              </span>
+              <ul className="space-y-2">
+                {activePost.atAGlance.map((g: { label: string; pick: string }, i: number) => (
+                  <li key={i} className="text-sm sm:text-base text-stone-700 leading-snug">
+                    <strong className="text-stone-900">{g.label}:</strong> {renderInline(g.pick)}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {activePost.body && Array.isArray(activePost.body) && activePost.body.length > 0 ? (
             <div className="space-y-4">
               <PortableText value={activePost.body} components={portableTextComponents} />
@@ -625,8 +726,8 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                   section.image === section.product?.image;
 
                 return (
+                  <React.Fragment key={idx}>
                   <article 
-                    key={idx} 
                     id={secId}
                     className="border-b border-stone-200/80 pb-12 last:border-b-0 last:pb-0 scroll-mt-28"
                   >
@@ -644,13 +745,13 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                             className={`text-stone-700 leading-relaxed text-sm sm:text-base mb-3 pl-4 border-l-4 ${isTip ? 'border-emerald-500' : 'border-amber-500'}`}
                           >
                             <strong className="text-stone-900">{isTip ? 'Renter tip:' : 'Watch out:'}</strong>{' '}
-                            {para.slice(labelMatch[0].length)}
+                            {renderInline(para.slice(labelMatch[0].length))}
                           </p>
                         );
                       }
                       return (
                         <p key={pIdx} className="text-stone-700 leading-relaxed text-base sm:text-lg mb-6">
-                          {para}
+                          {renderInline(para)}
                         </p>
                       );
                     })}
@@ -662,11 +763,14 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                         postCategory={category}
                         postSlug={slug || ''}
                         productName={section.product?.name}
+                        alt={section.imageAlt}
                       />
                     )}
 
                     {section.product && <ProductCallout product={section.product} />}
                   </article>
+                  {idx === 3 && activePost.sections.length > 5 && <InlineNewsletter />}
+                  </React.Fragment>
                 );
               })}
             </div>
@@ -679,6 +783,19 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                 Open Sanity Studio (localhost:3333), paste your article into the "Article Content" box, and hit Publish.
               </p>
             </div>
+          )}
+
+          {/* HOW WE CHOSE THESE PICKS */}
+          {(activePost.sections?.some((s: any) => s.product) ||
+            activePost.body?.some?.((b: any) => b._type === 'productCard')) && (
+            <section className="mt-12 bg-stone-50 border border-stone-200/90 rounded-2xl p-5 sm:p-6">
+              <p className="text-[11px] font-mono uppercase tracking-widest text-amber-700 font-bold mb-2">How we chose these picks</p>
+              <p className="text-sm text-stone-600 leading-relaxed">
+                We compared product listings, sizes, materials and real customer reviews, and favoured renter-friendly options that need no drilling.
+                We don't physically test every item, and we flag known limitations in each "Watch out" note. Prices and availability change,
+                so always check the current details on Amazon before you buy.
+              </p>
+            </section>
           )}
 
           {/* AUTHOR BOX */}

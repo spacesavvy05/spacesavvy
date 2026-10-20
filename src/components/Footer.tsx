@@ -101,6 +101,22 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  to="/category/gaming-setups"
+                  className="hover:text-amber-400 transition-colors duration-150 block"
+                >
+                  Gaming Setups
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/category/holiday-decor"
+                  className="hover:text-amber-400 transition-colors duration-150 block"
+                >
+                  Holiday Decor
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/category/amazon-finds"
                   className="hover:text-amber-400 transition-colors duration-150 block"
                 >

@@ -12,6 +12,7 @@ export interface Section {
   title: string;
   body: string;
   image?: string;
+  imageAlt?: string;
   product?: Product;
 }
 
@@ -23,7 +24,7 @@ export interface FAQItem {
 export interface Post {
   slug: string;
   title: string;
-  category: "Small Space Living" | "Kitchen & Dining" | "Compact Workspaces" | "Curated Amazon Finds";
+  category: "Small Space Living" | "Kitchen & Dining" | "Compact Workspaces" | "Gaming Setups" | "Holiday Decor" | "Curated Amazon Finds";
   readTime: string;
   takeaway: string;
   sections: Section[];
@@ -32,16 +33,610 @@ export interface Post {
   featuredImageAlt: string;
   excerpt: string;
   faqs?: FAQItem[];
+  intro?: string[];
+  atAGlance?: { label: string; pick: string }[];
 }
 
 export const CATEGORIES = [
   "Small Space Living",
   "Kitchen & Dining",
   "Compact Workspaces",
+  "Gaming Setups",
+  "Holiday Decor",
   "Curated Amazon Finds"
 ] as const;
 
 export const posts: Post[] = [
+  // ---- Batch 2: holiday + gaming (Oct 2026) ----
+{
+  "slug": "no-drill-christmas-decor-ideas-renters",
+  "title": "10 No-Drill Christmas Decor Ideas for Renters (Zero Holes in the Wall)",
+  "excerpt": "Tension-rod garland doorways, damage-free light clips, window wreaths and more: festive Christmas decor for renters that leaves walls untouched.",
+  "category": "Holiday Decor",
+  "publishDate": "October 20, 2026",
+  "readTime": "5 min read",
+  "takeaway": "Renters can decorate for Christmas without a single nail. Tension rods, clear adhesive clips, suction hooks and over-the-door hangers hold garlands, lights and wreaths, then come down cleanly when the season is over.",
+  "featuredImageAlt": "Cozy small apartment living room decorated for Christmas with a lit tree and warm lights",
+  "featuredImageSrc": "/images/blog/small-apartment-christmas-tree-ideas/cozy-small-apartment-living-room-christmas-tree.webp",
+  "intro": [
+    "Most Christmas decorating advice assumes you can hammer a nail into the wall. If you rent, every hole is a possible charge on your deposit, and a lot of apartments have no mantel, no staircase and very little floor space to work with.",
+    "The good news: almost every classic Christmas look can be recreated with no-drill hardware. This guide covers 10 ideas, starting with our most-saved hack, the tension-rod garland doorway. If you're short on floor space for a tree, see our [small apartment Christmas tree ideas](/blog/small-apartment-christmas-tree-ideas) too."
+  ],
+  "atAGlance": [
+    {
+      "label": "Best no-drill hack",
+      "pick": "Tension-rod garland doorway (idea #1)"
+    },
+    {
+      "label": "Best for walls and shelves",
+      "pick": "Command clear light clips"
+    },
+    {
+      "label": "Best for windows",
+      "pick": "Curtain fairy lights plus a suction-cup wreath hanger"
+    },
+    {
+      "label": "Best for no mantel",
+      "pick": "A freestanding stocking holder"
+    }
+  ],
+  "sections": [
+    {
+      "title": "1. The Tension-Rod Garland Doorway",
+      "body": "Hanging garland over a doorway usually means nails or hooks in the frame. Instead, press a tension rod inside the top of the door frame, a few inches below the header, and drape or wrap your garland around it. It looks like a built-in arch of greenery and goes up in about five minutes.\n\nRenter tip: Measure the inside width of the doorway and pick a rod whose range comfortably covers it. Twist the garland around the rod rather than letting it hang, so it doesn't sag in the middle.\n\nWatch out: Tension rods hold light garlands best. A heavy, thick garland can slowly push the rod down, so check it after a day and re-tighten if needed.",
+      "product": {
+        "name": "ENJOYBASICS Tension Curtain Rod (2-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CPXYJK9L?tag=spacesavvy07-20",
+        "dimensions": "Adjusts 32–66\""
+      }
+    },
+    {
+      "title": "2. Choose a Pre-Lit Garland",
+      "body": "A pre-lit garland does the work of two decorations at once: greenery and lights. That means fewer cords to hide and fewer things to hang. Wrapped around a tension rod, a bookshelf edge or a window frame, it instantly makes a small room feel festive.\n\nRenter tip: If your doorway isn't near an outlet, look for a battery-operated version with a timer, so it turns itself on in the evening.\n\nWatch out: Battery garlands can drain batteries fast. Rechargeable batteries pay for themselves within one season.",
+      "product": {
+        "name": "National Tree Company 9 ft Pre-Lit Crestwood Spruce Garland",
+        "affiliateUrl": "https://www.amazon.com/dp/B00LKRMWEY?tag=spacesavvy07-20",
+        "dimensions": "9 ft long"
+      }
+    },
+    {
+      "title": "3. Clear Adhesive Clips for String Lights",
+      "body": "To run string lights along a wall, ceiling edge or shelf, use small clear adhesive clips. They're almost invisible, hold the wire neatly and remove cleanly when you follow the pull-tab instructions.\n\nRenter tip: Wipe the spot with rubbing alcohol first, press each clip firmly for 30 seconds, and wait about an hour before clipping lights in.\n\nWatch out: Adhesive doesn't grip well on textured, wallpapered or freshly painted walls. Test one clip in a hidden spot first.",
+      "product": {
+        "name": "Command Clear Mini Light Clips (45 Clips)",
+        "affiliateUrl": "https://www.amazon.com/dp/B076ZRRFD4?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "4. Curtain Fairy Lights in the Window",
+      "body": "A curtain of fairy lights in your window is one of the biggest visual payoffs for the least effort. It glows from inside and outside, and in a studio it can double as a soft room divider behind a sheer curtain.\n\nRenter tip: Hang the light curtain from your existing curtain rod or a tension rod inside the window frame. No extra hardware is needed.\n\nWatch out: Plug-in curtain lights need an outlet nearby. Use a flat extension cord along the baseboard rather than stretching it across a walkway.",
+      "product": {
+        "name": "JMEXSUSS 300-LED Curtain Fairy Lights",
+        "affiliateUrl": "https://www.amazon.com/dp/B07CJ2V1LR?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "5. Hang a Wreath on the Window With Suction Cups",
+      "body": "A wreath in the window looks great from the street and the sofa. Heavy-duty suction-cup hangers stick to clean glass and hold a typical indoor wreath without any tools. That's ideal if your front door faces a shared hallway where decor isn't allowed.\n\nRenter tip: Clean the glass with rubbing alcohol and press the suction cup on firmly. A tiny bit of water on the rim helps it seal.\n\nWatch out: Suction cups can lose grip in big temperature swings, like on a cold window. Check it every few days.",
+      "product": {
+        "name": "Heavy-Duty Suction Wreath Hanger (2-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B09PV1F8PR?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "6. An Over-the-Door Wreath Hanger",
+      "body": "For your apartment door or a bedroom door, an over-the-door wreath hanger is the classic no-drill choice. It hooks over the top of the door and the door still closes normally.\n\nRenter tip: Wrap a little felt or a rubber band around the hook where it touches the door, so it doesn't scratch the paint.\n\nWatch out: Check your building's rules for the hallway side of your front door. Some don't allow decorations there.",
+      "product": {
+        "name": "Sattiyrch Over-the-Door Wreath Hanger (15\")",
+        "affiliateUrl": "https://www.amazon.com/dp/B07H4HHNQK?tag=spacesavvy07-20",
+        "dimensions": "15\" hook"
+      }
+    },
+    {
+      "title": "7. A Freestanding Stocking Holder (No Mantel Needed)",
+      "body": "Most apartments don't have a fireplace, so stockings end up taped to the wall or skipped. A freestanding stocking holder stands on the floor or a console table and gives you that mantel look anywhere.\n\nRenter tip: Put it next to your tree to create one festive corner instead of spreading decor around the whole room.\n\nWatch out: Stands can tip if the stockings are heavy and uneven. Balance them, and keep heavy gifts out of the stockings until Christmas morning.",
+      "product": {
+        "name": "Freestanding Christmas Stocking Holder (4 Hooks)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CGR769GD?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "8. Snowflake Window Clings",
+      "body": "Window clings stick with static, not glue, so they peel off cleanly and can be reused next year. They add a wintry look to windows and glass doors in minutes, and they're a fun job to do with kids or roommates.\n\nRenter tip: Store them flat on their original backing sheets after the holidays, so they're ready to reuse.\n\nWatch out: Clings stick best to smooth, clean glass. They won't stay on frosted or textured windows.",
+      "product": {
+        "name": "LUDILO Snowflake Window Clings (135 Pieces)",
+        "affiliateUrl": "https://www.amazon.com/dp/B07HHBQJGJ?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "9. Swap Your Pillow Covers",
+      "body": "Changing your throw pillow covers is the fastest way to make a whole room feel like Christmas, with zero installation. Covers fold flat, so they take almost no storage space for the other eleven months of the year.\n\nRenter tip: Keep your regular pillow inserts and just swap the covers. Measure your inserts first; 18 x 18 inches is a common size.\n\nWatch out: Printed covers can look busy in a tiny room. Pick one pattern and keep everything else plain.",
+      "product": {
+        "name": "Christmas Pillow Covers, Set of 4",
+        "affiliateUrl": "https://www.amazon.com/dp/B0DG88139G?tag=spacesavvy07-20",
+        "dimensions": "18\" x 18\""
+      }
+    },
+    {
+      "title": "10. Flameless Candles for a Cozy Glow",
+      "body": "Real candles and small apartments (plus garlands and curtains) aren't a great mix, and many leases ban open flames. Real-wax LED candles give the same warm glow safely, and a remote timer means they switch on by themselves every evening.\n\nRenter tip: Group three candles of different heights on a tray. One grouping looks styled, while candles scattered around the room look cluttered.\n\nWatch out: Cheap LED candles can look plastic. Real-wax shells and a warm (not bright white) light make a big difference.",
+      "product": {
+        "name": "Real-Wax Flameless LED Candles With Remote (9-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B07D26KQZ7?tag=spacesavvy07-20"
+      }
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How can I hang Christmas decorations without nails in a rental?",
+      "answer": "Use tension rods for garlands, clear adhesive clips for string lights, suction-cup hooks on windows and over-the-door hangers for wreaths. All of them come down without leaving holes."
+    },
+    {
+      "question": "Do adhesive hooks damage apartment walls?",
+      "answer": "They usually don't, as long as you clean the wall first, respect the weight limit and remove them slowly using the pull tab. Avoid freshly painted or textured walls, where the paint can lift."
+    },
+    {
+      "question": "How do I hang garland over a doorway without hooks?",
+      "answer": "Press a tension rod inside the top of the door frame and wrap the garland around it. It holds light garlands well and leaves no marks."
+    },
+    {
+      "question": "Where do I hang stockings without a fireplace?",
+      "answer": "Use a freestanding stocking holder on the floor or a console table, or hang stockings from an over-the-door hook."
+    }
+  ]
+},
+{
+  "slug": "small-apartment-christmas-tree-ideas",
+  "title": "5 Small Space Christmas Tree Ideas That Fit Tiny Living Rooms",
+  "excerpt": "Pencil trees, wall-hung trees, half trees and tabletop trees: five ways to have a real Christmas tree in a small apartment without losing your walkway.",
+  "category": "Holiday Decor",
+  "publishDate": "October 20, 2026",
+  "readTime": "3 min read",
+  "takeaway": "In a small apartment, choose a tree by its base width, not its height. Slim pencil trees, wall-hung trees and flat-back half trees give you the full Christmas look while keeping your walkways clear.",
+  "featuredImageAlt": "Slim pencil Christmas tree glowing in the corner of a small apartment living room",
+  "featuredImageSrc": "/images/blog/small-apartment-christmas-tree-ideas/slim-pencil-christmas-tree-small-apartment-corner.webp",
+  "intro": [
+    "A standard Christmas tree can be five feet wide at the bottom. In a small living room, that's the difference between a cozy corner and squeezing sideways past the sofa for a month.",
+    "The trick is to think about width first. Below are five tree styles that fit tight spaces, from slim pencil trees to trees that take up no floor space at all. Once the tree is sorted, our [no-drill Christmas decor ideas](/blog/no-drill-christmas-decor-ideas-renters) cover the rest of the room."
+  ],
+  "atAGlance": [
+    {
+      "label": "Best overall for small rooms",
+      "pick": "A slim pencil tree"
+    },
+    {
+      "label": "Zero floor space",
+      "pick": "A wall-hung tree"
+    },
+    {
+      "label": "Best for flat walls",
+      "pick": "A flat-back half tree"
+    },
+    {
+      "label": "Best for studios and dorms",
+      "pick": "A tabletop tree"
+    }
+  ],
+  "sections": [
+    {
+      "title": "1. The Slim Pencil Tree",
+      "body": "Pencil trees are tall and narrow, so you still get a full-height tree, but the base is a fraction of the width of a standard one. They tuck neatly into a corner or beside a window, which is usually the only spot a small living room can spare.\n\nPre-lit versions save time and cords, and because they're so slim, you need far fewer ornaments to make them look full.\n\nRenter tip: Before you buy, mark the tree's listed base width on your floor with painter's tape and walk around it for a day. If you're bumping into the tape, go narrower.\n\nWatch out: Pencil trees look best decorated with small ornaments. Big baubles can make a slim tree look crowded and top-heavy.",
+      "image": "/images/blog/small-apartment-christmas-tree-ideas/slim-pencil-christmas-tree-small-apartment-corner.webp",
+      "imageAlt": "Slim pencil Christmas tree in the corner of a small apartment living room",
+      "product": {
+        "name": "HOMCOM Pre-Lit Noble Fir Pencil Christmas Tree (6 ft)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CG1QK5NN?tag=spacesavvy07-20",
+        "dimensions": "6 ft tall"
+      }
+    },
+    {
+      "title": "2. The Wall-Hung Tree",
+      "body": "If you truly have no floor space, put the tree on the wall. Wall trees range from simple branch ladders to flat, light-up tree shapes. They give you the Christmas focal point without taking a single square inch of floor, and they're out of reach of pets and toddlers.\n\nRenter tip: Hang it with damage-free adhesive strips rated for the tree's weight, or from a single nail hole you already have.\n\nWatch out: Check the total weight with lights and ornaments before choosing a hanging method. Keep ornaments light, like wood, felt or shatterproof.",
+      "image": "/images/blog/small-apartment-christmas-tree-ideas/wall-hanging-christmas-tree-no-floor-space.webp",
+      "imageAlt": "Wall-hanging Christmas tree made of branches and lights, taking up no floor space",
+      "product": {
+        "name": "5 ft Lighted Wall Christmas Tree (144 LEDs)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0DG8PJNDV?tag=spacesavvy07-20",
+        "dimensions": "5 ft"
+      }
+    },
+    {
+      "title": "3. The Flat-Back Half Tree",
+      "body": "A half tree is flat on one side, so it sits flush against the wall. You get the full, bushy front of a traditional tree while using roughly half the floor space. That makes it a great middle ground between a pencil tree and a full tree.\n\nRenter tip: Place it against a wall facing your sofa, since that's the side everyone sees anyway.\n\nWatch out: Half trees look odd from the side. Avoid spots where people walk past at an angle, like the middle of a room.",
+      "product": {
+        "name": "GlyinnHe 6 ft Half Christmas Tree",
+        "affiliateUrl": "https://www.amazon.com/dp/B0DBVN53X6?tag=spacesavvy07-20",
+        "dimensions": "6 ft, flat back"
+      }
+    },
+    {
+      "title": "4. The Tabletop Tree",
+      "body": "In a studio or dorm room, a two- to three-foot tabletop tree on a side table, dresser or windowsill can be all you need. It's festive, fits anywhere and stores in a closet afterwards. A built-in timer means it lights up every evening without you thinking about it.\n\nRenter tip: Raise it up on a stack of books or a small crate wrapped in fabric, so it reads as a 'real' tree at eye level.\n\nWatch out: Make sure the table is stable and the cord can reach an outlet without hanging across a walkway.",
+      "product": {
+        "name": "3 ft Pre-Lit Tabletop Christmas Tree With Timer",
+        "affiliateUrl": "https://www.amazon.com/dp/B0FLPD67K9?tag=spacesavvy07-20",
+        "dimensions": "3 ft tall"
+      }
+    },
+    {
+      "title": "5. Skip the Tree Skirt: Use a Tree Collar",
+      "body": "A traditional tree skirt can spread out three or four feet across the floor, eating up exactly the space a small room doesn't have. A tree collar wraps snugly around the stand instead, hiding the legs in a neat ring. Keep the area around the tree clear so you can still walk past comfortably.\n\nRenter tip: Leave at least a comfortable walkway between the tree and your sofa or door, and test it by walking past with a laundry basket.\n\nWatch out: Collars come in set diameters. Measure your tree stand before ordering.",
+      "image": "/images/blog/small-apartment-christmas-tree-ideas/cozy-small-apartment-living-room-christmas-tree.webp",
+      "imageAlt": "Christmas tree in a basket collar beside a sofa in a small studio apartment",
+      "product": {
+        "name": "Jute Christmas Tree Collar (28\")",
+        "affiliateUrl": "https://www.amazon.com/dp/B0H6M3692J?tag=spacesavvy07-20",
+        "dimensions": "28\" diameter"
+      }
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What size Christmas tree is best for a small apartment?",
+      "answer": "Focus on the base width rather than the height. A slim or pencil tree usually fits small living rooms best. Check the listed base width and mark it on the floor with tape before buying."
+    },
+    {
+      "question": "Can I have a Christmas tree with no floor space?",
+      "answer": "Yes. A wall-hung tree or a tabletop tree on a dresser or windowsill gives you a tree without using any floor space."
+    },
+    {
+      "question": "How do I hang a wall Christmas tree in a rental?",
+      "answer": "Use damage-free adhesive strips rated for the tree's total weight, including lights and ornaments, or an existing nail hole."
+    },
+    {
+      "question": "Where do I store an artificial tree in a small apartment?",
+      "answer": "Use an upright tree storage bag in a closet, or a slim box under the bed. See our [holiday storage ideas](/blog/holiday-storage-ideas-small-apartments) for more."
+    }
+  ]
+},
+{
+  "slug": "holiday-storage-ideas-small-apartments",
+  "title": "10 Holiday Storage Ideas for Small Apartments (Gift Wrap, Ornaments & More)",
+  "excerpt": "Under-bed gift wrap storage, ornament boxes, light reels and tree bags: smart ways to store holiday decor when you don't have a garage or basement.",
+  "category": "Holiday Decor",
+  "publishDate": "October 20, 2026",
+  "readTime": "4 min read",
+  "takeaway": "Small apartments have no garage or attic, so holiday storage has to be slim, stackable and labeled. Use the space under the bed and behind doors, and pack decor in purpose-made boxes so it takes up less room and survives the year.",
+  "featuredImageAlt": "Neatly organized storage bins in a small apartment",
+  "featuredImageSrc": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
+  "intro": [
+    "Holiday decor takes up a surprising amount of space for something you use one month a year. In a house, it goes in the garage. In a small apartment, it usually ends up stuffed in the back of a closet, tangled and half-broken.",
+    "These 10 ideas use the spaces apartments do have (under the bed, behind doors, the top of the closet) and the right containers, so everything packs smaller and comes out ready to use. Pair them with our [studio apartment storage must-haves](/blog/20-studio-apartment-storage-must-haves-under-25) for the rest of the year."
+  ],
+  "atAGlance": [
+    {
+      "label": "Best for gift wrap",
+      "pick": "An under-bed gift wrap organizer"
+    },
+    {
+      "label": "Best for ornaments",
+      "pick": "A divided ornament storage box"
+    },
+    {
+      "label": "Best for tangle-free lights",
+      "pick": "Light storage reels"
+    },
+    {
+      "label": "Best for artificial trees",
+      "pick": "An upright tree storage bag"
+    }
+  ],
+  "sections": [
+    {
+      "title": "1. Under-Bed Gift Wrap Storage",
+      "body": "Wrapping paper rolls are long, awkward and easy to crush. A flat under-bed organizer holds the rolls side by side, with pockets for tape, tags and ribbon, and slides out of sight under the bed.\n\nRenter tip: Measure the height under your bed frame first. If the gap is small, a set of bed risers can add a few inches.\n\nWatch out: Check that the rolls you buy aren't longer than the organizer. Most standard rolls fit, but extra-long ones may not.",
+      "product": {
+        "name": "Sattiyrch Under-Bed Gift Wrap Organizer",
+        "affiliateUrl": "https://www.amazon.com/dp/B099SBXQZ8?tag=spacesavvy07-20",
+        "dimensions": "41\"W x 14\"D x 5.5\"H"
+      }
+    },
+    {
+      "title": "2. Gift Wrap Storage That Hangs",
+      "body": "No room under the bed? A hanging gift wrap organizer holds rolls upright and hangs in a closet or behind a door, using vertical space that's usually empty.\n\nRenter tip: Hang it on the back of a closet door and keep scissors and tape in its pockets, so wrapping a gift takes two minutes.\n\nWatch out: Make sure the closet door still closes with the organizer full of rolls.",
+      "product": {
+        "name": "EXLIFBAG Hanging Wrapping Paper Storage",
+        "affiliateUrl": "https://www.amazon.com/dp/B0C5RSGP9J?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "3. A Divided Ornament Box",
+      "body": "Ornaments wrapped in newspaper and dumped in a bin take up more space and break more often. A divided ornament box gives each one its own slot, stacks neatly and protects glass baubles for years.\n\nRenter tip: Pack your favorite ornaments on the top layer, so decorating starts with the best ones.\n\nWatch out: Large or oddly shaped ornaments won't fit standard slots. Keep a small separate box for those.",
+      "product": {
+        "name": "ZOBER Ornament Storage Box (Holds 128 Ornaments)",
+        "affiliateUrl": "https://www.amazon.com/dp/B07R6XLKYW?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "4. Light Storage Reels",
+      "body": "Untangling string lights is everyone's least favorite holiday job. Simple storage reels let you wind each strand neatly as you take it down, so next year it unrolls in seconds.\n\nRenter tip: Test each strand before you wind it, and label the reel with its length and where you used it (\"window, 12 ft\").\n\nWatch out: Wind lights loosely. Wrapping them too tightly can damage the wires over time.",
+      "product": {
+        "name": "Christmas Light Storage Reels (8-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CF5QQWS5?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "5. A Wreath Storage Bag",
+      "body": "Wreaths get flattened easily when other things are piled on top. A round wreath bag keeps the shape, and it can hang from a hook in a closet instead of taking up shelf space.\n\nRenter tip: Store your garland coiled inside the same bag to keep all the greenery together.\n\nWatch out: Check the bag's size against your wreath's diameter before buying.",
+      "product": {
+        "name": "Whitmor Wreath & Garland Storage Bag",
+        "affiliateUrl": "https://www.amazon.com/dp/B00NBO3WBG?tag=spacesavvy07-20",
+        "dimensions": "Fits wreaths up to 30\""
+      }
+    },
+    {
+      "title": "6. An Upright Tree Storage Bag",
+      "body": "Breaking an artificial tree down into sections every year takes time, and the original box never fits back together. An upright storage bag zips over the assembled tree on its stand, so you can roll or carry it into a closet as-is.\n\nRenter tip: Fluff the branches upward before zipping the bag. They'll spring back faster next year.\n\nWatch out: An upright bag needs a tall closet. Measure the closet height against your tree before choosing this option.",
+      "product": {
+        "name": "Sattiyrch Upright Christmas Tree Storage Bag",
+        "affiliateUrl": "https://www.amazon.com/dp/B08BLDJX9W?tag=spacesavvy07-20",
+        "dimensions": "Fits trees up to 7.5 ft"
+      }
+    },
+    {
+      "title": "7. Vacuum Bags for Holiday Textiles",
+      "body": "Christmas throws, stockings, tree skirts and pillow covers are bulky but squash well. Vacuum bags shrink them down to a fraction of their size, so they fit on a closet shelf or under the bed.\n\nRenter tip: Write the contents on the bag with a marker, since squashed textiles all look the same.\n\nWatch out: Don't vacuum-pack anything with lights or delicate trims attached. Pressure can crush them.",
+      "product": {
+        "name": "Vacuum Storage Bags With Hand Pump (20-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0973DGD8P?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "8. Clear Stackable Bins",
+      "body": "Clear bins with lids let you see what's inside without opening every box. They stack high on a closet shelf and keep dust and moisture out between seasons.\n\nRenter tip: Use one bin per holiday, or per room, so you only pull out what you need.\n\nWatch out: Big bins get heavy fast. Keep the heaviest bin on the bottom and the lightest on top.",
+      "product": {
+        "name": "IRIS USA 54 Qt Clear Storage Bins (6-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B00CQGTGXS?tag=spacesavvy07-20",
+        "dimensions": "54 qt each"
+      }
+    },
+    {
+      "title": "9. Label Everything",
+      "body": "Labels are the difference between a five-minute setup and an afternoon of opening every box. A small label maker makes neat, readable labels for bins, reels and bags.\n\nRenter tip: Label two sides of every bin, the front and the end, so you can read it however it's stacked.\n\nWatch out: Paper labels peel off in damp closets. Laminated label tape holds up better.",
+      "product": {
+        "name": "Brother P-Touch PTD210 Label Maker",
+        "affiliateUrl": "https://www.amazon.com/dp/B09QXZ7ZRD?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "10. Pack in Reverse Order",
+      "body": "The last thing you put away should be the first thing you need next year. Pack the tree and lights last, so they're at the front of the closet, and put the gift wrap and the small extras in behind.\n\nRenter tip: Before packing, set aside anything broken or unused. Every item you skip storing is space you get back.\n\nWatch out: Don't store candles or anything wax-based in a hot spot, like near a radiator. They can warp or melt."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Where do you store Christmas decorations in a small apartment?",
+      "answer": "Use the space under the bed, the top of the closet and the back of doors. Purpose-made boxes for ornaments, lights and wreaths pack decor smaller and protect it."
+    },
+    {
+      "question": "How do you store wrapping paper without crushing it?",
+      "answer": "Keep rolls flat in an under-bed gift wrap organizer, or upright in a hanging organizer in a closet or behind a door."
+    },
+    {
+      "question": "What is the best way to store Christmas lights?",
+      "answer": "Test them, then wind each strand loosely around a storage reel and label it with its length and where you used it."
+    },
+    {
+      "question": "Can you store an artificial tree without its box?",
+      "answer": "Yes. An upright tree storage bag zips over the assembled tree, or a slim duffel-style bag holds the sections. Both usually take less room than the original box."
+    }
+  ]
+},
+{
+  "slug": "small-gaming-room-ideas-tight-desk-setups",
+  "title": "19 Small Gaming Room Ideas to Maximize Tight Desk Setups",
+  "excerpt": "Monitor arms, under-desk cable trays, light bars and compact layouts: 19 ways to build a clean, comfortable gaming setup in a small bedroom or apartment.",
+  "category": "Gaming Setups",
+  "publishDate": "October 20, 2026",
+  "readTime": "7 min read",
+  "takeaway": "The secret to a great small gaming setup is getting things off the desk: mount the monitor, hide cables under the desk, lift the PC off the floor, and use walls and lighting to make the room feel bigger.",
+  "featuredImageAlt": "Compact gaming desk setup in a small apartment corner",
+  "featuredImageSrc": "https://images.unsplash.com/photo-1593062096033-9a26b09da705?auto=format&fit=crop&q=80&w=800",
+  "intro": [
+    "Most gaming setup photos assume a big desk in a big room. In a small bedroom or apartment, the challenge is fitting a monitor, PC, keyboard, headset and controllers into a few square feet without it looking like a cable explosion.",
+    "These 19 ideas focus on getting things off the desk and making the space work harder. Most need no drilling at all. For more desk tricks, see our [small space desk hacks](/blog/15-small-space-desk-hacks-maximize-apartment-corners) and [no-drill cable management guide](/blog/no-drill-cable-management-hide-power-bricks)."
+  ],
+  "atAGlance": [
+    {
+      "label": "Biggest space saver",
+      "pick": "A gas-spring monitor arm"
+    },
+    {
+      "label": "Best for a clean look",
+      "pick": "An under-desk cable tray plus a cable sleeve"
+    },
+    {
+      "label": "Best lighting upgrade",
+      "pick": "A monitor light bar"
+    },
+    {
+      "label": "Best for tiny rooms",
+      "pick": "A corner desk and a chair that tucks under it"
+    }
+  ],
+  "sections": [
+    {
+      "title": "1. Swap the Monitor Stand for a Gas-Spring Arm",
+      "body": "Factory monitor stands have wide bases that take over the middle of a small desk. A clamp-on gas-spring arm lifts the screen into the air, so the space underneath is free for your keyboard and mouse. You also get easy height and tilt adjustment for long sessions.\n\nRenter tip: Check your desk thickness against the clamp range, and make sure your monitor has VESA mounting holes on the back.\n\nWatch out: Clamps can dent soft or hollow desks. Use a reinforcement plate or a scrap of wood under the clamp.",
+      "product": {
+        "name": "HUANUO Single Monitor Arm (Gas Spring)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CTJYYSML?tag=spacesavvy07-20",
+        "dimensions": "Fits 13–32\" monitors"
+      }
+    },
+    {
+      "title": "2. Light the Desk With a Monitor Light Bar",
+      "body": "A desk lamp's base eats space and causes glare on the screen. A monitor light bar sits on top of the screen, uses zero desk space, and lights your keyboard without bouncing light into your eyes.\n\nRenter tip: Power it from a USB port on your monitor or PC, so you don't need another plug.\n\nWatch out: Light bars sit on flat-backed monitors best. Check the clip fits if your monitor has a thick or curved back.",
+      "product": {
+        "name": "Quntis Monitor Light Bar",
+        "affiliateUrl": "https://www.amazon.com/dp/B08DKQ3JG1?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "3. Hide the Power Strip in an Under-Desk Tray",
+      "body": "A pile of power bricks and cables under the desk steals legroom and catches on chair wheels. An under-desk cable tray clamps to the back edge and holds the power strip and spare cable out of sight.\n\nRenter tip: Put the power strip in the tray first, then plug in each device one at a time and bundle slack with Velcro ties.\n\nWatch out: Don't overload one power strip. Gaming PCs, monitors and space heaters together can draw a lot of power.",
+      "product": {
+        "name": "Metal Mesh Under-Desk Cable Tray With Clamps",
+        "affiliateUrl": "https://www.amazon.com/dp/B0BZ3GHM8N?tag=spacesavvy07-20",
+        "material": "Metal mesh"
+      }
+    },
+    {
+      "title": "4. Bundle Visible Cables in a Sleeve",
+      "body": "Even with a tray, a few cables run from the desk to the PC or the wall. A split cable sleeve wraps them into one neat line, which instantly makes the whole setup look cleaner.\n\nRenter tip: Leave a little slack at each end so you can still move the monitor arm without tugging cables.\n\nWatch out: Don't sleeve cables that get hot, like a laptop charger brick. Keep those in open air.",
+      "product": {
+        "name": "Alex Tech Split Cable Sleeve (10 ft)",
+        "affiliateUrl": "https://www.amazon.com/dp/B07FW3GTXB?tag=spacesavvy07-20",
+        "dimensions": "10 ft, 1/2\" wide"
+      }
+    },
+    {
+      "title": "5. Get the PC Off the Desk and Off the Carpet",
+      "body": "A tower on the desk takes up half the surface. On the carpet, it sucks up dust and lint. A small rolling PC stand lifts it off the floor for better airflow and rolls out when you need to reach the ports.\n\nRenter tip: Lock the wheels once it's in place, and leave a few inches of space behind the PC for airflow.\n\nWatch out: Measure your case width before buying. These stands fit a range of mid-tower sizes, not every case.",
+      "product": {
+        "name": "VIVO Adjustable Mobile PC Cart",
+        "affiliateUrl": "https://www.amazon.com/dp/B074P76TBW?tag=spacesavvy07-20",
+        "dimensions": "Fits PCs 4.7–8.2\" wide"
+      }
+    },
+    {
+      "title": "6. Hang Your Headset Under the Desk",
+      "body": "A headset stand takes up a corner of the desk, and leaving it on the desk invites spills. A clamp-on hook holds it under the desk edge and swings out when you need it.\n\nRenter tip: Clamp it on the side of your dominant hand, so grabbing the headset is automatic.\n\nWatch out: Check the clamp fits your desk's edge thickness.",
+      "product": {
+        "name": "EURPMASK Rotating Clamp-On Headset Hook",
+        "affiliateUrl": "https://www.amazon.com/dp/B07BVK2FQW?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "7. Stack Your Controllers Vertically",
+      "body": "Controllers scattered across the desk add up. A tiered controller stand holds several controllers and a headset in one small footprint, and keeps charging cables tidy.\n\nRenter tip: Put the stand next to the monitor rather than in front of it, so it doesn't block your mouse area.\n\nWatch out: Make sure your controller type fits the slots before buying.",
+      "product": {
+        "name": "Kytok 4-Tier Controller Stand",
+        "affiliateUrl": "https://www.amazon.com/dp/B0B28TFRGN?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "8. Add a Clamp-On Pegboard",
+      "body": "When the desk is full, go vertical. A clamp-on pegboard attaches to the back of the desk (no wall holes) and gives you hooks and small shelves for controllers, cables and figures.\n\nRenter tip: Hang what you use most at eye level and keep heavier items low.\n\nWatch out: A tall pegboard can block light from a window behind the desk. Measure the height first.",
+      "product": {
+        "name": "VIVO Clamp-On Desk Pegboard",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CM6STGD1?tag=spacesavvy07-20",
+        "dimensions": "30\" x 24\"",
+        "material": "Steel"
+      }
+    },
+    {
+      "title": "9. Use One Large Desk Mat",
+      "body": "A full-width desk mat makes a small desk look like one clean surface instead of scattered gear. It also protects the desk and gives your mouse a smooth surface everywhere.\n\nRenter tip: A plain, dark mat makes RGB lighting and your monitor stand out.\n\nWatch out: Measure your desk before ordering. A mat that hangs over the edge looks messy.",
+      "product": {
+        "name": "Aothia Leather Desk Mat",
+        "affiliateUrl": "https://www.amazon.com/dp/B086BTV594?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "10. Backlight the Desk With LED Strips",
+      "body": "LED strip lights behind the desk or monitor add that gaming glow and make a small room feel deeper. They also reduce eye strain compared to playing in a fully dark room.\n\nRenter tip: Stick the strip to the back of the desk or monitor, not the wall, so there's no risk to the paint.\n\nWatch out: Adhesive strips can peel paint on walls when removed. Test on a hidden spot if you must use the wall.",
+      "product": {
+        "name": "Govee RGBIC LED Strip Lights (16.4 ft)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0991Q94KP?tag=spacesavvy07-20",
+        "dimensions": "16.4 ft"
+      }
+    },
+    {
+      "title": "11. Add Hexagon Wall Lights as Your Feature Wall",
+      "body": "In a small room, one feature wall is enough. Hexagon light panels create a striking backdrop for streaming or video calls without needing art, shelves or drilling.\n\nRenter tip: Plan the layout on paper first, then use painter's tape to mark positions before sticking anything down.\n\nWatch out: These mount with adhesive, which can lift paint on removal. Ask your landlord or use a removable mounting strip.",
+      "product": {
+        "name": "Govee Glide Hexa Light Panels",
+        "affiliateUrl": "https://www.amazon.com/dp/B09FK1GSXY?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "12. Block Glare With Blackout Curtains",
+      "body": "Sunlight on your screen ruins visibility and makes a small room hot in the afternoon. Blackout curtains fix both, and they help your room feel like a dedicated gaming space.\n\nRenter tip: Hang them from a tension rod if you can't install a curtain rod.\n\nWatch out: Measure your window width and height. Panels that are too short let light leak in at the bottom.",
+      "product": {
+        "name": "NICETOWN Blackout Curtains (2 Panels)",
+        "affiliateUrl": "https://www.amazon.com/dp/B01CS31R94?tag=spacesavvy07-20",
+        "dimensions": "42\" x 63\" per panel"
+      }
+    },
+    {
+      "title": "13. Pick a Chair That Tucks Under the Desk",
+      "body": "Big racing-style chairs often can't slide under a small desk, so they sit in the middle of the room. A chair with flip-up armrests tucks right under, freeing up floor space when you're not playing.\n\nRenter tip: Measure the height from the floor to the underside of your desk, then compare it with the chair's armrest height.\n\nWatch out: Compact chairs have less padding than full gaming chairs. If you play for hours, check the reviews on comfort.",
+      "product": {
+        "name": "Sweetcrispy Gaming Desk Chair (Flip-Up Arms)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CKCT1KL5?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "14. Use a Corner Desk",
+      "body": "A corner is often the only free spot in a small bedroom. A triangle corner desk fits right into it, turning wasted space into a compact battlestation.\n\nRenter tip: Corner desks are shallow at the sides, so pair one with a monitor arm (idea #1) to get your screen at a comfortable distance.\n\nWatch out: A corner desk fits one monitor and a keyboard well. It's tight for a dual-monitor setup.",
+      "product": {
+        "name": "VECELO Small Triangle Corner Desk",
+        "affiliateUrl": "https://www.amazon.com/dp/B0H2CS4TX1?tag=spacesavvy07-20",
+        "material": "Steel frame"
+      }
+    },
+    {
+      "title": "15. Slide the Keyboard Onto a Tray",
+      "body": "A clamp-on keyboard tray moves your keyboard and mouse under the desk, freeing the top for a second screen, a stream deck or a drink. It can also put your wrists at a better typing height.\n\nRenter tip: Check there's open space under the desk, with no drawers or crossbars in the way.\n\nWatch out: Trays reduce knee space. Sit down and check clearance before buying.",
+      "product": {
+        "name": "VIVO Clamp-On Under-Desk Keyboard Tray",
+        "affiliateUrl": "https://www.amazon.com/dp/B07HFDJCSL?tag=spacesavvy07-20",
+        "dimensions": "27\" x 11\" tray"
+      }
+    },
+    {
+      "title": "16. Game From Bed With a Lap Desk",
+      "body": "If there's no room for a gaming desk at all, a large lap desk turns your bed or sofa into a laptop gaming spot. It folds flat and slides under the bed when you're done.\n\nRenter tip: Pick a lap desk wide enough for a laptop plus a mouse.\n\nWatch out: Laptops need airflow. Don't use one on soft bedding without a hard surface under it.",
+      "product": {
+        "name": "SAIJI Extra-Large Folding Lap Desk",
+        "affiliateUrl": "https://www.amazon.com/dp/B08T6B4TDP?tag=spacesavvy07-20",
+        "dimensions": "25.6\" x 19.3\""
+      }
+    },
+    {
+      "title": "17. Dock a Gaming Laptop Vertically",
+      "body": "If you play on a laptop with an external monitor, standing it upright in a vertical dock frees up the space it takes when open.\n\nRenter tip: Measure your laptop's thickness to make sure it fits the dock.\n\nWatch out: Gaming laptops run hot. Check your laptop's settings for closed-lid mode, and keep the vents clear.",
+      "product": {
+        "name": "UGREEN Adjustable Vertical Laptop Stand",
+        "affiliateUrl": "https://www.amazon.com/dp/B091B4SWR7?tag=spacesavvy07-20",
+        "dimensions": "Fits laptops up to 17.3\"",
+        "material": "Aluminum"
+      }
+    },
+    {
+      "title": "18. Park Consoles and Gear on a Rolling Cart",
+      "body": "Consoles, spare controllers and games pile up fast. A slim three-tier rolling cart holds them all next to the desk and rolls into a closet when you need the floor space back.\n\nRenter tip: Use the top tier for things you grab every day, and the bottom for heavier items like a console.\n\nWatch out: Consoles need airflow. Don't box them in on a crowded shelf.",
+      "product": {
+        "name": "Amazon Basics 3-Tier Rolling Utility Cart",
+        "affiliateUrl": "https://www.amazon.com/dp/B07TY1RFH5?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "19. Downsize Your Keyboard",
+      "body": "A full-size keyboard with a number pad is wider than most people need. A compact 65% or 75% layout keeps the keys you actually use and gives your mouse several extra inches of room.\n\nRenter tip: If you use the number pad occasionally, a separate small numpad can live in a drawer.\n\nWatch out: Compact layouts take a few days to get used to, especially for arrow and function keys."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How can I fit a gaming setup in a small room?",
+      "answer": "Get things off the desk: use a monitor arm, an under-desk cable tray, a headset hook and a rolling PC stand. A corner desk and a chair that tucks under it save floor space."
+    },
+    {
+      "question": "Is it bad to put a gaming PC on the carpet?",
+      "answer": "It can pull dust and lint into the case and restrict airflow. A small stand that lifts it a few inches off the floor helps."
+    },
+    {
+      "question": "What desk depth do I need for a small gaming setup?",
+      "answer": "It depends on your monitor size. A monitor arm lets you push the screen back, so even a shallow desk can work for one monitor."
+    },
+    {
+      "question": "How do I make a small gaming room look bigger?",
+      "answer": "Hide cables, keep the desk surface clear, use one feature wall instead of decorating every wall, and add soft backlighting behind the desk or monitor."
+    }
+  ]
+},
+
   // ---- Batch 1: expanded + verified Amazon products (Oct 2026) ----
 {
   "slug": "15-small-space-desk-hacks-maximize-apartment-corners",
@@ -930,38 +1525,6 @@ export const posts: Post[] = [
       {
         question: "Can I mount a floating desk on drywall without studs?",
         answer: "We strongly advise anchoring at least two bracket screws into timber wall studs."
-      }
-    ]
-  },
-
-  // 13. CHRISTMAS TREE GUIDE
-  {
-    slug: "small-apartment-christmas-tree-ideas",
-    title: "5 Small Space Christmas Tree Ideas That Fit Tiny Living Rooms",
-    excerpt: "Living in under 600 square feet means every inch counts. Here is how to style holiday decor without turning your room into an obstacle course.",
-    category: "Small Space Living",
-    publishDate: "October 14, 2026",
-    readTime: "6 min read",
-    takeaway: "Tape down your tree base dimensions before buying to keep 30 inches of walking clearance around furniture.",
-    featuredImageAlt: "Compact Christmas tree glowing warmly in a cozy apartment corner",
-    featuredImageSrc: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&q=80&w=800",
-    sections: [
-      {
-        title: "1. The 30 Inch Floor Clearance Rule",
-        body: "Measure the base width and mark it on your floor using blue painter tape before buying any tree online.",
-        image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&q=80&w=800",
-        product: {
-          name: "National Tree Company Pencil Pine",
-          dimensions: "28\" diameter",
-          material: "Flame resistant PVC",
-          affiliateUrl: "https://amazon.com/dp/B00422O7N4?tag=spacesavvy07-20" 
-        }
-      }
-    ],
-    faqs: [
-      {
-        question: "What tree size works best in a 500 sq ft apartment?",
-        answer: "A pencil tree with a base under 24 inches gives vertical height without taking over valuable walkway room."
       }
     ]
   },

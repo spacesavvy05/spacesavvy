@@ -8,6 +8,8 @@ export default function SitemapPage() {
     'Small Space Living': 'small-spaces',
     'Kitchen & Dining': 'kitchen-dining',
     'Compact Workspaces': 'workspaces',
+    'Gaming Setups': 'gaming-setups',
+    'Holiday Decor': 'holiday-decor',
     'Curated Amazon Finds': 'amazon-finds',
   };
 

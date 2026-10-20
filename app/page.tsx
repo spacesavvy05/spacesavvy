@@ -32,6 +32,8 @@ export default function HomePage() {
             let mappedCategory: Post['category'] = 'Compact Workspaces';
             const rawCat = (p.category || '').toLowerCase();
             if (rawCat.includes('kitchen')) mappedCategory = 'Kitchen & Dining';
+            else if (rawCat.includes('gaming')) mappedCategory = 'Gaming Setups';
+            else if (rawCat.includes('holiday') || rawCat.includes('christmas')) mappedCategory = 'Holiday Decor';
             else if (rawCat.includes('amazon') || rawCat.includes('find')) mappedCategory = 'Curated Amazon Finds';
             else if (rawCat.includes('small') || rawCat.includes('living') || rawCat.includes('studio')) mappedCategory = 'Small Space Living';
             else if (rawCat.includes('workspace') || rawCat.includes('desk') || rawCat.includes('gaming')) mappedCategory = 'Compact Workspaces';
@@ -52,10 +54,11 @@ export default function HomePage() {
             };
           });
 
-          const sanitySlugs = new Set(formattedSanityPosts.map(p => p.slug));
+          // Articles in src/data/posts.ts take priority over Sanity copies with the same slug
+          const staticSlugs = new Set(staticPosts.map(p => p.slug));
           const merged = [
-            ...formattedSanityPosts,
-            ...staticPosts.filter(sp => !sanitySlugs.has(sp.slug))
+            ...formattedSanityPosts.filter(sp => !staticSlugs.has(sp.slug)),
+            ...staticPosts
           ];
           setAllPosts(merged);
         }

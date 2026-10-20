@@ -29,6 +29,8 @@ export default function Navbar() {
     { label: 'Small Spaces', path: '/category/small-spaces' },
     { label: 'Kitchen & Dining', path: '/category/kitchen-dining' },
     { label: 'Workspaces', path: '/category/workspaces' },
+    { label: 'Gaming', path: '/category/gaming-setups' },
+    { label: 'Holiday', path: '/category/holiday-decor' },
     { label: 'Amazon Finds', path: '/category/amazon-finds' },
     { label: 'About', path: '/about' },
   ];

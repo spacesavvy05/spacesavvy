@@ -22,8 +22,9 @@ const template = readFileSync(join(DIST, 'index.html'), 'utf-8');
 const today = new Date().toISOString().slice(0, 10);
 
 // [text](url) -> <a> (applied to already-escaped text)
-const links = (s: string) => s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
-const plain = (s = '') => String(s).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '$1');
+const links = (s: string) =>
+  s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+const plain = (s = '') => String(s).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1');
 
 const esc = (s = '') =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -110,6 +111,8 @@ interface ArticleLike {
   takeaway?: string;
   intro?: string[];
   atAGlance?: { label: string; pick: string }[];
+  situations?: { situation: string; pick: string }[];
+  mistakes?: string[];
   sections: { title: string; body: string; productName?: string; productUrl?: string; image?: string; imageAlt?: string }[];
   faqs: { question: string; answer: string }[];
 }
@@ -165,7 +168,15 @@ function articlePage(a: ArticleLike): PageMeta {
       const paras = String(s.body || '')
         .split(/\n\s*\n/)
         .filter(Boolean)
-        .map((p) => `<p>${links(esc(p))}</p>`)
+        .map((p) => {
+          const ls = p.split('\n').map((l) => l.trim()).filter(Boolean);
+          if (ls.length > 1 && ls.every((l) => l.startsWith('- ')))
+            return `<ul>${ls.map((l) => `<li>${links(esc(l.slice(2)))}</li>`).join('')}</ul>`;
+          if (ls.length > 1 && ls.every((l) => /^\d+\.\s/.test(l)))
+            return `<ol>${ls.map((l) => `<li>${links(esc(l.replace(/^\d+\.\s/, '')))}</li>`).join('')}</ol>`;
+          if (ls[0]?.startsWith('### ')) return `<h3>${esc(ls[0].slice(4))}</h3>`;
+          return `<p>${links(esc(p))}</p>`;
+        })
         .join('');
       const img = s.image ? `<img src="${esc(s.image)}" alt="${esc(s.imageAlt || s.title)}" loading="lazy" style="max-width:100%;height:auto" />` : '';
       const product = s.productName
@@ -187,7 +198,11 @@ function articlePage(a: ArticleLike): PageMeta {
     (a.atAGlance?.length
       ? `<h2>At a Glance: Our Top Picks</h2><ul>${a.atAGlance.map((g) => `<li><strong>${esc(g.label)}:</strong> ${links(esc(g.pick))}</li>`).join('')}</ul>`
       : '') +
+    (a.situations?.length
+      ? `<h2>Pick Your Situation</h2><ul>${a.situations.map((s) => `<li><strong>${esc(s.situation)}:</strong> ${links(esc(s.pick))}</li>`).join('')}</ul>`
+      : '') +
     sectionsHtml +
+    (a.mistakes?.length ? `<h2>Mistakes to Avoid</h2><ul>${a.mistakes.map((m) => `<li>${links(esc(m))}</li>`).join('')}</ul>` : '') +
     faqHtml;
 
   return {
@@ -211,6 +226,8 @@ const fromStatic = (p: Post): ArticleLike => ({
   takeaway: p.takeaway,
   intro: p.intro,
   atAGlance: p.atAGlance,
+  situations: p.situations,
+  mistakes: p.mistakes,
   sections: p.sections.map((s) => ({
     title: s.title,
     body: s.body,

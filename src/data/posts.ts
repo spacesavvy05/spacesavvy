@@ -35,6 +35,8 @@ export interface Post {
   faqs?: FAQItem[];
   intro?: string[];
   atAGlance?: { label: string; pick: string }[];
+  situations?: { situation: string; pick: string }[];
+  mistakes?: string[];
 }
 
 export const CATEGORIES = [
@@ -47,6 +49,628 @@ export const CATEGORIES = [
 ] as const;
 
 export const posts: Post[] = [
+  // ---- Christmas articles (Oct 20, 2026) ----
+{
+  "slug": "christmas-garland-ideas-apartments",
+  "title": "8 Christmas Garland Ideas for Apartments (No Mantel, No Nails)",
+  "excerpt": "Where to hang garland when you have no mantel and can't use nails: doorways, windows, shelves, headboards and mirrors, with exact steps, measurements and fixes for sagging.",
+  "category": "Holiday Decor",
+  "publishDate": "October 20, 2026",
+  "readTime": "7 min read",
+  "takeaway": "Garland is the easiest way to make a small apartment feel like Christmas, and you don't need a mantel or a single nail. A tension rod, removable hooks or a few ties will hold it on a doorway, window, shelf, headboard or mirror. Buy about one and a half times the length you measure, and add picks or lights to make a cheap garland look full.",
+  "featuredImageAlt": "Cozy small apartment living room decorated for Christmas",
+  "featuredImageSrc": "/images/blog/small-apartment-christmas-tree-ideas/cozy-small-apartment-living-room-christmas-tree.webp",
+  "intro": [
+    "In a house, garland goes on the mantel or the staircase. Most apartments have neither, and the lease usually says no nails. That's why so many renters skip garland entirely, even though it's one of the cheapest ways to make a small space feel festive.",
+    "This guide shows eight places to hang garland in an apartment, how to measure so you buy the right length, and how to make it look full instead of thin and sad. Everything here comes down without leaving a mark. Looking for more ideas? See our [no-drill Christmas decor ideas for renters](/blog/no-drill-christmas-decor-ideas-renters)."
+  ],
+  "situations": [
+    {
+      "situation": "You have a doorway between rooms",
+      "pick": "The tension-rod doorway arch (idea #1). It's the fastest, biggest-impact option."
+    },
+    {
+      "situation": "You have no free outlet nearby",
+      "pick": "A battery garland, or plain garland with battery fairy lights on a timer (idea #2)."
+    },
+    {
+      "situation": "You only have shelves and furniture",
+      "pick": "Drape it along a bookshelf or console with removable clips (idea #4)."
+    },
+    {
+      "situation": "You want the bedroom to feel festive",
+      "pick": "Tie garland to the headboard (idea #5)."
+    },
+    {
+      "situation": "You have pets or small kids",
+      "pick": "Keep garland high: doorways, windows and the top of mirrors. Skip low shelves and loose picks they can chew."
+    },
+    {
+      "situation": "Your walls are textured or freshly painted",
+      "pick": "Avoid adhesive. Use tension rods, curtain rods and ties instead."
+    }
+  ],
+  "sections": [
+    {
+      "title": "1. The Tension-Rod Doorway Arch",
+      "body": "This is the hack that started it all. A tension rod pressed inside the top of a door frame gives you a solid bar to wrap garland around, with no hooks, nails or tape on the frame. It looks like a built-in garland arch and takes about ten minutes.\n\n### What you need\n\n- 1 tension rod that adjusts to your doorway width\n- 1 garland (see the length guide below)\n- Optional: battery fairy lights, a few floral picks\n\n### How to do it\n\n1. Measure the inside width of the door frame at the top. Most interior doorways are 30 to 36 inches wide.\n2. Twist the rod until it's slightly longer than the opening, then press it into place about 2 to 4 inches below the top of the frame.\n3. Start at one end and wrap the garland loosely around the rod, like a candy-cane stripe, until you reach the other side.\n4. If you want the garland to hang down the sides, let the ends drop down the frame and tuck them behind the rod.\n5. Fluff every branch so you can't see the rod.\n\n### How much garland to buy\n\nWrapping uses more garland than you'd think. Measure the doorway width, add how far you want each side to hang down, then multiply by about 1.5. For a 32-inch doorway with ends dropping 2 feet on each side, that's (32 + 24 + 24) x 1.5 = 120 inches, so a 9 or 10 ft garland is right.\n\nRenter tip: Press the rod firmly and check it the next day. Tension rods settle slightly, so give it a final quarter-turn to tighten it.\n\nWatch out: Tension rods are made for light loads. A very heavy, thick garland with lots of ornaments can push the rod down. Keep it to the garland, lights and a few light picks.",
+      "product": {
+        "name": "ENJOYBASICS Tension Curtain Rod (2-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CPXYJK9L?tag=spacesavvy07-20",
+        "dimensions": "Adjusts 32–66\""
+      }
+    },
+    {
+      "title": "2. Choose the Right Garland (Pre-Lit or Add Your Own Lights)",
+      "body": "The garland itself makes or breaks the look. Three things matter most:\n\n- **Fullness.** More branch tips per foot means a fuller garland. Thin garland looks sparse even when lit.\n- **Pre-lit or not.** Pre-lit garland means one cord and less fuss. Plain garland plus your own lights lets you choose the color and brightness.\n- **Power.** Plug-in is brighter and needs an outlet. Battery-powered works anywhere, and a timer (often 6 hours on, 18 off) means you never have to switch it on.\n\nIf your garland isn't pre-lit, weave a strand of battery fairy lights through it. Fairy lights on thin copper wire disappear into the branches, so you only see the glow.\n\nRenter tip: Choose a timer setting that turns the lights on when you usually get home. Then the apartment looks festive every evening without you thinking about it.\n\nWatch out: Battery lights drain batteries quickly. Rechargeable batteries pay for themselves in one season.",
+      "product": {
+        "name": "National Tree Company 9 ft Pre-Lit Crestwood Spruce Garland",
+        "affiliateUrl": "https://www.amazon.com/dp/B00LKRMWEY?tag=spacesavvy07-20",
+        "dimensions": "9 ft long"
+      }
+    },
+    {
+      "title": "3. Garland Across a Window",
+      "body": "Windows are the second-best spot after doorways, because the garland is seen from inside and from the street. If you already have a curtain rod, you're done: wrap the garland around the rod, between the brackets, the same way as the doorway arch.\n\nNo curtain rod? Press a tension rod inside the window frame, just below the top. Let the garland hang slightly lower in the middle for a soft swag.\n\nRenter tip: Weave battery fairy lights through window garland. At night, the glow doubles as soft lighting for the room.\n\nWatch out: Keep garland clear of radiators and heaters under the window, and don't let it block a window you'd need in an emergency.",
+      "product": {
+        "name": "Battery Fairy Lights With Timer (4-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0BVFJ2GMB?tag=spacesavvy07-20",
+        "dimensions": "16 ft, 50 LEDs each"
+      }
+    },
+    {
+      "title": "4. Garland Along a Bookshelf or Console",
+      "body": "Most small apartments have at least one shelf, sideboard or TV console. Garland along the top edge instantly gives you that mantel look.\n\nLay the garland along the top, letting it spill over the front edge in a gentle wave. To stop it sliding, use removable garland hangers or clear clips on the back edge of the furniture, never on the wall.\n\nRenter tip: Add three items in front of the garland: a small lamp, a candle (flameless) and one framed photo. Styling in threes looks finished without clutter.\n\nWatch out: Don't drape garland over a TV vent, or behind electronics that get warm.",
+      "product": {
+        "name": "Command Garland Hanger (6 Bundlers)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0FLKJZXZ3?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "5. Garland on the Headboard",
+      "body": "A garland along the headboard makes the bedroom feel festive with zero wall contact. Most headboards have posts, slats or a frame you can tie onto.\n\n1. Lay the garland across the top of the headboard.\n2. Tie it at each end and every 12 inches with reusable zip ties or ribbon.\n3. Weave in battery fairy lights.\n4. Cover the ties with small velvet ribbon bows.\n\nFor an upholstered headboard with nothing to tie onto, drape the garland along the top and tuck the ends behind the mattress.\n\nRenter tip: Ribbon bows hide the ties and add a soft, cozy finish. Pick one color only, such as deep red or dark green.\n\nWatch out: Use LED lights only, and make sure no part of the garland touches a bedside lamp bulb.",
+      "product": {
+        "name": "YANGTE Velvet Ribbon Set (4 Colors)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0D9JDZRDD?tag=spacesavvy07-20",
+        "dimensions": "3/8\" x 40 yd per roll"
+      }
+    },
+    {
+      "title": "6. Garland Over a Mirror or Above a Doorless Wall",
+      "body": "A large mirror or a framed print can carry a garland across its top edge. This works well in tiny entryways and bathrooms where there's no other spot.\n\nPut one removable hook at each top corner of the mirror or frame, then rest the garland across the top and let the ends drop down the sides.\n\nRenter tip: Clean the wall with rubbing alcohol before sticking on the hooks, then wait about an hour before hanging anything.\n\nWatch out: Check the weight limit on the hook package, and avoid freshly painted or textured walls, where adhesive can pull off paint.",
+      "product": {
+        "name": "Command Large Hooks (14-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B018IZAL6G?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "7. Garland on Top of Kitchen Cabinets",
+      "body": "If your kitchen cabinets don't reach the ceiling, the top is a ready-made ledge. Lay garland along it, add lights, and the whole kitchen glows. No hooks needed at all. For year-round ideas for this space, see [above-cabinet styling ideas](/blog/above-kitchen-cabinet-styling-ideas).\n\nRenter tip: Plug the lights into a smart plug or use a timer, so you don't have to climb up to switch them on.\n\nWatch out: Keep garland well away from the stove, toaster and any range hood. Kitchen heat and grease are a fire risk."
+    },
+    {
+      "title": "8. Make a Cheap Garland Look Full",
+      "body": "Most budget garlands look thin out of the box. You can fix that without buying a more expensive one.\n\n1. Fluff every branch tip in different directions: up, down and sideways.\n2. Layer two garlands together, for example a pine garland plus a faux eucalyptus garland, for depth and a softer, modern look.\n3. Tuck in floral picks (berries, pinecones or frosted sprigs) every 8 to 12 inches.\n4. Add fairy lights last, pushing them deep into the branches so the glow comes from inside.\n\nRenter tip: Odd numbers look natural. Group picks in threes rather than spacing them evenly.\n\nWatch out: Loose picks and berries can be a choking hazard for pets and toddlers. Wire them in tightly or skip them.",
+      "product": {
+        "name": "Christmas Picks: Red Berries & Pinecones (10 Pcs)",
+        "affiliateUrl": "https://www.amazon.com/dp/B08HS6J34G?tag=spacesavvy07-20"
+      }
+    }
+  ],
+  "mistakes": [
+    "Buying the exact length you measured. Wrapping and swags use more, so buy about 1.5 times your measurement.",
+    "Using thumbtacks or nails in door frames. Even small holes can come out of your deposit.",
+    "Loading a tension rod with heavy ornaments. Keep it to garland, lights and a few light picks.",
+    "Letting garland touch heat sources: radiators, lamps, the stove or real candles.",
+    "Mixing too many colors. Choose one accent color, like red, white or gold, and repeat it.",
+    "Leaving plug-in lights on overnight or when you're out. Use a timer instead."
+  ],
+  "faqs": [
+    {
+      "question": "How do you hang garland without nails?",
+      "answer": "Use a tension rod in a doorway or window, removable garland hooks on furniture, ties on a headboard, or simply lay it on top of kitchen cabinets or a bookshelf."
+    },
+    {
+      "question": "How much garland do I need for a doorway?",
+      "answer": "Measure the doorway width, add how far you want each side to hang down, then multiply by about 1.5. A typical 32-inch doorway with 2-foot drops needs a 9 to 10 ft garland."
+    },
+    {
+      "question": "How do I make cheap garland look fuller?",
+      "answer": "Fluff every tip, layer two garlands together, add floral picks every 8 to 12 inches and push fairy lights deep into the branches."
+    },
+    {
+      "question": "Is a battery garland as good as a plug-in one?",
+      "answer": "Battery garlands are usually a little dimmer, but they work anywhere and often have built-in timers. They're the best choice when there's no outlet nearby."
+    }
+  ]
+},
+{
+  "slug": "cozy-christmas-bedroom-decor-ideas",
+  "title": "9 Cozy Christmas Bedroom Decor Ideas (Renter-Friendly)",
+  "excerpt": "Flannel bedding, headboard garland, a nightstand tree and warm lighting: simple ways to make a small bedroom feel like Christmas without nails or clutter.",
+  "category": "Holiday Decor",
+  "publishDate": "October 20, 2026",
+  "readTime": "5 min read",
+  "takeaway": "A Christmas bedroom should feel calm, not busy. Start with the bed (flannel or a plaid throw), add soft warm lighting, then one or two festive touches like headboard garland or a small tree. Keep everything renter-safe and on a timer.",
+  "featuredImageAlt": "Cozy bedroom decorated for Christmas with warm lights",
+  "featuredImageSrc": "/images/blog/small-apartment-christmas-tree-ideas/cozy-small-apartment-living-room-christmas-tree.webp",
+  "intro": [
+    "Most Christmas decorating happens in the living room, but the bedroom is where you wake up and wind down. A few festive touches there make the whole season feel cozier, especially in a small apartment where the bedroom might also be your office or living room.",
+    "The goal is a calm, warm room, not a showroom. These nine ideas start with the biggest impact (the bed and the lighting) and work down to small details. Everything is renter-friendly and easy to pack away in January."
+  ],
+  "situations": [
+    {
+      "situation": "You only want to change one thing",
+      "pick": "Swap your bedding to flannel or plaid (idea #1). It changes the whole room."
+    },
+    {
+      "situation": "Your bedroom is tiny",
+      "pick": "Go vertical: headboard garland and window lights. Skip anything that sits on the floor."
+    },
+    {
+      "situation": "No outlet near the bed",
+      "pick": "Battery fairy lights with a timer (idea #3)."
+    },
+    {
+      "situation": "You share the room with a partner who hates clutter",
+      "pick": "Pick just two ideas: bedding plus warm lighting."
+    },
+    {
+      "situation": "The bedroom is also your living space (studio)",
+      "pick": "Use a [tabletop tree](/blog/small-apartment-christmas-tree-ideas) on the dresser instead of a floor tree."
+    }
+  ],
+  "sections": [
+    {
+      "title": "1. Start With the Bed",
+      "body": "The bed is the biggest thing in the room, so it sets the mood. Changing just the duvet cover or adding a throw does more than any number of small decorations.\n\n- **Flannel or tartan plaid** says Christmas without being cartoonish.\n- **Neutral bedding plus one red or green throw** is the low-commitment version.\n- **Layer textures** (flannel, knit, velvet) for that cozy cabin feeling.\n\nRenter tip: Choose a pattern that still looks good in January and February. Plaid flannel works all winter, so you get more use from it.\n\nWatch out: Check the size. Duvet cover sizes vary between brands, so compare the listed measurements with your duvet insert.",
+      "product": {
+        "name": "Bare Home Flannel Duvet Cover Set (Tartan Plaid)",
+        "affiliateUrl": "https://www.amazon.com/dp/B09L5GY9C8?tag=spacesavvy07-20",
+        "dimensions": "Queen"
+      }
+    },
+    {
+      "title": "2. Add a Chunky Knit Throw",
+      "body": "A chunky knit throw at the foot of the bed adds texture and warmth instantly. Cream or ivory works with any color scheme and keeps the room feeling light.\n\nRenter tip: Fold it into thirds across the bottom of the bed rather than draping it. It looks more intentional.\n\nWatch out: Chunky knits can shed and snag. Keep them away from pets' claws and wash them on a gentle cycle.",
+      "product": {
+        "name": "L'AGRATY Chunky Knit Throw Blanket",
+        "affiliateUrl": "https://www.amazon.com/dp/B0BR728TB6?tag=spacesavvy07-20",
+        "dimensions": "50\" x 60\""
+      }
+    },
+    {
+      "title": "3. Garland and Lights on the Headboard",
+      "body": "Headboard garland is the most festive thing you can do in a bedroom without touching the walls. Tie it to the frame with reusable ties or ribbon, then weave in battery fairy lights. Our [garland ideas guide](/blog/christmas-garland-ideas-apartments) has step-by-step instructions.\n\nRenter tip: Battery lights with a built-in timer mean they glow when you go to bed and switch off on their own.\n\nWatch out: Use LED lights only, and keep garland away from bedside lamp bulbs.",
+      "product": {
+        "name": "Battery Fairy Lights With Timer (4-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0BVFJ2GMB?tag=spacesavvy07-20",
+        "dimensions": "16 ft, 50 LEDs each"
+      }
+    },
+    {
+      "title": "4. A Small Tree on the Dresser or Nightstand",
+      "body": "A two-foot tree on the dresser gives you a Christmas tree in the bedroom without losing floor space. It also works as a soft night light.\n\nRenter tip: Raise it on a stack of books wrapped in linen or kraft paper. It looks taller and more special.\n\nWatch out: Keep it away from curtains and make sure it sits steadily, especially on a nightstand you bump in the dark.",
+      "product": {
+        "name": "2 ft Mini Tabletop Christmas Tree",
+        "affiliateUrl": "https://www.amazon.com/dp/B0H7VPJPTF?tag=spacesavvy07-20",
+        "dimensions": "2 ft tall"
+      }
+    },
+    {
+      "title": "5. Switch to Warm, Low Light",
+      "body": "Lighting matters more than decorations. Bright overhead lights make a room feel like an office. In the evening, switch off the ceiling light and use lamps, fairy lights and the tree.\n\n- Use **warm white bulbs** (around 2700K) in bedside lamps.\n- Put all your festive lights on **one smart plug**, so one tap or voice command turns everything on.\n- Set a **schedule** so lights switch off after you're asleep.\n\nRenter tip: A smart plug also works as a safety timer for anything plug-in, so nothing stays on all night.\n\nWatch out: Check that the smart plug works with your phone or speaker (Alexa or Google) before buying.",
+      "product": {
+        "name": "Kasa Smart Plug Ultra Mini",
+        "affiliateUrl": "https://www.amazon.com/dp/B091FXQQMQ?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "6. A Curtain of Lights in the Window",
+      "body": "A curtain of fairy lights behind sheer curtains turns the window into a soft glowing backdrop. It's especially nice in a bedroom because the light is diffused, not harsh. Hang it from your existing curtain rod. No new hardware needed.\n\nRenter tip: Hang the light curtain behind the sheer panel, not in front of it, for a softer glow.\n\nWatch out: Plug-in curtain lights need an outlet nearby. Run the cord along the baseboard, not across the floor.",
+      "product": {
+        "name": "JMEXSUSS 300-LED Curtain Fairy Lights",
+        "affiliateUrl": "https://www.amazon.com/dp/B07CJ2V1LR?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "7. Festive Pillow Covers",
+      "body": "Swapping two pillow covers is quick and cheap, and covers fold flat for storage. Pick one pattern that ties in with your bedding.\n\nRenter tip: Keep your regular pillow inserts and just swap the covers. Measure the inserts first.\n\nWatch out: Too many patterns in a small room looks busy. If your duvet is plaid, choose plain or simple pillow covers.",
+      "product": {
+        "name": "Christmas Pillow Covers, Set of 4",
+        "affiliateUrl": "https://www.amazon.com/dp/B0DG88139G?tag=spacesavvy07-20",
+        "dimensions": "18\" x 18\""
+      }
+    },
+    {
+      "title": "8. A Christmas Scent (Without a Flame)",
+      "body": "Scent is the detail people forget. A pine or fir scent makes the room smell like Christmas, but real candles in a bedroom are a fire risk. A reed diffuser gives a gentle, constant scent with no flame.\n\nRenter tip: Put the diffuser near the door rather than next to the bed, so the scent is noticeable when you walk in but never overpowering.\n\nWatch out: Some people and pets are sensitive to fragrance. Start with fewer reeds and add more if you want a stronger scent.",
+      "product": {
+        "name": "Fir Reed Diffuser",
+        "affiliateUrl": "https://www.amazon.com/dp/B0H5KLJ6VZ?tag=spacesavvy07-20",
+        "dimensions": "3.4 fl oz"
+      }
+    },
+    {
+      "title": "9. A Wreath on the Bedroom Door",
+      "body": "A small wreath on the inside of the bedroom door is a nice final touch, visible every time you close the door. An over-the-door hanger means no nails.\n\nRenter tip: Wrap the hook in felt where it touches the door so it doesn't scratch the paint.\n\nWatch out: Make sure the door still closes properly with the hanger in place.",
+      "product": {
+        "name": "Sattiyrch Over-the-Door Wreath Hanger (15\")",
+        "affiliateUrl": "https://www.amazon.com/dp/B07H4HHNQK?tag=spacesavvy07-20",
+        "dimensions": "15\" hook"
+      }
+    }
+  ],
+  "mistakes": [
+    "Decorating every surface. A small bedroom looks calm with two or three festive touches, not ten.",
+    "Using bright cool-white lights. They feel cold. Choose warm white.",
+    "Leaving plug-in lights on all night. Use a timer or smart plug.",
+    "Putting real candles near bedding or curtains. Use flameless candles or a reed diffuser.",
+    "Running cords across the floor, where you'll trip in the dark."
+  ],
+  "faqs": [
+    {
+      "question": "How do I make my bedroom feel like Christmas?",
+      "answer": "Change the bedding to flannel or plaid, add warm fairy lights, and choose one or two festive touches like headboard garland or a small tree."
+    },
+    {
+      "question": "Is it safe to put Christmas lights on a bed headboard?",
+      "answer": "LED lights run cool and are generally the safer choice. Keep them away from lamp bulbs and switch them off when you sleep, or use a timer."
+    },
+    {
+      "question": "Can I have a Christmas tree in a small bedroom?",
+      "answer": "Yes. A two-foot tabletop tree on a dresser or nightstand gives you a tree without using floor space."
+    },
+    {
+      "question": "How do I decorate a bedroom for Christmas without clutter?",
+      "answer": "Focus on the bed and the lighting first, then add one or two festive pieces. Keep to one accent color."
+    }
+  ]
+},
+{
+  "slug": "gifts-for-first-apartment",
+  "title": "16 Practical Christmas Gifts for Someone's First Apartment",
+  "excerpt": "Useful, space-saving gifts someone moving into their first apartment will actually use, from a cast iron skillet to a fire extinguisher and smart plugs.",
+  "category": "Curated Amazon Finds",
+  "publishDate": "October 20, 2026",
+  "readTime": "4 min read",
+  "takeaway": "The best first-apartment gifts are the boring essentials nobody buys for themselves: a good knife and pan, a basic tool kit, safety gear and a few space-saving helpers. Practical beats decorative, because a first apartment is usually small and full.",
+  "featuredImageAlt": "Neatly organized small apartment",
+  "featuredImageSrc": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
+  "intro": [
+    "When someone moves into their first apartment, they usually have a bed, a couch (maybe) and a long list of things they didn't realize they needed until the first week. The most appreciated gifts fill those gaps: the pan they cook everything in, the screwdriver they need to hang a shelf, the fire extinguisher nobody thinks about.",
+    "This list is organized by what kind of person you're buying for. Every gift is small enough for a small apartment, and most are things people use every week. For more ideas, see our [studio apartment storage must-haves](/blog/20-studio-apartment-storage-must-haves-under-25)."
+  ],
+  "atAGlance": [
+    {
+      "label": "Best overall",
+      "pick": "Lodge cast iron skillet"
+    },
+    {
+      "label": "Best practical gift",
+      "pick": "A home fire extinguisher plus a fire blanket"
+    },
+    {
+      "label": "Best for tiny apartments",
+      "pick": "Motion-sensor closet lights"
+    },
+    {
+      "label": "Best stocking stuffer",
+      "pick": "Smart plugs or adhesive hooks"
+    }
+  ],
+  "situations": [
+    {
+      "situation": "They love to cook",
+      "pick": "A cast iron skillet plus a chef's knife (gifts #1 and #2)."
+    },
+    {
+      "situation": "They've never lived alone before",
+      "pick": "A tool kit, fire extinguisher and first aid kit (the safety and fix-it essentials)."
+    },
+    {
+      "situation": "They're a coffee or tea person",
+      "pick": "A French press or a gooseneck kettle."
+    },
+    {
+      "situation": "Their place is tiny",
+      "pick": "Space savers: slim hangers, motion lights and adhesive hooks."
+    },
+    {
+      "situation": "You want a small add-on or stocking stuffer",
+      "pick": "Smart plug, adhesive hooks or a door stop alarm."
+    }
+  ],
+  "sections": [
+    {
+      "title": "1. A Cast Iron Skillet",
+      "body": "One good pan does almost everything: eggs, steak, roast vegetables, even cornbread. Cast iron lasts for decades and gets better with use.\n\nGood to know: Good for anyone who cooks. Include a note on how to care for it (no soaking, dry it right away).",
+      "product": {
+        "name": "Lodge Pre-Seasoned Cast Iron Skillet",
+        "affiliateUrl": "https://www.amazon.com/dp/B00006JSUA?tag=spacesavvy07-20",
+        "dimensions": "10.25\""
+      }
+    },
+    {
+      "title": "2. A Proper Chef's Knife",
+      "body": "Most first apartments come with a dull, wobbly knife. A sharp 8-inch chef's knife makes cooking faster and safer.\n\nGood to know: Great for new cooks. One good knife beats a big block of cheap ones in a small kitchen.",
+      "product": {
+        "name": "Victorinox Fibrox Pro 8\" Chef's Knife",
+        "affiliateUrl": "https://www.amazon.com/dp/B008M5U1C2?tag=spacesavvy07-20",
+        "dimensions": "8\" blade"
+      }
+    },
+    {
+      "title": "3. A Compact Air Fryer",
+      "body": "A small air fryer cooks crispy food fast without heating the whole apartment. Compact models fit on a tiny counter.\n\nGood to know: Check their counter space. A 2 qt model is plenty for one or two people.",
+      "product": {
+        "name": "Chefman 2 Qt Mini Air Fryer",
+        "affiliateUrl": "https://www.amazon.com/dp/B0DC11YH4J?tag=spacesavvy07-20",
+        "dimensions": "2 qt"
+      }
+    },
+    {
+      "title": "4. A French Press",
+      "body": "Simple, no filters, no pods, and it fits anywhere. A good pick for someone without counter space for a coffee machine.\n\nGood to know: A stainless steel press won't break if it gets knocked over in a crowded kitchen.",
+      "product": {
+        "name": "Secura Stainless Steel French Press",
+        "affiliateUrl": "https://www.amazon.com/dp/B00JE36GLQ?tag=spacesavvy07-20",
+        "dimensions": "34 oz"
+      }
+    },
+    {
+      "title": "5. A Gooseneck Kettle",
+      "body": "For tea drinkers and pour-over coffee fans. Temperature control is a nice upgrade from a basic kettle.\n\nGood to know: Good for small kitchens with no stove space to spare.",
+      "product": {
+        "name": "Cosori Gooseneck Electric Kettle",
+        "affiliateUrl": "https://www.amazon.com/dp/B07T1CH2HH?tag=spacesavvy07-20",
+        "dimensions": "0.8 L"
+      }
+    },
+    {
+      "title": "6. A Basic Tool Kit",
+      "body": "Hanging a mirror, tightening a chair, building flat-pack furniture: everyone needs a screwdriver and hammer in the first week.\n\nGood to know: A compact kit in a case stores easily under the sink or in a closet.",
+      "product": {
+        "name": "CARTMAN 39-Piece Household Tool Set",
+        "affiliateUrl": "https://www.amazon.com/dp/B00RF9J8DY?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "7. A Home Fire Extinguisher",
+      "body": "Not exciting, but genuinely important, and almost nobody buys one for themselves. Every apartment kitchen should have one.\n\nGood to know: Pair it with a fire blanket for the kitchen. It's a thoughtful 'I care about you' gift.",
+      "product": {
+        "name": "First Alert Home Fire Extinguisher",
+        "affiliateUrl": "https://www.amazon.com/dp/B001PB8FX2?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "8. A Kitchen Fire Blanket",
+      "body": "A fire blanket smothers small stove-top fires fast and is easy to use under stress. It hangs flat on a wall or inside a cabinet door.\n\nGood to know: A great add-on to the fire extinguisher.",
+      "product": {
+        "name": "Prepared Hero Emergency Fire Blanket (2-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B08TYT543Y?tag=spacesavvy07-20",
+        "dimensions": "39\" x 39\""
+      }
+    },
+    {
+      "title": "9. A First Aid Kit",
+      "body": "Cuts, burns and headaches happen in the first month of cooking and furniture building. A stocked kit means no late-night pharmacy run.\n\nGood to know: Choose a compact kit that fits in a bathroom drawer.",
+      "product": {
+        "name": "First Aid Kit (300 Pieces)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0C5J8MVDD?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "10. A Door Stop Alarm",
+      "body": "A simple wedge that sounds a loud alarm if someone pushes the door open. It adds peace of mind for anyone living alone for the first time, and it works in hotels too.\n\nGood to know: Renter-friendly, since it needs no installation.",
+      "product": {
+        "name": "ZZRUI Door Stop Alarm (4-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0BYK5NPLG?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "11. Smart Plugs",
+      "body": "Turn lamps, fairy lights or a fan on and off from a phone or voice assistant. Handy for lights on a schedule and peace of mind when traveling.\n\nGood to know: A pack of mini smart plugs makes a great stocking stuffer.",
+      "product": {
+        "name": "Kasa Smart Plug Ultra Mini",
+        "affiliateUrl": "https://www.amazon.com/dp/B091FXQQMQ?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "12. A Power Strip With Surge Protection",
+      "body": "Old apartments rarely have enough outlets in the right places. A power strip with surge protection and USB ports is used every day.\n\nGood to know: Look for one with a long cord. Outlets are always in the wrong place.",
+      "product": {
+        "name": "Anker Power Strip With Surge Protector",
+        "affiliateUrl": "https://www.amazon.com/dp/B09SG2Q23M?tag=spacesavvy07-20",
+        "dimensions": "12 outlets, 5 ft cord"
+      }
+    },
+    {
+      "title": "13. A Lightweight Stick Vacuum",
+      "body": "Small apartments don't need a big vacuum. A light stick vacuum stores in a closet corner and is quick to use daily.\n\nGood to know: Check whether their place has carpet or hard floors before choosing a model.",
+      "product": {
+        "name": "Bissell Featherweight Stick Vacuum",
+        "affiliateUrl": "https://www.amazon.com/dp/B06ZY7BTWM?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "14. Motion-Sensor Closet Lights",
+      "body": "Many apartment closets and cabinets have no light at all. Rechargeable motion lights stick on with magnets or adhesive and turn on when the door opens.\n\nGood to know: No wiring, so they're perfect for renters.",
+      "product": {
+        "name": "MCGOR Rechargeable Motion Sensor Lights (2-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0BDF8CVBN?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "15. Slim Velvet Hangers",
+      "body": "First-apartment closets are tiny. Slim matching hangers free up a surprising amount of rail space.\n\nGood to know: An unglamorous gift that gets used every single day.",
+      "product": {
+        "name": "Amazon Basics Slim Velvet Hangers (50-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B00FXNAAW2?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "16. Damage-Free Adhesive Hooks",
+      "body": "For keys, towels, bags and decor, without nails. Every renter goes through a pack of these.\n\nGood to know: Perfect as a stocking stuffer or an add-on to a bigger gift.",
+      "product": {
+        "name": "Command Large Hooks (14-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B018IZAL6G?tag=spacesavvy07-20"
+      }
+    }
+  ],
+  "mistakes": [
+    "Buying big appliances. First apartments are small, so check that there's space first.",
+    "Buying decor based on your taste. Practical gifts are safer unless you know their style well.",
+    "Buying a knife block set. One good chef's knife is more useful and takes less space.",
+    "Forgetting safety gear. A fire extinguisher and first aid kit are some of the most useful gifts on this list."
+  ],
+  "faqs": [
+    {
+      "question": "What do people need most in their first apartment?",
+      "answer": "Basic kitchen tools (a pan and a sharp knife), a tool kit, safety gear like a fire extinguisher and first aid kit, and space-saving storage."
+    },
+    {
+      "question": "What is a good small gift for a new apartment?",
+      "answer": "Smart plugs, adhesive hooks, a door stop alarm or motion-sensor closet lights are useful, inexpensive and easy to wrap."
+    },
+    {
+      "question": "Is a fire extinguisher a good housewarming gift?",
+      "answer": "Yes. Most people don't buy one for themselves, and every apartment kitchen should have one. A fire blanket is a good add-on."
+    },
+    {
+      "question": "What should I avoid buying for a first apartment?",
+      "answer": "Large appliances and furniture (space is tight) and very personal decor unless you know their style."
+    }
+  ]
+},
+{
+  "slug": "apartment-balcony-christmas-decor-ideas",
+  "title": "8 Apartment Balcony Christmas Decor Ideas (Small, Safe & Renter-Friendly)",
+  "excerpt": "Railing garland, solar lights, lanterns and a lit star: how to decorate a small apartment balcony for Christmas safely, without drilling or breaking building rules.",
+  "category": "Holiday Decor",
+  "publishDate": "October 20, 2026",
+  "readTime": "5 min read",
+  "takeaway": "A small balcony can look magical at Christmas with just outdoor-rated lights and garland on the railing, plus a lantern or two. Check your building's rules first, use outdoor-rated and battery or solar lights, and secure everything against the wind.",
+  "featuredImageAlt": "Apartment decorated for Christmas",
+  "featuredImageSrc": "/images/blog/small-apartment-christmas-tree-ideas/cozy-small-apartment-living-room-christmas-tree.webp",
+  "intro": [
+    "A balcony is the one part of an apartment the whole street can see, which makes it the best place for Christmas decor if you want your home to look festive from outside. It's also the trickiest: weather, wind, no outlets, and building rules about what you can hang.",
+    "These eight ideas work on small balconies and are designed to be safe and removable. Start with the rules and the railing, then add light and a few cozy touches."
+  ],
+  "situations": [
+    {
+      "situation": "No outdoor outlet",
+      "pick": "Solar or battery lights only (ideas #3 and #4)."
+    },
+    {
+      "situation": "Windy, high-floor balcony",
+      "pick": "Railing garland secured with zip ties every 12 inches. Skip anything that can blow away."
+    },
+    {
+      "situation": "Tiny balcony (barely room for a chair)",
+      "pick": "Decorate the railing and the door glass only. Leave the floor clear."
+    },
+    {
+      "situation": "Covered balcony",
+      "pick": "You can add a rug, lanterns and cushions (ideas #6 and #7)."
+    },
+    {
+      "situation": "Strict building rules",
+      "pick": "Keep decor inside the railing, nothing hanging over the edge, and decorate the glass door from inside (idea #8)."
+    }
+  ],
+  "sections": [
+    {
+      "title": "1. Check the Rules (and the Weather) First",
+      "body": "Before buying anything, spend five minutes checking:\n\n- **Your lease or building rules.** Many buildings limit what can hang over the railing or face the street.\n- **Fire safety.** Never block the balcony door or an emergency exit, and never hang anything from fire sprinkler heads.\n- **Wind and weather.** Everything outside needs to be outdoor-rated and tied down.\n- **Power.** If there's no outdoor outlet, plan for solar or battery lights. Don't run an extension cord through a door you then close on it.\n\nRenter tip: Ask your building manager by email. A written yes is worth having if a neighbor complains.\n\nWatch out: Indoor lights aren't made for rain or cold. Check that every light you use outside is rated for outdoor use."
+    },
+    {
+      "title": "2. Garland Along the Railing",
+      "body": "Railing garland is the classic balcony look. Wrap it along the top rail of your railing and secure it.\n\n1. Start at one end and lay the garland along the top of the rail.\n2. Fasten it every 12 inches with reusable zip ties.\n3. Weave outdoor lights through it, or use a pre-lit outdoor garland.\n4. Trim the tails of the ties or turn them to face inward.\n\nRenter tip: Reusable zip ties release with a small lever, so you can take everything down in January without cutting anything.\n\nWatch out: Keep everything on the inside of the railing. Garland hanging over the edge can fall onto balconies or people below in strong wind.",
+      "product": {
+        "name": "Pre-Lit Outdoor Christmas Garland, Battery (10 ft)",
+        "affiliateUrl": "https://www.amazon.com/dp/B07Z8SF2TY?tag=spacesavvy07-20",
+        "dimensions": "10 ft, 50 LEDs"
+      }
+    },
+    {
+      "title": "3. Solar String Lights",
+      "body": "If you don't have an outdoor outlet, solar lights are the easiest answer. They charge during the day and switch on at dusk by themselves.\n\nRenter tip: Place the small solar panel where it gets the most daylight. In winter, that's often the railing edge, not the corner.\n\nWatch out: Winter days are short, so solar lights may run for fewer hours. Battery lights with a timer are the backup.",
+      "product": {
+        "name": "Solar Christmas String Lights (6-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CSP38ZKJ?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "4. Clip Lights to the Railing and Door Frame",
+      "body": "To outline the balcony door frame or run lights along a ledge, use outdoor-rated adhesive clips. They're made to handle cold and damp.\n\nRenter tip: Apply clips on a dry day above freezing. Adhesive doesn't stick well in cold, wet conditions.\n\nWatch out: Don't stick clips on painted wood or render that's peeling. They can pull the paint off.",
+      "product": {
+        "name": "Command Outdoor Light Clips (20 Clips)",
+        "affiliateUrl": "https://www.amazon.com/dp/B076ZM1799?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "5. Railing Planter Boxes With Winter Greenery",
+      "body": "Railing planters hook over the rail without screws. In winter, fill them with cut evergreen branches, pinecones and berry picks for an instant festive display that lasts all season in the cold.\n\nRenter tip: Push the cut branches into damp soil or floral foam. They stay fresh much longer.\n\nWatch out: Make sure the brackets fit your railing width, and don't overload the planters on a windy, high-floor balcony.",
+      "product": {
+        "name": "Railing Planter Boxes With Adjustable Brackets (2-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CJ8QQ29L?tag=spacesavvy07-20",
+        "dimensions": "24\" long"
+      }
+    },
+    {
+      "title": "6. Lanterns With Flameless Candles",
+      "body": "Lanterns give a warm glow at floor level and look great in photos. On a balcony, use waterproof flameless candles with a timer. Real flames and wind don't mix.\n\nRenter tip: Group two lanterns of different sizes in one corner instead of spreading them out.\n\nWatch out: Lanterns can tip in wind. Place them in a sheltered corner, or weigh the base down with pebbles.",
+      "product": {
+        "name": "Waterproof Outdoor Flameless Candles With Timer (2-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0DS6FW1JL?tag=spacesavvy07-20",
+        "dimensions": "3\" x 4\""
+      }
+    },
+    {
+      "title": "7. An Outdoor Rug for a Cozy Corner",
+      "body": "If your balcony has room for a chair, an outdoor rug instantly makes it feel like a room. Add a weatherproof cushion and it becomes a spot for a hot drink on a cold evening.\n\nRenter tip: Reversible plastic rugs dry fast and roll up small for storage.\n\nWatch out: Make sure the rug doesn't block water drainage on the balcony floor.",
+      "product": {
+        "name": "Reversible Outdoor Plastic Straw Rug",
+        "affiliateUrl": "https://www.amazon.com/dp/B09JWCD3J5?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "8. A Lighted Star in the Balcony Door Glass",
+      "body": "If your building doesn't allow much outside, decorate the glass door from inside. A lit star hung in the door or window is visible from the street, stays dry, and doesn't break any balcony rules.\n\nRenter tip: Hang it from a suction-cup hook on the inside of the glass.\n\nWatch out: Check the cord can reach an outlet without stretching across a walkway.",
+      "product": {
+        "name": "Lighted Bethlehem Star Window Decoration (18\")",
+        "affiliateUrl": "https://www.amazon.com/dp/B09XQW5WYJ?tag=spacesavvy07-20",
+        "dimensions": "18\""
+      }
+    }
+  ],
+  "mistakes": [
+    "Using indoor lights outside. They're not built for rain, snow or frost.",
+    "Running an extension cord through a balcony door and closing the door on it. It damages the cord and is a fire risk.",
+    "Hanging decor over the outside of the railing. Wind can drop it onto balconies below.",
+    "Blocking the balcony door or emergency exits with decorations or furniture.",
+    "Leaving real candles burning outside. Use waterproof flameless candles."
+  ],
+  "faqs": [
+    {
+      "question": "How do I decorate an apartment balcony for Christmas?",
+      "answer": "Start with garland and outdoor-rated lights on the railing, add solar or battery lights if you have no outlet, and finish with lanterns or planters. Check your building's rules first."
+    },
+    {
+      "question": "How do you hang lights on a balcony without an outlet?",
+      "answer": "Use solar string lights that charge during the day, or battery-powered lights with a timer."
+    },
+    {
+      "question": "How do I attach garland to a balcony railing?",
+      "answer": "Lay it along the top rail and fasten it every 12 inches with reusable zip ties. Keep it on the inside of the railing."
+    },
+    {
+      "question": "Can I use indoor Christmas lights on a balcony?",
+      "answer": "It's not recommended. Use lights labeled for outdoor use, because indoor lights aren't designed for rain or cold."
+    }
+  ]
+},
+
   // ---- Batch 2: holiday + gaming (Oct 2026) ----
 {
   "slug": "no-drill-christmas-decor-ideas-renters",

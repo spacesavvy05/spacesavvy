@@ -76,13 +76,18 @@ function formatSectionHeading(title?: string, index?: number): string {
 // Turns [text](/blog/slug) or [text](https://...) inside article text into real links
 function renderInline(text: string): React.ReactNode[] {
   const out: React.ReactNode[] = [];
-  const re = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+  const re = /\[([^\]]+)\]\(([^)\s]+)\)|\*\*([^*]+)\*\*/g;
   let last = 0;
   let m: RegExpExecArray | null;
   let i = 0;
   while ((m = re.exec(text)) !== null) {
     if (m.index > last) out.push(text.slice(last, m.index));
-    const [, label, href] = m;
+    const [, label, href, bold] = m;
+    if (bold) {
+      out.push(<strong key={`b${i++}`} className="font-semibold text-stone-900">{bold}</strong>);
+      last = m.index + m[0].length;
+      continue;
+    }
     out.push(
       href.startsWith('/') ? (
         <Link key={`l${i++}`} to={href} className="text-amber-800 font-semibold underline underline-offset-2 hover:text-amber-900">
@@ -709,6 +714,22 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
             </section>
           )}
 
+          {Array.isArray(activePost.situations) && activePost.situations.length > 0 && (
+            <section className="bg-white border border-stone-200/90 rounded-2xl p-5 mb-8 shadow-xs">
+              <span className="text-[11px] font-bold tracking-widest text-amber-800 uppercase font-mono block mb-3">
+                PICK YOUR SITUATION
+              </span>
+              <dl className="divide-y divide-stone-100">
+                {activePost.situations.map((s: { situation: string; pick: string }, i: number) => (
+                  <div key={i} className="py-2.5 grid grid-cols-1 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-1 sm:gap-4">
+                    <dt className="text-sm font-semibold text-stone-900">{s.situation}</dt>
+                    <dd className="text-sm text-stone-700 m-0">{renderInline(s.pick)}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          )}
+
           {activePost.body && Array.isArray(activePost.body) && activePost.body.length > 0 ? (
             <div className="space-y-4">
               <PortableText value={activePost.body} components={portableTextComponents} />
@@ -736,17 +757,40 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                     </h2>
 
                     {formattedBody.split(/\n\s*\n/).map((para: string, pIdx: number) => {
-                      const labelMatch = para.match(/^(Renter tip:|Watch out:)\s*/);
+                      const labelMatch = para.match(/^(Renter tip:|Watch out:|Good to know:)\s*/);
                       if (labelMatch) {
-                        const isTip = labelMatch[1] === 'Renter tip:';
+                        const isTip = labelMatch[1] !== 'Watch out:';
                         return (
                           <p
                             key={pIdx}
                             className={`text-stone-700 leading-relaxed text-sm sm:text-base mb-3 pl-4 border-l-4 ${isTip ? 'border-emerald-500' : 'border-amber-500'}`}
                           >
-                            <strong className="text-stone-900">{isTip ? 'Renter tip:' : 'Watch out:'}</strong>{' '}
+                            <strong className="text-stone-900">{labelMatch[1]}</strong>{' '}
                             {renderInline(para.slice(labelMatch[0].length))}
                           </p>
+                        );
+                      }
+                      const lines = para.split('\n').map((l: string) => l.trim()).filter(Boolean);
+                      const isBullets = lines.length > 1 && lines.every((l: string) => l.startsWith('- '));
+                      const isSteps = lines.length > 1 && lines.every((l: string) => /^\d+\.\s/.test(l));
+                      if (isBullets || isSteps) {
+                        const ListTag = isSteps ? 'ol' : 'ul';
+                        return (
+                          <ListTag
+                            key={pIdx}
+                            className={`${isSteps ? 'list-decimal' : 'list-disc'} pl-6 mb-6 space-y-2 text-stone-700 leading-relaxed text-base sm:text-lg marker:text-amber-700 marker:font-bold`}
+                          >
+                            {lines.map((l: string, li: number) => (
+                              <li key={li}>{renderInline(l.replace(/^(- |\d+\.\s)/, ''))}</li>
+                            ))}
+                          </ListTag>
+                        );
+                      }
+                      if (lines[0]?.startsWith('### ')) {
+                        return (
+                          <h3 key={pIdx} className="font-serif text-xl font-bold text-stone-900 mt-6 mb-3">
+                            {lines[0].slice(4)}
+                          </h3>
                         );
                       }
                       return (
@@ -783,6 +827,21 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                 Open Sanity Studio (localhost:3333), paste your article into the "Article Content" box, and hit Publish.
               </p>
             </div>
+          )}
+
+          {/* MISTAKES TO AVOID */}
+          {Array.isArray(activePost.mistakes) && activePost.mistakes.length > 0 && (
+            <section className="mt-12 bg-amber-50/60 border border-amber-200/80 rounded-2xl p-5 sm:p-6">
+              <h2 className="font-serif text-2xl font-black text-stone-900 mb-4">Mistakes to Avoid</h2>
+              <ul className="space-y-3">
+                {activePost.mistakes.map((m: string, i: number) => (
+                  <li key={i} className="flex gap-3 text-stone-700 leading-relaxed">
+                    <span className="text-amber-700 font-black shrink-0" aria-hidden="true">✕</span>
+                    <span>{renderInline(m)}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
           )}
 
           {/* HOW WE CHOSE THESE PICKS */}

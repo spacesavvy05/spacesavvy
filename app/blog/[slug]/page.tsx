@@ -10,7 +10,7 @@ import {
   ArrowUp
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { posts, Post, Section, PinItem, AltPick } from '../../../src/data/posts';
+import { posts, Post, Section, PinItem } from '../../../src/data/posts';
 import { client } from '../../../src/lib/sanity';
 import { subscribeEmail } from '../../../src/lib/subscribe';
 import { PortableText } from '@portabletext/react';
@@ -148,9 +148,10 @@ function InlineNewsletter() {
   );
 }
 
-// A pin graphic inside the article with a big "Save to Pinterest" button
+// The pin graphic (text design) shown once after the intro, with the same small Save button as the photos
 function PinBlock({ pin, postSlug }: { pin: PinItem; postSlug: string }) {
-  const save = () => {
+  const save = (e: React.MouseEvent) => {
+    e.preventDefault();
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams({
       url: `${window.location.origin}/blog/${postSlug}`,
@@ -164,54 +165,26 @@ function PinBlock({ pin, postSlug }: { pin: PinItem; postSlug: string }) {
     );
   };
   return (
-    <figure className="my-10 mx-auto w-full max-w-[360px]">
-      <div className="rounded-2xl overflow-hidden shadow-md border border-stone-200 bg-white">
-        <img
-          src={pin.src}
-          alt={pin.alt}
-          width={800}
-          height={1200}
-          loading="lazy"
-          decoding="async"
-          data-pin-description={pin.description}
-          className="w-full h-auto block"
-        />
-      </div>
+    <figure className="relative group w-full max-w-md mx-auto my-8 rounded-2xl overflow-hidden border border-stone-200 shadow-sm bg-white">
+      <img
+        src={pin.src}
+        alt={pin.alt}
+        width={800}
+        height={1200}
+        loading="lazy"
+        decoding="async"
+        data-pin-description={pin.description}
+        className="w-full h-auto block"
+      />
       <button
         type="button"
         onClick={save}
-        className="mt-3 w-full flex items-center justify-center gap-2 rounded-full bg-[#E60023] hover:bg-[#AD081B] text-white font-bold text-sm py-3 shadow-sm transition-colors cursor-pointer"
+        className="absolute top-3.5 right-3.5 z-20 flex items-center gap-1 rounded-full px-3 py-1.5 text-[11px] font-bold text-white shadow-md bg-red-600 hover:bg-red-700 cursor-pointer opacity-95 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100 transition-opacity"
+        aria-label="Save this pin to Pinterest"
       >
-        <span aria-hidden="true">📌</span> Save to Pinterest
+        <span className="leading-none">📌</span> Save
       </button>
-      <figcaption className="mt-2 text-center text-xs text-stone-500">Save this idea so you can find it later</figcaption>
     </figure>
-  );
-}
-
-// Smaller extra picks under the main product card
-function AlsoGood({ picks }: { picks: AltPick[] }) {
-  return (
-    <div className="-mt-6 mb-2 max-w-xl mx-auto rounded-2xl border border-stone-200 bg-white px-5 py-3.5">
-      <p className="text-[11px] font-mono uppercase tracking-widest text-amber-700 font-bold mb-2">Also good</p>
-      <ul className="space-y-2">
-        {picks.map((p, i) => (
-          <li key={i} className="flex items-start gap-2 text-sm leading-snug">
-            <span className="shrink-0 mt-0.5 rounded-full bg-stone-100 border border-stone-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-stone-600">
-              {p.label}
-            </span>
-            <a
-              href={p.affiliateUrl}
-              target="_blank"
-              rel="sponsored nofollow noopener noreferrer"
-              className="text-stone-800 font-semibold underline decoration-amber-400 underline-offset-2 hover:text-amber-800"
-            >
-              {p.name} <span className="whitespace-nowrap text-amber-700">→ check price</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }
 
@@ -271,7 +244,7 @@ function ArticleImage({ imageUrl, title, postCategory, postSlug, productName, al
   };
 
   return (
-    <div className="relative w-full max-w-lg mx-auto rounded-2xl overflow-hidden my-6 border border-stone-200 shadow-sm group bg-white">
+    <div className="relative w-full max-w-md mx-auto rounded-2xl overflow-hidden my-6 border border-stone-200 shadow-sm group bg-white">
       {!imgError && imageUrl ? (
         <img
           src={imageUrl}
@@ -280,7 +253,7 @@ function ArticleImage({ imageUrl, title, postCategory, postSlug, productName, al
           decoding="async"
           referrerPolicy="no-referrer"
           onError={() => setImgError(true)}
-          className="w-full h-auto max-h-[540px] object-contain bg-white mx-auto transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+          className="block w-full h-auto transition-transform duration-500 ease-out group-hover:scale-[1.02]"
         />
       ) : (
         <div className="aspect-[4/3] bg-gradient-to-br from-[#FAF8F5] via-[#F4EFE6] to-[#EAE2D5] p-6 flex flex-col justify-between select-none">
@@ -862,7 +835,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                   {section.group && (
                     <h2
                       id={slugifyHeading(section.group, idx)}
-                      className="font-serif text-2xl sm:text-3xl font-black text-stone-900 pt-6 leading-tight tracking-tight scroll-mt-28 border-t-4 border-amber-500/70 mt-16 mb-0"
+                      className="mt-14 mb-0 scroll-mt-28 font-sans text-[13px] sm:text-sm font-bold uppercase tracking-wider text-amber-900 bg-amber-50 border border-amber-200/80 rounded-xl px-4 py-3 leading-snug"
                     >
                       {section.group}
                     </h2>
@@ -871,7 +844,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                     id={secId}
                     className="border-b border-stone-200/80 pb-12 last:border-b-0 last:pb-0 scroll-mt-28"
                   >
-                    <IdeaHeading className={`font-serif font-black text-stone-900 mb-4 leading-tight tracking-tight ${hasGroups ? 'text-xl sm:text-2xl mt-6' : 'text-2xl sm:text-3xl mt-10'}`}>
+                    <IdeaHeading className={`font-serif text-2xl sm:text-3xl font-black text-stone-900 mb-4 leading-tight tracking-tight ${section.group ? 'mt-6' : 'mt-10'}`}>
                       {formattedTitle}
                     </IdeaHeading>
 
@@ -930,10 +903,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                       />
                     )}
 
-                    {section.product && <ProductCallout product={section.product} />}
-                    {Array.isArray(section.alsoGood) && section.alsoGood.length > 0 && (
-                      <AlsoGood picks={section.alsoGood} />
-                    )}
+                    {section.product && <ProductCallout product={section.product} alsoGood={section.alsoGood} />}
                   </article>
                   {idx === 3 && activePost.sections.length > 5 && <InlineNewsletter />}
                   </React.Fragment>
@@ -950,8 +920,6 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
               </p>
             </div>
           )}
-
-          {pins[1] && <PinBlock pin={pins[1]} postSlug={slug || ''} />}
 
           {/* KEY TAKEAWAYS */}
           {Array.isArray(activePost.keyTakeaways) && activePost.keyTakeaways.length > 0 && (

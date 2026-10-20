@@ -323,11 +323,6 @@ export const posts: Post[] = [
       "src": "/images/pins/pin-garland-1-no-nail-garland-ideas.webp",
       "alt": "Pinterest pin: no-nail Christmas garland ideas for apartments",
       "description": "No mantel? No problem. Christmas garland ideas for apartments: hang garland on doorways, windows, bookshelves, headboards and mirrors without nails or holes. Easy steps for renters, plus how to make cheap garland look full. #christmasgarland #christmasdecor #renterfriendly"
-    },
-    {
-      "src": "/images/pins/pin-garland-4-how-much-garland.webp",
-      "alt": "Pinterest pin: how much garland you need for a doorway",
-      "description": "How much Christmas garland do you need? Measure the doorway width, add how far each side hangs down, then multiply by 1.5. The easy garland formula plus 8 no-nail garland ideas for small apartments. #christmasgarland #christmasdecor #diychristmas"
     }
   ]
 },
@@ -644,11 +639,6 @@ export const posts: Post[] = [
       "src": "/images/pins/pin-bedroom-1-cozy-christmas-bedroom.webp",
       "alt": "Pinterest pin: cozy Christmas bedroom ideas with plaid bedding and headboard garland",
       "description": "Christmas bedroom decor ideas that feel cozy, not cluttered: plaid flannel bedding, headboard garland, warm fairy lights and a mini tree on the dresser. 9 renter-friendly ideas, no nails needed. #christmasbedroom #cozybedroom #christmasdecor"
-    },
-    {
-      "src": "/images/pins/pin-bedroom-3-fairy-light-window.webp",
-      "alt": "Pinterest pin: fairy light curtain window idea for a Christmas bedroom",
-      "description": "Cozy Christmas bedroom idea: hang a curtain of warm fairy lights behind sheer curtains for a soft, glowing window. No new hardware, renter-friendly, and it doubles as a night light. #fairylights #christmasbedroom #cozyhome"
     }
   ]
 },
@@ -1046,11 +1036,6 @@ export const posts: Post[] = [
       "src": "/images/pins/pin-gifts-1-first-apartment-gifts.webp",
       "alt": "Pinterest pin: 16 practical first apartment gift ideas",
       "description": "First apartment gift ideas they will actually use: cast iron skillet, chef's knife, tool kit, fire extinguisher, smart plugs and space-saving finds. Practical Christmas and housewarming gifts for a small first apartment. #firstapartment #giftideas #housewarminggift"
-    },
-    {
-      "src": "/images/pins/pin-gifts-3-tiny-apartment-gifts.webp",
-      "alt": "Pinterest pin: clever renter-friendly gifts for small apartments",
-      "description": "Clever gifts for small apartments: rechargeable motion-sensor closet lights, slim velvet hangers and damage-free hooks. No wiring, no drilling, perfect for renters and a first apartment. #smallapartment #giftideas #organization"
     }
   ]
 },
@@ -1273,11 +1258,6 @@ export const posts: Post[] = [
       "src": "/images/pins/pin-balcony-1-small-balcony-christmas.webp",
       "alt": "Pinterest pin: small balcony Christmas decor, 8 renter-friendly ideas",
       "description": "Small balcony Christmas decor ideas for apartments: railing garland with lights, solar string lights, lanterns and a lit star in the door glass. 8 safe, renter-friendly ideas, even if your building has rules. #balconydecor #christmasdecor #smallbalcony"
-    },
-    {
-      "src": "/images/pins/pin-balcony-3-balcony-ideas-renters.webp",
-      "alt": "Pinterest pin: apartment balcony Christmas ideas for renters",
-      "description": "Apartment balcony Christmas ideas for renters, even if your building has rules: a lit star in the balcony door glass, solar lights, lanterns with flameless candles and railing planters. #apartmentchristmas #balconydecor #christmasdecor"
     }
   ]
 },

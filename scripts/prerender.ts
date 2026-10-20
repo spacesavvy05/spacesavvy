@@ -113,7 +113,19 @@ interface ArticleLike {
   atAGlance?: { label: string; pick: string }[];
   situations?: { situation: string; pick: string }[];
   mistakes?: string[];
-  sections: { title: string; body: string; productName?: string; productUrl?: string; image?: string; imageAlt?: string }[];
+  keyTakeaways?: string[];
+  related?: { slug: string; title: string }[];
+  pins?: { src: string; alt: string }[];
+  sections: {
+    title: string;
+    body: string;
+    productName?: string;
+    productUrl?: string;
+    image?: string;
+    imageAlt?: string;
+    group?: string;
+    alsoGood?: { label: string; name: string; affiliateUrl: string }[];
+  }[];
   faqs: { question: string; answer: string }[];
 }
 
@@ -163,6 +175,9 @@ function articlePage(a: ArticleLike): PageMeta {
     });
   }
 
+  const hasGroups = a.sections.some((s) => s.group);
+  const pinHtml = (p?: { src: string; alt: string }) =>
+    p ? `<p><img src="${esc(p.src)}" alt="${esc(p.alt)}" width="800" height="1200" loading="lazy" style="max-width:360px;width:100%;height:auto" /></p>` : '';
   const sectionsHtml = a.sections
     .map((s) => {
       const paras = String(s.body || '')
@@ -182,7 +197,13 @@ function articlePage(a: ArticleLike): PageMeta {
       const product = s.productName
         ? `<p><a href="${esc(s.productUrl || '#')}" rel="sponsored nofollow noopener">${esc(s.productName)} – check price on Amazon</a></p>`
         : '';
-      return `<h2>${esc(s.title)}</h2>${paras}${img}${product}`;
+      const also = s.alsoGood?.length
+        ? `<p>Also good: ${s.alsoGood
+            .map((g) => `${esc(g.label)}: <a href="${esc(g.affiliateUrl)}" rel="sponsored nofollow noopener">${esc(g.name)}</a>`)
+            .join(' · ')}</p>`
+        : '';
+      const head = hasGroups ? `<h3>${esc(s.title)}</h3>` : `<h2>${esc(s.title)}</h2>`;
+      return `${s.group ? `<h2>${esc(s.group)}</h2>` : ''}${head}${paras}${img}${product}${also}`;
     })
     .join('');
   const faqHtml = a.faqs.length
@@ -195,6 +216,7 @@ function articlePage(a: ArticleLike): PageMeta {
     `<p><em>As an Amazon Associate I earn from qualifying purchases.</em></p>` +
     (a.takeaway ? `<p><strong>The SpaceSavvy Takeaway:</strong> ${esc(a.takeaway)}</p>` : '') +
     (a.intro || []).map((p) => `<p>${links(esc(p))}</p>`).join('') +
+    pinHtml(a.pins?.[0]) +
     (a.atAGlance?.length
       ? `<h2>At a Glance: Our Top Picks</h2><ul>${a.atAGlance.map((g) => `<li><strong>${esc(g.label)}:</strong> ${links(esc(g.pick))}</li>`).join('')}</ul>`
       : '') +
@@ -202,7 +224,12 @@ function articlePage(a: ArticleLike): PageMeta {
       ? `<h2>Pick Your Situation</h2><ul>${a.situations.map((s) => `<li><strong>${esc(s.situation)}:</strong> ${links(esc(s.pick))}</li>`).join('')}</ul>`
       : '') +
     sectionsHtml +
+    pinHtml(a.pins?.[1]) +
+    (a.keyTakeaways?.length ? `<h2>Key Takeaways</h2><ul>${a.keyTakeaways.map((k) => `<li>${links(esc(k))}</li>`).join('')}</ul>` : '') +
     (a.mistakes?.length ? `<h2>Mistakes to Avoid</h2><ul>${a.mistakes.map((m) => `<li>${links(esc(m))}</li>`).join('')}</ul>` : '') +
+    (a.related?.length
+      ? `<h2>Keep Reading</h2><ul>${a.related.map((r) => `<li><a href="/blog/${esc(r.slug)}">${esc(r.title)}</a></li>`).join('')}</ul>`
+      : '') +
     faqHtml;
 
   return {
@@ -228,6 +255,12 @@ const fromStatic = (p: Post): ArticleLike => ({
   atAGlance: p.atAGlance,
   situations: p.situations,
   mistakes: p.mistakes,
+  keyTakeaways: p.keyTakeaways,
+  related: (p.related || [])
+    .map((r) => posts.find((q) => q.slug === r))
+    .filter((q): q is Post => Boolean(q))
+    .map((q) => ({ slug: q.slug, title: q.title })),
+  pins: p.pins,
   sections: p.sections.map((s) => ({
     title: s.title,
     body: s.body,
@@ -235,6 +268,8 @@ const fromStatic = (p: Post): ArticleLike => ({
     imageAlt: s.imageAlt,
     productName: s.product?.name,
     productUrl: s.product?.affiliateUrl,
+    group: s.group,
+    alsoGood: s.alsoGood,
   })),
   faqs: p.faqs || [],
 });

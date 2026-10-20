@@ -10,7 +10,7 @@ import {
   ArrowUp
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { posts, Post, Section } from '../../../src/data/posts';
+import { posts, Post, Section, PinItem, AltPick } from '../../../src/data/posts';
 import { client } from '../../../src/lib/sanity';
 import { subscribeEmail } from '../../../src/lib/subscribe';
 import { PortableText } from '@portabletext/react';
@@ -28,6 +28,7 @@ interface PageProps {
 interface TocItem {
   id: string;
   text: string;
+  level?: number; // 2 = question group, 3 = idea inside a group
 }
 
 function slugifyHeading(text: string, index: number): string {
@@ -144,6 +145,73 @@ function InlineNewsletter() {
         </form>
       )}
     </aside>
+  );
+}
+
+// A pin graphic inside the article with a big "Save to Pinterest" button
+function PinBlock({ pin, postSlug }: { pin: PinItem; postSlug: string }) {
+  const save = () => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams({
+      url: `${window.location.origin}/blog/${postSlug}`,
+      media: new URL(pin.src, window.location.origin).href,
+      description: pin.description,
+    });
+    window.open(
+      `https://www.pinterest.com/pin/create/button/?${params.toString()}`,
+      'pinterest-pin-window',
+      'width=750,height=620,toolbar=0,location=0,menubar=0,status=0,scrollbars=yes,resizable=yes'
+    );
+  };
+  return (
+    <figure className="my-10 mx-auto w-full max-w-[360px]">
+      <div className="rounded-2xl overflow-hidden shadow-md border border-stone-200 bg-white">
+        <img
+          src={pin.src}
+          alt={pin.alt}
+          width={800}
+          height={1200}
+          loading="lazy"
+          decoding="async"
+          data-pin-description={pin.description}
+          className="w-full h-auto block"
+        />
+      </div>
+      <button
+        type="button"
+        onClick={save}
+        className="mt-3 w-full flex items-center justify-center gap-2 rounded-full bg-[#E60023] hover:bg-[#AD081B] text-white font-bold text-sm py-3 shadow-sm transition-colors cursor-pointer"
+      >
+        <span aria-hidden="true">📌</span> Save to Pinterest
+      </button>
+      <figcaption className="mt-2 text-center text-xs text-stone-500">Save this idea so you can find it later</figcaption>
+    </figure>
+  );
+}
+
+// Smaller extra picks under the main product card
+function AlsoGood({ picks }: { picks: AltPick[] }) {
+  return (
+    <div className="-mt-6 mb-2 max-w-xl mx-auto rounded-2xl border border-stone-200 bg-white px-5 py-3.5">
+      <p className="text-[11px] font-mono uppercase tracking-widest text-amber-700 font-bold mb-2">Also good</p>
+      <ul className="space-y-2">
+        {picks.map((p, i) => (
+          <li key={i} className="flex items-start gap-2 text-sm leading-snug">
+            <span className="shrink-0 mt-0.5 rounded-full bg-stone-100 border border-stone-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-stone-600">
+              {p.label}
+            </span>
+            <a
+              href={p.affiliateUrl}
+              target="_blank"
+              rel="sponsored nofollow noopener noreferrer"
+              className="text-stone-800 font-semibold underline decoration-amber-400 underline-offset-2 hover:text-amber-800"
+            >
+              {p.name} <span className="whitespace-nowrap text-amber-700">→ check price</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -389,12 +457,14 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
     }
 
     if (activePost.sections && Array.isArray(activePost.sections)) {
-      return activePost.sections
-        .filter((s: any) => s && s.title)
-        .map((s: any, idx: number) => ({
-          id: slugifyHeading(s.title, idx),
-          text: formatSectionHeading(s.title, idx)
-        }));
+      const hasGroups = activePost.sections.some((s: any) => s && s.group);
+      const items: TocItem[] = [];
+      activePost.sections.forEach((s: any, idx: number) => {
+        if (!s || !s.title) return;
+        if (s.group) items.push({ id: slugifyHeading(s.group, idx), text: s.group, level: 2 });
+        items.push({ id: slugifyHeading(s.title, idx), text: formatSectionHeading(s.title, idx), level: hasGroups ? 3 : 2 });
+      });
+      return items;
     }
 
     return [];
@@ -507,10 +577,19 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
   );
   const featuredImageSrc = activePost.featuredImageSrc || activePost.sections?.[0]?.image || '';
 
+  const usesAiImages = String(activePost.featuredImageSrc || '').startsWith('/images/blog/');
+  const pins: PinItem[] = Array.isArray(activePost.pins) ? activePost.pins : [];
+  const hasGroups = Array.isArray(activePost.sections) && activePost.sections.some((s: any) => s && s.group);
+  const keepReading: Post[] = (Array.isArray(activePost.related) ? activePost.related : [])
+    .map((r: string) => posts.find(p => p.slug === r))
+    .filter((p: Post | undefined): p is Post => Boolean(p));
+  const keepReadingSlugs = new Set(keepReading.map(p => p.slug));
+
   const trendingArticles = posts.filter(p => p.slug !== slug).slice(0, 3);
   const relatedShelf = posts
-    .filter(p => p.category === category && p.slug !== slug)
-    .concat(posts.filter(p => p.slug !== slug))
+    .filter(p => p.category === category && p.slug !== slug && !keepReadingSlugs.has(p.slug))
+    .concat(posts.filter(p => p.slug !== slug && !keepReadingSlugs.has(p.slug)))
+    .filter((p, i, arr) => arr.findIndex(q => q.slug === p.slug) === i)
     .slice(0, 4);
 
   const defaultFaqs = [
@@ -675,6 +754,12 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
             <Link to="/affiliate-disclosure" className="underline hover:text-stone-800">
               Learn more
             </Link>.
+            {usesAiImages && (
+              <>
+                {' '}Some images are AI-generated for inspiration only.{' '}
+                <Link to="/ai-disclaimer" className="underline hover:text-stone-800">Details</Link>.
+              </>
+            )}
           </p>
 
           {/* TWEAK 3: Takeaway box with leading-relaxed */}
@@ -698,6 +783,8 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
               ))}
             </div>
           )}
+
+          {pins[0] && <PinBlock pin={pins[0]} postSlug={slug || ''} />}
 
           {Array.isArray(activePost.atAGlance) && activePost.atAGlance.length > 0 && (
             <section className="bg-white border border-stone-200/90 rounded-2xl p-5 mb-8 shadow-xs">
@@ -730,6 +817,28 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
             </section>
           )}
 
+          {/* MOBILE TABLE OF CONTENTS (desktop has the sticky sidebar) */}
+          {tocItems.length > 3 && (
+            <details className="lg:hidden bg-white border border-stone-200/90 rounded-2xl mb-8 shadow-xs group">
+              <summary className="cursor-pointer list-none flex items-center justify-between px-5 py-4 text-sm font-bold text-stone-900">
+                <span>In this article</span>
+                <ChevronRight className="w-4 h-4 text-stone-400 transition-transform group-open:rotate-90" />
+              </summary>
+              <nav aria-label="In this article" className="px-5 pb-4 space-y-1 border-t border-stone-100 pt-3">
+                {tocItems.map((item) => (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    onClick={(e) => scrollToHeading(e, item.id)}
+                    className={`block py-1.5 leading-snug ${item.level === 3 ? 'pl-4 text-[13px] text-stone-600' : 'text-sm font-semibold text-stone-900'} hover:text-amber-800`}
+                  >
+                    {item.text}
+                  </a>
+                ))}
+              </nav>
+            </details>
+          )}
+
           {activePost.body && Array.isArray(activePost.body) && activePost.body.length > 0 ? (
             <div className="space-y-4">
               <PortableText value={activePost.body} components={portableTextComponents} />
@@ -746,15 +855,25 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                   Boolean(section.product?.image) &&
                   section.image === section.product?.image;
 
+                const IdeaHeading = hasGroups ? 'h3' : 'h2';
+
                 return (
                   <React.Fragment key={idx}>
+                  {section.group && (
+                    <h2
+                      id={slugifyHeading(section.group, idx)}
+                      className="font-serif text-2xl sm:text-3xl font-black text-stone-900 pt-6 leading-tight tracking-tight scroll-mt-28 border-t-4 border-amber-500/70 mt-16 mb-0"
+                    >
+                      {section.group}
+                    </h2>
+                  )}
                   <article 
                     id={secId}
                     className="border-b border-stone-200/80 pb-12 last:border-b-0 last:pb-0 scroll-mt-28"
                   >
-                    <h2 className="font-serif text-2xl sm:text-3xl font-black text-stone-900 mt-10 mb-4 leading-tight tracking-tight">
+                    <IdeaHeading className={`font-serif font-black text-stone-900 mb-4 leading-tight tracking-tight ${hasGroups ? 'text-xl sm:text-2xl mt-6' : 'text-2xl sm:text-3xl mt-10'}`}>
                       {formattedTitle}
-                    </h2>
+                    </IdeaHeading>
 
                     {formattedBody.split(/\n\s*\n/).map((para: string, pIdx: number) => {
                       const labelMatch = para.match(/^(Renter tip:|Watch out:|Good to know:)\s*/);
@@ -812,6 +931,9 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                     )}
 
                     {section.product && <ProductCallout product={section.product} />}
+                    {Array.isArray(section.alsoGood) && section.alsoGood.length > 0 && (
+                      <AlsoGood picks={section.alsoGood} />
+                    )}
                   </article>
                   {idx === 3 && activePost.sections.length > 5 && <InlineNewsletter />}
                   </React.Fragment>
@@ -829,6 +951,23 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
             </div>
           )}
 
+          {pins[1] && <PinBlock pin={pins[1]} postSlug={slug || ''} />}
+
+          {/* KEY TAKEAWAYS */}
+          {Array.isArray(activePost.keyTakeaways) && activePost.keyTakeaways.length > 0 && (
+            <section className="mt-12 bg-white border-l-4 border-amber-600 border-y border-r border-stone-200/90 rounded-2xl p-5 sm:p-6 shadow-xs">
+              <h2 className="font-serif text-2xl font-black text-stone-900 mb-4">Key Takeaways</h2>
+              <ul className="space-y-2.5">
+                {activePost.keyTakeaways.map((k: string, i: number) => (
+                  <li key={i} className="flex gap-3 text-stone-700 leading-relaxed">
+                    <Check className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5 stroke-[3]" aria-hidden="true" />
+                    <span>{renderInline(k)}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {/* MISTAKES TO AVOID */}
           {Array.isArray(activePost.mistakes) && activePost.mistakes.length > 0 && (
             <section className="mt-12 bg-amber-50/60 border border-amber-200/80 rounded-2xl p-5 sm:p-6">
@@ -841,6 +980,35 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                   </li>
                 ))}
               </ul>
+            </section>
+          )}
+
+          {/* KEEP READING */}
+          {keepReading.length > 0 && (
+            <section className="mt-12">
+              <h2 className="font-serif text-2xl font-black text-stone-900 mb-4">Keep Reading</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {keepReading.map((p) => (
+                  <Link
+                    key={p.slug}
+                    to={`/blog/${p.slug}`}
+                    className="group flex items-center gap-3 bg-white border border-stone-200/90 rounded-2xl p-3 hover:border-amber-400 hover:shadow-sm transition-all"
+                  >
+                    <div className="w-16 aspect-[2/3] rounded-lg overflow-hidden bg-stone-100 shrink-0">
+                      <img
+                        src={p.featuredImageSrc || p.sections[0]?.image}
+                        alt={p.featuredImageAlt || p.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="text-[10px] font-mono text-amber-700 font-semibold block uppercase">{p.category}</span>
+                      <span className="text-sm font-bold text-stone-900 leading-snug line-clamp-3 group-hover:text-amber-800">{p.title}</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </section>
           )}
 
@@ -896,7 +1064,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                         key={item.id}
                         href={`#${item.id}`}
                         onClick={(e) => scrollToHeading(e, item.id)}
-                        className={`block text-[13px] leading-relaxed py-2.5 px-3 rounded-xl transition-all duration-150 border-l-[3px] ${
+                        className={`block leading-relaxed py-2.5 px-3 rounded-xl transition-all duration-150 border-l-[3px] ${item.level === 3 ? 'ml-3 text-[12.5px]' : 'text-[13px] font-semibold'} ${
                           isActive
                             ? 'bg-amber-50/90 text-amber-900 font-bold border-amber-600 shadow-2xs'
                             : 'border-transparent text-stone-600 hover:text-stone-900 hover:bg-stone-50'

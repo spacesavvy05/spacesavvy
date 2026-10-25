@@ -50,7 +50,7 @@ export default function FaqAccordion({ items }: FaqAccordionProps) {
               <div key={index} className="py-4">
                 <button
                   onClick={() => toggleIndex(index)}
-                  className="flex w-full items-center justify-between py-2 text-left text-base md:text-lg font-serif font-bold text-stone-900 hover:text-amber-800 transition-colors group"
+                  className="flex w-full items-center justify-between py-2 text-left text-base md:text-lg font-sans font-semibold text-stone-900 hover:text-amber-800 transition-colors group"
                   aria-expanded={isOpen}
                 >
                   <span className="pr-4">{item.question}</span>

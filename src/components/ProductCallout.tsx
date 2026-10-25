@@ -31,7 +31,7 @@ export default function ProductCallout({ product, alsoGood }: ProductCalloutProp
           <span className="text-[10px] font-mono uppercase tracking-widest text-amber-700 font-bold block mb-0.5">
             Our pick
           </span>
-          <p className="font-serif text-lg font-bold text-stone-900 leading-snug">{product.name}</p>
+          <p className="font-sans text-base sm:text-[17px] font-bold text-stone-900 leading-snug">{product.name}</p>
           {details && <p className="text-xs text-stone-500 mt-1">{details}</p>}
         </div>
         <a

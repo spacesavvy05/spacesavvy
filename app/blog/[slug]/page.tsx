@@ -617,7 +617,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
         );
       },
       normal: ({ children }: any) => (
-        <p className="text-stone-700 leading-relaxed text-base sm:text-lg mb-6">
+        <p className="text-stone-700 leading-relaxed text-[17px] sm:text-lg mb-6">
           {children}
         </p>
       ),
@@ -741,7 +741,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
               <span className="text-[11px] font-bold tracking-widest text-amber-800 uppercase font-mono block mb-2">
                 THE SPACESAVVY TAKEAWAY
               </span>
-              <p className="font-serif text-base sm:text-lg text-stone-800 leading-relaxed font-medium">
+              <p className="font-sans text-[17px] sm:text-lg text-stone-800 leading-relaxed">
                 {takeaway}
               </p>
             </section>
@@ -750,7 +750,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
           {Array.isArray(activePost.intro) && activePost.intro.length > 0 && (
             <div className="mb-6">
               {activePost.intro.map((para: string, i: number) => (
-                <p key={i} className="text-stone-700 leading-relaxed text-base sm:text-lg mb-5">
+                <p key={i} className="text-stone-700 leading-relaxed text-[17px] sm:text-lg mb-5">
                   {renderInline(para)}
                 </p>
               ))}
@@ -844,7 +844,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                     id={secId}
                     className="border-b border-stone-200/80 pb-12 last:border-b-0 last:pb-0 scroll-mt-28"
                   >
-                    <IdeaHeading className={`font-serif text-2xl sm:text-3xl font-black text-stone-900 mb-4 leading-tight tracking-tight ${section.group ? 'mt-6' : 'mt-10'}`}>
+                    <IdeaHeading className={`font-serif text-[28px] sm:text-3xl font-black text-stone-900 mb-4 leading-tight tracking-tight ${section.group ? 'mt-6' : 'mt-10'}`}>
                       {formattedTitle}
                     </IdeaHeading>
 
@@ -855,7 +855,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                         return (
                           <p
                             key={pIdx}
-                            className={`text-stone-700 leading-relaxed text-sm sm:text-base mb-3 pl-4 border-l-4 ${isTip ? 'border-emerald-500' : 'border-amber-500'}`}
+                            className={`text-stone-700 leading-relaxed text-[15px] sm:text-base mb-3 pl-4 border-l-4 ${isTip ? 'border-emerald-500' : 'border-amber-500'}`}
                           >
                             <strong className="text-stone-900">{labelMatch[1]}</strong>{' '}
                             {renderInline(para.slice(labelMatch[0].length))}
@@ -870,7 +870,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                         return (
                           <ListTag
                             key={pIdx}
-                            className={`${isSteps ? 'list-decimal' : 'list-disc'} pl-6 mb-6 space-y-2 text-stone-700 leading-relaxed text-base sm:text-lg marker:text-amber-700 marker:font-bold`}
+                            className={`${isSteps ? 'list-decimal' : 'list-disc'} pl-6 mb-6 space-y-2 text-stone-700 leading-relaxed text-[17px] sm:text-lg marker:text-amber-700 marker:font-bold`}
                           >
                             {lines.map((l: string, li: number) => (
                               <li key={li}>{renderInline(l.replace(/^(- |\d+\.\s)/, ''))}</li>
@@ -886,7 +886,7 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                         );
                       }
                       return (
-                        <p key={pIdx} className="text-stone-700 leading-relaxed text-base sm:text-lg mb-6">
+                        <p key={pIdx} className="text-stone-700 leading-relaxed text-[17px] sm:text-lg mb-6">
                           {renderInline(para)}
                         </p>
                       );

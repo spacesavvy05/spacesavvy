@@ -124,6 +124,7 @@ interface ArticleLike {
     image?: string;
     imageAlt?: string;
     group?: string;
+    groupAnswer?: string;
     alsoGood?: { label: string; name: string; affiliateUrl: string }[];
   }[];
   faqs: { question: string; answer: string }[];
@@ -203,7 +204,7 @@ function articlePage(a: ArticleLike): PageMeta {
             .join(' · ')}</p>`
         : '';
       const head = hasGroups ? `<h3>${esc(s.title)}</h3>` : `<h2>${esc(s.title)}</h2>`;
-      return `${s.group ? `<h2>${esc(s.group)}</h2>` : ''}${head}${paras}${img}${product}${also}`;
+      return `${s.group ? `<h2>${esc(s.group)}</h2>${s.groupAnswer ? `<p>${links(esc(s.groupAnswer))}</p>` : ''}` : ''}${head}${paras}${img}${product}${also}`;
     })
     .join('');
   const faqHtml = a.faqs.length
@@ -269,6 +270,7 @@ const fromStatic = (p: Post): ArticleLike => ({
     productName: s.product?.name,
     productUrl: s.product?.affiliateUrl,
     group: s.group,
+    groupAnswer: s.groupAnswer,
     alsoGood: s.alsoGood,
   })),
   faqs: p.faqs || [],

@@ -840,6 +840,11 @@ export default function ArticleTemplate({ params }: PageProps = {}) {
                       {section.group}
                     </h2>
                   )}
+                  {section.group && section.groupAnswer && (
+                    <p className="mt-4 mb-0 text-[17px] sm:text-lg text-stone-800 leading-relaxed font-medium">
+                      {renderInline(section.groupAnswer)}
+                    </p>
+                  )}
                   <article 
                     id={secId}
                     className="border-b border-stone-200/80 pb-12 last:border-b-0 last:pb-0 scroll-mt-28"

@@ -23,6 +23,7 @@ export interface Section {
   product?: Product;
   alsoGood?: AltPick[];
   group?: string; // question heading (H2) that starts a new group of ideas
+  groupAnswer?: string; // 1-2 sentence direct answer shown under the question heading
 }
 
 // A Pinterest pin graphic shown inside the article with a Save button
@@ -68,6 +69,694 @@ export const CATEGORIES = [
 ] as const;
 
 export const posts: Post[] = [
+  // ---- Gift guides (Oct 30, 2026) ----
+{
+  "slug": "gifts-for-gamers-small-desk",
+  "title": "15 Gifts for Gamers With Small Desks (Space-Saving Picks They'll Actually Use)",
+  "excerpt": "Gift ideas for gamers with tiny desks: a monitor arm, a light bar, a compact keyboard, under-desk hooks and trays, plus stocking stuffers and cozy extras that free up space instead of filling it.",
+  "category": "Gaming Setups",
+  "publishDate": "October 30, 2026",
+  "readTime": "4 min read",
+  "takeaway": "The best gift for a gamer with a small desk is one that frees up space: a monitor arm, a monitor light bar, a compact 75% keyboard or an under-desk cable tray. For stocking stuffers, go for Christmas keycaps, reusable cable ties or a festive desk mat. Avoid big gadgets that need more desk space.",
+  "featuredImageAlt": "Flat-lay of gamer gifts on a dark desk: compact keyboard, headset, mouse, light bar, cables, desk mat and wrapped presents",
+  "featuredImageSrc": "/images/blog/gifts-for-gamers-small-desk/gifts-for-gamers-small-desk-cover.webp",
+  "intro": [
+    "Shopping for a gamer is easy until you see their desk. In a small apartment or a bedroom setup, there's often no room for another gadget, and the gift that would be great on a big desk just becomes clutter on a small one.",
+    "This list is built around one rule: every gift either frees up desk space or fits into the space they already have. It's organized from bigger upgrades to stocking stuffers and cozy extras. If they're decorating for the holidays, our [Christmas gaming setup ideas](/blog/christmas-gaming-setup-ideas) pair perfectly with these gifts."
+  ],
+  "atAGlance": [
+    {
+      "label": "Best overall",
+      "pick": "A gas-spring monitor arm (gift #1). It frees up the whole space under the screen."
+    },
+    {
+      "label": "Best for late-night gaming",
+      "pick": "A monitor light bar (gift #2)"
+    },
+    {
+      "label": "Best for tiny desks",
+      "pick": "A compact 75% wireless keyboard (gift #3)"
+    },
+    {
+      "label": "Best stocking stuffer",
+      "pick": "Christmas keycaps (gift #10) or reusable cable ties (gift #11)"
+    }
+  ],
+  "situations": [
+    {
+      "situation": "Their desk is cluttered",
+      "pick": "A monitor arm (gift #1) or a monitor riser with a drawer (gift #4)."
+    },
+    {
+      "situation": "They game late at night",
+      "pick": "A monitor light bar (gift #2)."
+    },
+    {
+      "situation": "Cables are everywhere",
+      "pick": "An under-desk cable tray (gift #5) and reusable cable ties (gift #11)."
+    },
+    {
+      "situation": "They play on PlayStation 5",
+      "pick": "A dual controller charging station (gift #8)."
+    },
+    {
+      "situation": "You want something small and cheap",
+      "pick": "Keycaps, cable ties or a screen cleaning kit (gifts #10 to #12)."
+    }
+  ],
+  "sections": [
+    {
+      "group": "What Are the Best Gifts for a Gamer With a Small Desk?",
+      "groupAnswer": "Gifts that free up space: a monitor arm, a monitor light bar, a compact keyboard, a monitor riser with a drawer or an under-desk cable tray. Skip big gadgets that need more room on the desk.",
+      "title": "A Gas-Spring Monitor Arm",
+      "body": "The single best upgrade for a small desk. A monitor arm clamps to the back edge of the desk and lifts the screen off its stand, so the whole space under the monitor comes back. They can also move the screen closer, higher or to the side in seconds.\n\nGood to know: Check the monitor size and the VESA mount (the four screw holes on the back) before buying. Most monitors from 13 to 32 inches work.",
+      "image": "/images/blog/gifts-for-gamers-small-desk/monitor-arm-small-gaming-desk-gift.webp",
+      "imageAlt": "Compact gaming desk with the monitor on a black gas-spring arm and a gift tag with a red bow",
+      "product": {
+        "name": "HUANUO FlowLift Single Monitor Arm (13–32\")",
+        "affiliateUrl": "https://www.amazon.com/dp/B07T3KCQ94?tag=spacesavvy07-20",
+        "dimensions": "13–32\" monitors"
+      }
+    },
+    {
+      "title": "A Monitor Light Bar",
+      "body": "A light bar sits on top of the monitor and lights the desk without glare on the screen. It replaces a desk lamp, which saves space, and it's much easier on the eyes during late-night sessions.\n\nGood to know: It's powered by USB, so it doesn't need an extra outlet.",
+      "product": {
+        "name": "Quntis Monitor Light Bar (USB)",
+        "affiliateUrl": "https://www.amazon.com/dp/B08DKQ3JG1?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Compact 75% Wireless Keyboard",
+      "body": "A 75% keyboard drops the number pad and squeezes the layout, which gives the mouse several extra inches of room. On a small desk that's a real difference, and wireless means one less cable.\n\nGood to know: Hot-swappable keyboards let them change switches and keycaps later, which makes it a gift that keeps on giving.",
+      "product": {
+        "name": "AULA F75 Pro Wireless Mechanical Keyboard (75%)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0D14N2QZF?tag=spacesavvy07-20"
+      },
+      "alsoGood": [
+        {
+          "label": "Alternative",
+          "name": "Redragon K673 PRO wireless 75% keyboard",
+          "affiliateUrl": "https://www.amazon.com/dp/B0CDX5XGLK?tag=spacesavvy07-20"
+        }
+      ]
+    },
+    {
+      "title": "A Monitor Riser With a Drawer",
+      "body": "If they don't want a monitor arm, a riser does a similar job: it lifts the screen to a better height and adds a drawer underneath for small things, so the desktop stays clear.",
+      "product": {
+        "name": "WALI Monitor Stand With Storage and Pen Holder",
+        "affiliateUrl": "https://www.amazon.com/dp/B0G2RQLGQ9?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A No-Drill Under-Desk Cable Tray",
+      "body": "Power strips and chargers lying on the floor or the desk make a small setup look messy. An under-desk tray holds them all out of sight, and this one clamps on without drilling, so it works for renters. Our [cable management guide](/blog/no-drill-cable-management-hide-power-bricks) shows how to set it up.",
+      "product": {
+        "name": "Univivi No-Drill Under-Desk Cable Tray (36\")",
+        "affiliateUrl": "https://www.amazon.com/dp/B0DK13ZHNJ?tag=spacesavvy07-20",
+        "dimensions": "36\" long"
+      }
+    },
+    {
+      "group": "What Small Gaming Gifts Free Up Desk Space?",
+      "groupAnswer": "Things that move gear off the desk: a clamp-on headset hook, a wireless charging pad, a controller charging station and a desk-side storage pocket.",
+      "title": "An Under-Desk Headset Hook",
+      "body": "A headset on the desk takes up surprising space. A clamp-on hook holds it under the desk edge, out of the way but always within reach.",
+      "image": "/images/blog/gifts-for-gamers-small-desk/headset-stand-under-desk-hanger-gift.webp",
+      "imageAlt": "Headset hanging on a hook clamped under a small desk, with a wireless charging pad and a wrapped gift on top",
+      "product": {
+        "name": "EURPMASK Rotating Clamp-On Headset Holder",
+        "affiliateUrl": "https://www.amazon.com/dp/B07BVK2FQW?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Wireless Charging Pad",
+      "body": "No more phone cables trailing across the desk. A thin pad gives the phone a set spot, and it charges while they play.",
+      "product": {
+        "name": "TOZO W1 Max 15W Wireless Charging Pad",
+        "affiliateUrl": "https://www.amazon.com/dp/B0GVQMM18M?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Controller Charging Station (PS5)",
+      "body": "For console gamers, a charging dock keeps both controllers charged and stored in one small footprint instead of loose on the desk or floor.\n\nGood to know: This one is made for PlayStation 5 controllers. Check which console they play before buying.",
+      "product": {
+        "name": "OIVO PS5 Controller Charging Station",
+        "affiliateUrl": "https://www.amazon.com/dp/B0GDWQPVXF?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Desk-Side Storage Organizer",
+      "body": "It clips onto the side edge of the desk and holds remotes, cables and small accessories, using space that's normally wasted.",
+      "product": {
+        "name": "Desk-Side Storage Organizer (Clamp-On)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CTQ8NWTQ?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "group": "What Are Good Stocking Stuffers for Gamers?",
+      "groupAnswer": "Christmas keycaps with a keycap puller, reusable cable ties, a screen cleaning kit or a festive desk mat. All are small, useful and easy to wrap.",
+      "title": "Christmas Keycaps (Plus a Puller)",
+      "body": "A set of Christmas keycaps turns their keyboard into the most festive thing on the desk, and swapping them is a fun 20-minute job. Add a keycap puller and it's a complete little gift.\n\nGood to know: Only for mechanical keyboards with standard (MX-style) switches. Low-profile keyboards need different keycaps.",
+      "image": "/images/blog/gifts-for-gamers-small-desk/gamer-stocking-stuffers-flat-lay.webp",
+      "imageAlt": "Gamer stocking stuffers on a green desk mat: keycaps, keycap puller, phone stand, cable organizer, cloth and small light",
+      "product": {
+        "name": "PBT Christmas Night Keycaps, 145 Keys",
+        "affiliateUrl": "https://www.amazon.com/dp/B0FP8K9H69?tag=spacesavvy07-20"
+      },
+      "alsoGood": [
+        {
+          "label": "Add-on",
+          "name": "Stainless steel keycap puller",
+          "affiliateUrl": "https://www.amazon.com/dp/B075CZCTXM?tag=spacesavvy07-20"
+        }
+      ]
+    },
+    {
+      "title": "Reusable Cable Ties",
+      "body": "Every gamer has a cable mess somewhere. Soft hook-and-loop ties bundle cables neatly and can be reused endlessly. Boring? Maybe. Used every week? Definitely.",
+      "product": {
+        "name": "Nettbe Reusable Cable Ties (60-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B081HH5X61?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Screen Cleaning Kit",
+      "body": "Monitors collect dust and fingerprints fast. A spray and microfiber cloth made for screens keeps them clear without damaging the coating.",
+      "product": {
+        "name": "YTT Screen Cleaner Spray Kit",
+        "affiliateUrl": "https://www.amazon.com/dp/B0D2XCBBYW?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Christmas Desk Mat",
+      "body": "An XXL desk mat covers the whole desk, so it changes the look of the setup instantly and gives the mouse a smooth surface. A festive one is perfect for December.",
+      "product": {
+        "name": "Baziabbo Christmas Desk Mat, XXL",
+        "affiliateUrl": "https://www.amazon.com/dp/B0FMR82M8P?tag=spacesavvy07-20",
+        "dimensions": "XXL"
+      }
+    },
+    {
+      "group": "What Cozy Gifts Do Gamers Actually Use?",
+      "groupAnswer": "A mug warmer and an under-desk footrest. Both make long sessions more comfortable and take almost no space.",
+      "title": "A Mug Warmer",
+      "body": "No more cold coffee halfway through a match. A small warmer keeps their drink hot, and the timer means it switches itself off.",
+      "product": {
+        "name": "Coffee Mug Warmer With 12H Timer (Wood)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CCP46DK9?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "An Under-Desk Footrest",
+      "body": "Long sessions are hard on the back and legs. A memory foam footrest sits under the desk, takes zero desk space and makes a real difference to comfort.",
+      "product": {
+        "name": "Everlasting Comfort Memory Foam Footrest",
+        "affiliateUrl": "https://www.amazon.com/dp/B0GZY5X7RS?tag=spacesavvy07-20"
+      }
+    }
+  ],
+  "keyTakeaways": [
+    "For a small desk, the best gifts free up space: a monitor arm, a light bar or a compact keyboard.",
+    "Under-desk gifts (headset hook, cable tray) make a small setup look clean instantly.",
+    "Christmas keycaps, cable ties and a desk mat are easy, useful stocking stuffers.",
+    "Check their monitor size, keyboard type and console before you buy."
+  ],
+  "mistakes": [
+    "Buying a big gadget that needs more desk space they don't have.",
+    "Buying keycaps without checking their keyboard type.",
+    "Buying console accessories without checking which console they play.",
+    "Adding more RGB clutter when what they need is less stuff on the desk."
+  ],
+  "faqs": [
+    {
+      "question": "What is a good gift for a gamer with a small desk?",
+      "answer": "A gas-spring monitor arm, a monitor light bar or a compact 75% keyboard. All three free up desk space instead of taking it."
+    },
+    {
+      "question": "What are good stocking stuffers for gamers?",
+      "answer": "Christmas keycaps with a keycap puller, reusable cable ties, a screen cleaning kit or a festive desk mat."
+    },
+    {
+      "question": "Is a monitor arm a good gift?",
+      "answer": "Yes. It frees up the space under the monitor and makes the screen easy to adjust. Check the monitor's size and VESA mount first."
+    }
+  ],
+  "related": [
+    "christmas-gaming-setup-ideas",
+    "small-gaming-room-ideas-tight-desk-setups",
+    "no-drill-cable-management-hide-power-bricks",
+    "gifts-for-first-apartment"
+  ],
+  "pins": [
+    {
+      "src": "/images/pins/pin-gifts-gamer-1-small-desk.webp",
+      "alt": "Pinterest pin: gifts for gamers with small desks",
+      "description": "Gift ideas for gamers with small desks: a monitor arm, a light bar, a compact keyboard, under-desk hooks and trays, plus stocking stuffers they'll actually use. #giftsforgamers #gamergifts #christmasgifts #gamingsetup"
+    }
+  ]
+},
+{
+  "slug": "stocking-stuffers-small-apartment",
+  "title": "15 Practical Stocking Stuffers for Small Apartments (Renter-Friendly)",
+  "excerpt": "Small, useful stocking stuffers for anyone living in a small apartment: damage-free hooks, smart plugs, motion lights, vacuum bags, a mini tool set and more. No clutter, all things they'll use.",
+  "category": "Curated Amazon Finds",
+  "publishDate": "October 30, 2026",
+  "readTime": "4 min read",
+  "takeaway": "The best stocking stuffers for small apartments are small, useful things renters actually need: damage-free hooks, a mini smart plug, rechargeable motion lights, vacuum storage bags and a precision screwdriver set. Skip novelty gifts that just become more stuff in a small space.",
+  "featuredImageAlt": "Cream knit Christmas stocking on a bookshelf garland filled with small practical gifts",
+  "featuredImageSrc": "/images/blog/stocking-stuffers-small-apartment/stocking-stuffers-small-apartment-cover.webp",
+  "intro": [
+    "In a small apartment, novelty gifts are a problem. That funny mug or desk toy becomes one more thing on a shelf that's already full. The stocking stuffers people actually love are the small, practical things they need but never buy for themselves.",
+    "Everything on this list is small enough for a stocking, useful in a tiny space and renter-friendly. For bigger gifts, see our [first apartment gift ideas](/blog/gifts-for-first-apartment)."
+  ],
+  "atAGlance": [
+    {
+      "label": "Best overall",
+      "pick": "Damage-free adhesive hooks (#1). Every renter uses them."
+    },
+    {
+      "label": "Best tech",
+      "pick": "A mini smart plug (#11)"
+    },
+    {
+      "label": "Best for tiny closets",
+      "pick": "Rechargeable motion-sensor lights (#12)"
+    },
+    {
+      "label": "Best for storage",
+      "pick": "Vacuum storage bags (#6)"
+    }
+  ],
+  "situations": [
+    {
+      "situation": "They just moved into their first apartment",
+      "pick": "Adhesive hooks, a mini tool set and a smart plug (#1, #5, #11)."
+    },
+    {
+      "situation": "Their closet is overflowing",
+      "pick": "Vacuum storage bags and slim hangers (#6 and #8)."
+    },
+    {
+      "situation": "They live alone",
+      "pick": "A door stop alarm and a fire extinguishing spray (#4 and #14)."
+    },
+    {
+      "situation": "They love organizing",
+      "pick": "A label maker and drawer dividers (#10 and #7)."
+    }
+  ],
+  "sections": [
+    {
+      "group": "What Are the Best Stocking Stuffers for Renters?",
+      "groupAnswer": "Damage-free adhesive hooks, over-the-door hooks, reusable zip ties, a door stop alarm and a mini screwdriver set. All small, useful and renter-friendly.",
+      "title": "Damage-Free Adhesive Hooks",
+      "body": "Every renter goes through a pack of these: keys by the door, towels in the bathroom, bags in the closet, all without nails. Clear ones disappear on any wall.\n\nGood to know: A pack of hooks plus a note on where you'd use them makes a thoughtful little gift.",
+      "image": "/images/blog/stocking-stuffers-small-apartment/stocking-stuffers-flat-lay-renters.webp",
+      "imageAlt": "Flat-lay of practical renter gifts: adhesive hooks, smart plug, motion light, vacuum bags, screwdriver set and key tray",
+      "product": {
+        "name": "Command Medium Clear Hooks (7 Hooks)",
+        "affiliateUrl": "https://www.amazon.com/dp/B076ZZ9D2V?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "Over-the-Door Hooks",
+      "body": "Turns the back of any door into storage for coats, bags and towels, with zero installation. In a tiny entryway or bathroom, it's free space they didn't know they had.",
+      "image": "/images/blog/stocking-stuffers-small-apartment/over-door-hooks-entryway-small-apartment.webp",
+      "imageAlt": "Small apartment entryway with an over-the-door hook rack holding a coat and a tote, and a wreath on the door",
+      "product": {
+        "name": "Optish Over-the-Door Hooks",
+        "affiliateUrl": "https://www.amazon.com/dp/B0BR8SX468?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "Reusable Zip Ties",
+      "body": "For cables, garland, plants and a hundred small fixes. They release with a little tab, so they come off without cutting and get used again.",
+      "product": {
+        "name": "Reusable Zip Ties, Assorted Sizes (100-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B09VT1Q1M2?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Door Stop Alarm",
+      "body": "A wedge that sounds a loud alarm if someone pushes the door open. Small, cheap and real peace of mind for anyone living alone. It works in hotels too.",
+      "product": {
+        "name": "ZZRUI Door Stop Alarm (4-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0BYK5NPLG?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Precision Screwdriver Set",
+      "body": "Glasses, battery covers, toys, game controllers, tiny furniture screws: a small precision set fixes all of it and fits in a drawer.",
+      "product": {
+        "name": "JOREST Precision Screwdriver Set",
+        "affiliateUrl": "https://www.amazon.com/dp/B09FFCGLHK?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "group": "Which Small Gifts Make a Tiny Apartment Feel Bigger?",
+      "groupAnswer": "Gifts that create space: vacuum storage bags, drawer dividers, slim hangers, a key tray for the entryway and a label maker to keep it all organized.",
+      "title": "Vacuum Storage Bags",
+      "body": "Bulky winter duvets and sweaters shrink to a fraction of their size, which frees up a whole shelf in a small closet. The hand pump means no vacuum is needed.",
+      "product": {
+        "name": "Vacuum Storage Bags With Hand Pump (20 Combo)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0973DGD8P?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "Adjustable Drawer Dividers",
+      "body": "Small dressers fill up fast. Dividers keep socks, underwear and accessories in neat rows, so the same drawer holds more.",
+      "product": {
+        "name": "Vtopmart Adjustable Drawer Dividers (12-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0D5Y391WS?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "Slim Velvet Hangers",
+      "body": "Too big for a stocking, but a perfect under-the-tree add-on. Matching slim hangers free up a surprising amount of rail space in a small closet, and clothes stop slipping off.",
+      "product": {
+        "name": "Amazon Basics Slim Velvet Hangers (50-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B00FXNAAW2?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Key Tray for the Entryway",
+      "body": "Keys, wallet, earbuds: one tray by the door ends the daily search. It looks nice on a small shelf or bench.",
+      "product": {
+        "name": "ProCase Wood Valet Key Tray",
+        "affiliateUrl": "https://www.amazon.com/dp/B0DN5W1BKS?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Mini Label Maker",
+      "body": "For the organizing fan in your life: labels for bins, jars, cables and storage boxes. Small apartments stay tidy when everything has a labeled spot.",
+      "product": {
+        "name": "Nelko P21 Bluetooth Label Maker",
+        "affiliateUrl": "https://www.amazon.com/dp/B0C3L93F2Q?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "group": "What Are Good Tech and Lighting Stocking Stuffers?",
+      "groupAnswer": "A mini smart plug, rechargeable motion-sensor lights, battery fairy lights, a fire extinguishing spray and a compact tape measure.",
+      "title": "A Mini Smart Plug",
+      "body": "Turns any lamp or fan into a smart one, with schedules and voice control. Great for lights on a timer and peace of mind when traveling.\n\nGood to know: Check whether they use Alexa or Google before buying.",
+      "product": {
+        "name": "Kasa Smart Plug Ultra Mini",
+        "affiliateUrl": "https://www.amazon.com/dp/B091FXQQMQ?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "Rechargeable Motion-Sensor Lights",
+      "body": "Most apartment closets and cabinets have no light at all. These stick on with magnets and switch on when the door opens. No wiring, so they're perfect for renters.",
+      "image": "/images/blog/stocking-stuffers-small-apartment/motion-sensor-light-closet-stocking-stuffer.webp",
+      "imageAlt": "Small closet lit by a slim motion-sensor light bar, with velvet hangers and a wrapped gift on the shelf",
+      "product": {
+        "name": "MCGOR Rechargeable Motion Sensor Lights (2-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0BDF8CVBN?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "Battery Fairy Lights",
+      "body": "A cozy gift that works anywhere: jars, shelves, headboards, mirrors. Battery strands with a timer need no outlet and switch themselves off.",
+      "product": {
+        "name": "Battery Fairy Lights, 33 ft, 100 LED With Remote (4-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0BB31GP3Y?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Fire Extinguishing Spray",
+      "body": "Small enough for a stocking and easy to use on a small kitchen fire. Almost nobody buys one for themselves.\n\nGood to know: It's a great add-on, but a proper home fire extinguisher is still the best protection for a kitchen.",
+      "product": {
+        "name": "First Alert EZ Fire Spray",
+        "affiliateUrl": "https://www.amazon.com/dp/B002U0KGDY?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Compact Tape Measure",
+      "body": "Will the sofa fit? Is that shelf too deep? In a small apartment you measure everything. A good 25 ft tape measure gets used constantly.",
+      "product": {
+        "name": "Komelon Self-Lock 25 ft Tape Measure",
+        "affiliateUrl": "https://www.amazon.com/dp/B000BQKXLE?tag=spacesavvy07-20"
+      }
+    }
+  ],
+  "keyTakeaways": [
+    "The best stocking stuffers for small apartments are small, practical things renters never buy for themselves.",
+    "Damage-free hooks, a smart plug and motion lights are the safest crowd-pleasers.",
+    "Gifts that create space (vacuum bags, drawer dividers, slim hangers) beat gifts that take space.",
+    "Skip novelty items. In a small apartment they just become clutter."
+  ],
+  "mistakes": [
+    "Buying novelty gifts that end up as clutter.",
+    "Choosing anything that needs drilling or wiring in a rental.",
+    "Buying a smart plug without checking whether they use Alexa or Google."
+  ],
+  "faqs": [
+    {
+      "question": "What are good stocking stuffers for someone in a small apartment?",
+      "answer": "Damage-free adhesive hooks, a mini smart plug, rechargeable motion lights, vacuum storage bags and a precision screwdriver set."
+    },
+    {
+      "question": "What are practical stocking stuffers for renters?",
+      "answer": "Anything that solves a renter problem without drilling: adhesive hooks, over-the-door hooks, motion-sensor lights, reusable zip ties and a door stop alarm."
+    },
+    {
+      "question": "What small gift helps organize a small apartment?",
+      "answer": "Drawer dividers, vacuum storage bags, a key tray for the entryway or a mini label maker."
+    }
+  ],
+  "related": [
+    "gifts-for-first-apartment",
+    "heavy-duty-adhesive-hooks-racks-rental-paint",
+    "20-studio-apartment-storage-must-haves-under-25",
+    "holiday-storage-ideas-small-apartments"
+  ],
+  "pins": [
+    {
+      "src": "/images/pins/pin-gifts-stocking-1-small-apartment.webp",
+      "alt": "Pinterest pin: practical stocking stuffers for small apartments",
+      "description": "Practical stocking stuffers for small apartments: damage-free hooks, a mini smart plug, motion lights, vacuum storage bags, a mini tool set and more. Renter-friendly and clutter-free. #stockingstuffers #christmasgifts #smallapartment #giftideas"
+    }
+  ]
+},
+{
+  "slug": "work-from-home-gifts-small-space",
+  "title": "14 Gifts for People Who Work From Home in Small Spaces",
+  "excerpt": "Space-saving work-from-home gifts for small apartments: a laptop stand, a compact keyboard and mouse, a monitor light bar, a fold-down wall desk, a lap desk and cozy extras like a mug warmer and slippers.",
+  "category": "Compact Workspaces",
+  "publishDate": "October 30, 2026",
+  "readTime": "4 min read",
+  "takeaway": "For someone working from a small apartment, the best gifts make a tiny workspace more comfortable without taking more room: a laptop stand, a compact keyboard and mouse, a monitor light bar and a felt desk pad. A fold-down wall desk or a lap desk is a bigger gift that solves the 'no room for a desk' problem.",
+  "featuredImageAlt": "Compact home office corner at Christmas with a laptop on a stand, monitor light bar, mug and wrapped gift",
+  "featuredImageSrc": "/images/blog/work-from-home-gifts-small-space/work-from-home-gifts-small-space-cover.webp",
+  "intro": [
+    "Working from home in a small apartment usually means working from a corner, a kitchen table or the sofa. The right gift makes that space more comfortable and more organized, without asking for room they don't have.",
+    "These gifts are grouped into desk upgrades, space-saving furniture and cozy extras. For setup ideas, see our [small space desk hacks](/blog/15-small-space-desk-hacks-maximize-apartment-corners)."
+  ],
+  "atAGlance": [
+    {
+      "label": "Best overall",
+      "pick": "An aluminum laptop stand (#1). Better posture, more desk space."
+    },
+    {
+      "label": "Best for no-desk apartments",
+      "pick": "A wall-mounted fold-down desk (#7)"
+    },
+    {
+      "label": "Best for the sofa worker",
+      "pick": "A cushioned lap desk (#8)"
+    },
+    {
+      "label": "Best cozy gift",
+      "pick": "A mug warmer (#10)"
+    }
+  ],
+  "situations": [
+    {
+      "situation": "They work from the sofa or bed",
+      "pick": "A cushioned lap desk (#8)."
+    },
+    {
+      "situation": "They have no room for a desk",
+      "pick": "A fold-down wall desk (#7)."
+    },
+    {
+      "situation": "They're on video calls all day",
+      "pick": "A clip-on video light and noise-cancelling earbuds (#6 and #14)."
+    },
+    {
+      "situation": "Their desk is a mess",
+      "pick": "A desk organizer and a cable management box (#5 and #9)."
+    }
+  ],
+  "sections": [
+    {
+      "group": "What Are the Best Desk Gifts for a Small Home Office?",
+      "groupAnswer": "A laptop stand, a compact wireless keyboard and mouse, a monitor light bar, a felt desk pad, a desk organizer and a clip-on video light. All improve a small desk without taking more space.",
+      "title": "An Aluminum Laptop Stand",
+      "body": "Raising the laptop to eye level is the fastest fix for neck pain, and it frees up desk space underneath for a notebook or keyboard. Aluminum stands are light, stable and fold flat.",
+      "image": "/images/blog/work-from-home-gifts-small-space/laptop-stand-small-desk-gift.webp",
+      "imageAlt": "Laptop on an aluminum stand with a compact wireless keyboard, a mug and a wrapped gift on a small desk",
+      "product": {
+        "name": "Lamicall Aluminum Laptop Stand",
+        "affiliateUrl": "https://www.amazon.com/dp/B08M94BTYC?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Compact Wireless Keyboard and Mouse",
+      "body": "Once the laptop is on a stand, they need a separate keyboard and mouse. A compact wireless set keeps the small desk clear and cable-free.",
+      "product": {
+        "name": "TECKNET Compact Wireless Keyboard and Mouse Combo",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CQP9GK47?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Monitor Light Bar",
+      "body": "Lights the desk without glare and replaces a bulky desk lamp. Perfect for dark winter afternoons and early starts.",
+      "product": {
+        "name": "Quntis Monitor Light Bar (USB)",
+        "affiliateUrl": "https://www.amazon.com/dp/B08DKQ3JG1?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Felt Desk Pad",
+      "body": "Makes any table (even the kitchen table) feel like a proper workspace, protects the surface and gives the mouse a smooth spot.",
+      "product": {
+        "name": "DAWNTREES Felt Desk Mat (40 x 16\")",
+        "affiliateUrl": "https://www.amazon.com/dp/B096S2Z9Q7?tag=spacesavvy07-20",
+        "dimensions": "40 x 16\""
+      }
+    },
+    {
+      "title": "A Mesh Desk Organizer",
+      "body": "Pens, chargers, sticky notes and earbuds all in one small caddy. A tidy desk feels bigger.",
+      "product": {
+        "name": "M&G Mesh Desk Organizer",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CQP9LYXC?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Clip-On Video Call Light",
+      "body": "Small apartments rarely have good lighting at the desk. A clip-on light fixes dark, grainy video calls instantly and takes zero desk space.",
+      "product": {
+        "name": "Clip-On Video Conference Light Kit",
+        "affiliateUrl": "https://www.amazon.com/dp/B08YJPJLFV?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "group": "What Space-Saving Furniture Makes a Good Gift?",
+      "groupAnswer": "A wall-mounted fold-down desk for apartments with no room for a desk, a cushioned lap desk for sofa workers and a cable management box to hide the mess.",
+      "title": "A Wall-Mounted Fold-Down Desk",
+      "body": "The best gift for someone with no room for a desk. It folds flat against the wall when work is done, so the living room becomes a living room again.\n\nGood to know: It needs a few screws in the wall, so check that their landlord allows it.",
+      "image": "/images/blog/work-from-home-gifts-small-space/foldable-desk-small-apartment-gift.webp",
+      "imageAlt": "Wall-mounted fold-down desk open with a laptop and plant in a small apartment living room at Christmas",
+      "product": {
+        "name": "TEAMIX Wall-Mounted Folding Desk",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CMSYL7Q1?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Cushioned Lap Desk",
+      "body": "For people who work from the sofa or bed: a stable surface for the laptop and mouse, with a cushion underneath. Slides under the sofa when they're done.",
+      "product": {
+        "name": "LAPGEAR Home Office Lap Desk",
+        "affiliateUrl": "https://www.amazon.com/dp/B089P33W98?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Cable Management Box",
+      "body": "Hides a power strip and all the chargers in one neat box, so a work corner in the living room doesn't look like an office.",
+      "product": {
+        "name": "Cable Management Box Kit (3-Pack)",
+        "affiliateUrl": "https://www.amazon.com/dp/B09Z29PGHW?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "group": "What Cozy Gifts Do Remote Workers Love?",
+      "groupAnswer": "A mug warmer, memory foam slippers, a chunky knit throw, an under-desk footrest and noise-cancelling earbuds. Small comforts for long days at home.",
+      "title": "A Mug Warmer",
+      "body": "Keeps coffee or tea warm through a long meeting. The timer means it switches off on its own.",
+      "image": "/images/blog/work-from-home-gifts-small-space/cozy-wfh-gifts-blanket-mug-warmer.webp",
+      "imageAlt": "Cozy work-from-home setup with a knit blanket on the chair, a mug on a warmer and slippers under the desk",
+      "product": {
+        "name": "Coffee Mug Warmer With 12H Timer (Wood)",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CCP46DK9?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "Memory Foam Slippers",
+      "body": "Working from home means slippers all day. A warm memory foam pair is a small luxury they'll use every single day of winter.",
+      "product": {
+        "name": "EverFoams Memory Foam Slippers",
+        "affiliateUrl": "https://www.amazon.com/dp/B0BYNYWKC7?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "A Chunky Knit Throw",
+      "body": "Draped over the desk chair, it's the coziest upgrade for cold days, and it looks great on the sofa after work.",
+      "product": {
+        "name": "L'AGRATY Chunky Knit Throw, Ivory (50 x 60\")",
+        "affiliateUrl": "https://www.amazon.com/dp/B0BR728TB6?tag=spacesavvy07-20",
+        "dimensions": "50 x 60\""
+      }
+    },
+    {
+      "title": "An Under-Desk Footrest",
+      "body": "Better posture and comfort for long workdays, and it takes no desk space at all.",
+      "product": {
+        "name": "Everlasting Comfort Memory Foam Footrest",
+        "affiliateUrl": "https://www.amazon.com/dp/B0GZY5X7RS?tag=spacesavvy07-20"
+      }
+    },
+    {
+      "title": "Noise-Cancelling Earbuds",
+      "body": "In a small apartment, the neighbors, the street and the dishwasher are all in the 'office'. Noise-cancelling earbuds make calls clearer and focus easier.",
+      "product": {
+        "name": "Soundcore P30i Noise Cancelling Earbuds",
+        "affiliateUrl": "https://www.amazon.com/dp/B0CRTR3PMF?tag=spacesavvy07-20"
+      }
+    }
+  ],
+  "keyTakeaways": [
+    "The best work-from-home gifts for small spaces improve comfort without taking more room.",
+    "A laptop stand plus a compact keyboard and mouse is the most useful desk combo.",
+    "No room for a desk? A fold-down wall desk or a lap desk solves it.",
+    "Cozy extras like a mug warmer and slippers get used every single day."
+  ],
+  "mistakes": [
+    "Buying a big desk or chair without knowing their space.",
+    "Choosing a wall-mounted desk for a renter without checking whether screws are allowed.",
+    "Forgetting the keyboard and mouse when giving a laptop stand."
+  ],
+  "faqs": [
+    {
+      "question": "What is a good gift for someone who works from home in a small apartment?",
+      "answer": "An aluminum laptop stand, a compact wireless keyboard and mouse, a monitor light bar or a felt desk pad. They improve the workspace without taking more room."
+    },
+    {
+      "question": "What can I give someone with no room for a desk?",
+      "answer": "A wall-mounted fold-down desk or a cushioned lap desk for working from the sofa."
+    },
+    {
+      "question": "What are cozy gifts for remote workers?",
+      "answer": "A mug warmer, memory foam slippers, a chunky knit throw and an under-desk footrest."
+    }
+  ],
+  "related": [
+    "15-small-space-desk-hacks-maximize-apartment-corners",
+    "minimalist-floating-shelf-workstations-small-bedrooms",
+    "vertical-laptop-stands-dual-monitor-small-desks",
+    "gifts-for-gamers-small-desk"
+  ],
+  "pins": [
+    {
+      "src": "/images/pins/pin-gifts-wfh-1-small-space.webp",
+      "alt": "Pinterest pin: gifts for people who work from home in small spaces",
+      "description": "Work-from-home gifts for small apartments: a laptop stand, a compact keyboard and mouse, a monitor light bar, a fold-down wall desk, a lap desk and cozy extras like a mug warmer. #workfromhome #wfhgifts #christmasgifts #homeoffice"
+    }
+  ]
+},
   // ---- Christmas round 2 (Oct 29, 2026) ----
 {
   "slug": "cozy-christmas-living-room-ideas-small-apartment",
@@ -108,6 +797,7 @@ export const posts: Post[] = [
   "sections": [
     {
       "group": "Where Should the Tree and Garland Go in a Small Living Room?",
+      "groupAnswer": "Put a slim pencil tree in the corner next to the window, where it's out of the walkway and the lights reflect in the glass. Hang the garland across the window and along a bookshelf, so the walls and shelves do the decorating instead of the floor.",
       "title": "Put a Slim Tree in the Corner by the Window",
       "body": "A full-size tree can take a third of a small living room. A slim pencil tree gives you the same height and sparkle in about a quarter of the floor space. The best spot is usually the corner next to the window: it's out of the walkway, and the lights reflect in the glass at night, so the tree looks twice as big.\n\n- **6 ft pencil trees** are usually 2 ft wide or less at the base.\n- **4.5 ft trees** work on a low side table or in rooms with sloped ceilings.\n- A **tree collar** instead of a tree skirt takes up less floor space and hides the stand neatly.\n\nRenter tip: Measure the corner before you buy: width at the floor, and the height up to any curtain rod or shelf.\n\nWatch out: Keep the tree at least 3 feet from radiators and heaters, and don't block the window you'd use in an emergency.",
       "product": {
@@ -176,6 +866,7 @@ export const posts: Post[] = [
     },
     {
       "group": "How Do You Make a Small Living Room Feel Cozy for Christmas?",
+      "groupAnswer": "Swap in velvet and plaid pillow covers, add one chunky knit throw, and light the room low with tree lights, a lamp and candles instead of the ceiling light. Put everything on a timer so it glows every evening on its own.",
       "title": "Swap Two Pillow Covers and Add One Big Throw",
       "body": "Textiles change a room faster than anything else, and they take up no space. Swap two of your sofa pillow covers for red velvet and one for red-and-green plaid, then drape a chunky cream knit over the arm. That's the whole job, and it makes the sofa look ready for Christmas movies.\n\nCovers fold flat into a drawer in January, so you keep your regular pillow inserts and don't store anything bulky.\n\nRenter tip: Mix one pattern (plaid) with solids (velvet). Two patterns on a small sofa starts to look busy.",
       "image": "/images/blog/cozy-christmas-living-room-ideas-small-apartment/christmas-sofa-pillows-throw-plaid-velvet.webp",
@@ -252,6 +943,7 @@ export const posts: Post[] = [
     },
     {
       "group": "How Do You Decorate a Small Living Room Without Clutter?",
+      "groupAnswer": "Pick three colors (red, green and cream) and repeat them, use walls, windows and the ceiling instead of tables and floor, and choose a few big pieces over lots of small ones.",
       "title": "Stick to One Color Story: Red, Green and Cream",
       "body": "The fastest way to make a small room look cluttered is too many colors. Pick three and repeat them everywhere: deep green (garland, tree), red (bows, pillows, ornaments) and cream (throws, candles, curtains). Wood tones count as neutral.\n\nRed velvet ribbon is the easiest way to tie it all together. The same ribbon on the window garland, the tree and the stockings makes the room look planned.\n\nRenter tip: Before you buy something new, ask if it's red, green or cream. If not, skip it.",
       "product": {
@@ -389,6 +1081,7 @@ export const posts: Post[] = [
   "sections": [
     {
       "group": "How Do You Decorate a Gaming Desk for Christmas?",
+      "groupAnswer": "Decorate above and around the desk: a battery garland on the shelf over the monitor, a 2 ft mini tree on the far corner, and a festive desk mat or keycaps. Keep the mouse side and the PC vents clear.",
       "title": "Run a Battery Garland Along the Shelf Above Your Desk",
       "body": "A shelf above the monitor is the perfect spot for garland: it's in your eye line, it frames the screen, and it's completely out of the way of your keyboard and mouse. Drape a pre-lit battery garland along the front edge and let one end hang down the side.\n\nAdd a few small red velvet bows along it. They make a plain garland look styled, and they show up beautifully on camera if you stream.\n\nRenter tip: No shelf? Run the garland along the top edge of the desk's back with clear mini hooks.\n\nWatch out: Keep garland off your PC case and away from the exhaust vents. Dry pine needles and heat don't mix.",
       "product": {
@@ -470,6 +1163,7 @@ export const posts: Post[] = [
     },
     {
       "group": "How Do You Get Christmas Lighting on a Gaming Setup?",
+      "groupAnswer": "Switch your RGB to a slow red-and-green fade or warm white at about half brightness, then add warm fairy lights on the wall behind the desk. Battery lights avoid extra cables.",
       "title": "Switch Your RGB to Red and Green (or Warm White)",
       "body": "This one costs nothing if you already have RGB. Open your lighting app and change the keyboard, mouse, case and LED strips to a slow red-and-green fade, or a warm white that matches the fairy lights. It instantly ties the tech into the Christmas decor instead of fighting it.\n\nNo RGB yet? A monitor backlight strip adds a glow behind the screen that's easy on the eyes in a dark room, and you can set it to Christmas colors.\n\nRenter tip: Lower the RGB brightness to about 50%. Christmas lighting looks best soft.",
       "image": "/images/blog/christmas-gaming-setup-ideas/gaming-chair-christmas-throw-pillow.webp",
@@ -513,6 +1207,7 @@ export const posts: Post[] = [
     },
     {
       "group": "How Do You Make a Gaming Corner Cozy for Winter?",
+      "groupAnswer": "Add a chunky knit throw and a lumbar pillow to the chair, keep a warm drink on a mug warmer, and hide the cables so the decor looks calm instead of messy.",
       "title": "Make the Chair Cozy With a Throw and a Pillow",
       "body": "A gaming chair is the least cozy thing in the room. A chunky red knit throw over the backrest and a small plaid lumbar pillow fix that, and they double as comfort for long winter sessions.\n\nRenter tip: A 12 x 20 inch lumbar pillow fits most gaming chairs better than a square one.",
       "product": {
@@ -638,6 +1333,7 @@ export const posts: Post[] = [
   "sections": [
     {
       "group": "How Do You Hang Christmas Decorations From the Ceiling Without Nails?",
+      "groupAnswer": "Use small removable adhesive ceiling hooks on smooth painted ceilings for light items, and test one for 24 hours first. On textured ceilings, hang decorations from curtain rods, a tension rod or the light fixture instead.",
       "title": "Use Removable Ceiling Hooks (and Test Them First)",
       "body": "Small adhesive ceiling hooks are made for exactly this: light things like ornaments, paper lanterns and fairy lights. They stick to smooth, painted ceilings and peel off in January.\n\n1. Wipe the spot with rubbing alcohol and let it dry.\n2. Press the hook firmly for 30 seconds.\n3. Wait at least an hour (overnight is better) before hanging anything.\n4. Hang one test item and leave it for 24 hours before doing the rest.\n\nRenter tip: Keep the total weight on each hook far below what the package says. Ceilings pull straight down, which is harder on adhesive than a wall.\n\nWatch out: Adhesive won't hold on popcorn or heavily textured ceilings, and can peel paint off fresh paint. Use idea #2 instead.",
       "product": {
@@ -675,6 +1371,7 @@ export const posts: Post[] = [
     },
     {
       "group": "What Are the Best Christmas Ceiling Decorations for Small Spaces?",
+      "groupAnswer": "Floating shatterproof ornaments on fishing line, paper star lanterns, hanging snowflakes and a garland swag across a corner. All of them are light, take no floor space and stay out of reach of pets.",
       "title": "Make a Floating Ornament Cloud Over the Coffee Table",
       "body": "This is the showstopper. Dozens of ornaments hung on invisible fishing line at different heights look like they're floating in the air. Over a coffee table or dining table it's the first thing guests notice, and it uses no floor space at all.\n\n- Use **shatterproof** ornaments in two or three colors (red, gold, clear).\n- Hang them at **5 to 7 different lengths**, longest in the middle.\n- Group them in a loose oval about the size of the table below.\n- Add a few small velvet bows to the hanging points.\n\nRenter tip: Hang 3 to 5 ornaments from each ceiling hook on different line lengths, so you need far fewer hooks.\n\nWatch out: Keep the lowest ornament above head height wherever people walk.",
       "image": "/images/blog/christmas-ceiling-decorations-small-apartment/floating-christmas-ornaments-ceiling.webp",
@@ -746,6 +1443,7 @@ export const posts: Post[] = [
     },
     {
       "group": "Where Else Can Ceiling Decorations Go?",
+      "groupAnswer": "Over the bed as a fairy-light canopy, over the dining table as a wreath chandelier, and in a doorway with mistletoe.",
       "title": "Make a Fairy-Light Canopy Over the Bed",
       "body": "Fairy lights draped across the ceiling above the bed turn a small bedroom into the coziest room in the apartment. Run four or five strands from the headboard wall toward the middle of the ceiling, letting each one dip slightly between hooks.\n\nPair it with a garland on the headboard, like in our [cozy Christmas bedroom ideas](/blog/cozy-christmas-bedroom-decor-ideas).\n\nRenter tip: Battery strands with a timer switch off on their own after you fall asleep.\n\nWatch out: Use LED lights only and keep them clear of any ceiling light fixture.",
       "image": "/images/blog/christmas-ceiling-decorations-small-apartment/fairy-light-canopy-ceiling-bed.webp",
@@ -892,6 +1590,7 @@ export const posts: Post[] = [
   "sections": [
     {
       "group": "Where Can You Hang Garland Without a Mantel?",
+      "groupAnswer": "Hang it on a tension rod in a doorway, across a window or curtain rod, along a bookshelf or console, on the headboard, over a mirror or on top of the kitchen cabinets. None of these need nails.",
       "title": "1. The Tension-Rod Doorway Arch",
       "body": "This is the hack that started it all. A tension rod pressed inside the top of a door frame gives you a solid bar to wrap garland around, with no hooks, nails or tape on the frame. It looks like a built-in garland arch and takes about ten minutes.\n\n### What you need\n\n- 1 tension rod that adjusts to your doorway width\n- 1 garland (see the length guide below)\n- Optional: battery fairy lights, a few floral picks\n\n### How to do it\n\n1. Measure the inside width of the door frame at the top. Most interior doorways are 30 to 36 inches wide.\n2. Twist the rod until it's slightly longer than the opening, then press it into place about 2 to 4 inches below the top of the frame.\n3. Start at one end and wrap the garland loosely around the rod, like a candy-cane stripe, until you reach the other side.\n4. If you want the garland to hang down the sides, let the ends drop down the frame and tuck them behind the rod.\n5. Fluff every branch so you can't see the rod.\n\n### How much garland to buy\n\nWrapping uses more garland than you'd think. Measure the doorway width, add how far you want each side to hang down, then multiply by about 1.5. For a 32-inch doorway with ends dropping 2 feet on each side, that's (32 + 24 + 24) x 1.5 = 120 inches, so a 9 or 10 ft garland is right.\n\nRenter tip: Press the rod firmly and check it the next day. Tension rods settle slightly, so give it a final quarter-turn to tighten it.\n\nWatch out: Tension rods are made for light loads. A very heavy, thick garland with lots of ornaments can push the rod down. Keep it to the garland, lights and a few light picks.",
       "image": "/images/blog/christmas-garland-ideas-apartments/tension-rod-garland-doorway-close-up.webp",
@@ -1015,6 +1714,7 @@ export const posts: Post[] = [
     },
     {
       "group": "How Do You Make Garland Look Full and Glowing?",
+      "groupAnswer": "Choose a full, pre-lit garland or weave battery fairy lights deep into the branches, fluff every tip, and add picks like berries and pinecones every 8 to 12 inches.",
       "title": "7. Choose the Right Garland (Pre-Lit or Add Your Own Lights)",
       "body": "The garland itself makes or breaks the look. Three things matter most:\n\n- **Fullness.** More branch tips per foot means a fuller garland. Thin garland looks sparse even when lit.\n- **Pre-lit or not.** Pre-lit garland means one cord and less fuss. Plain garland plus your own lights lets you choose the color and brightness.\n- **Power.** Plug-in is brighter and needs an outlet. Battery-powered works anywhere, and a timer (often 6 hours on, 18 off) means you never have to switch it on.\n\nIf your garland isn't pre-lit, weave a strand of battery fairy lights through it. Fairy lights on thin copper wire disappear into the branches, so you only see the glow.\n\nRenter tip: Choose a timer setting that turns the lights on when you usually get home. Then the apartment looks festive every evening without you thinking about it.\n\nWatch out: Battery lights drain batteries quickly. Rechargeable batteries pay for themselves in one season.",
       "product": {
@@ -1145,6 +1845,7 @@ export const posts: Post[] = [
   "sections": [
     {
       "group": "How Do You Decorate a Bed for Christmas?",
+      "groupAnswer": "Start with the bedding: flannel or plaid, or neutral sheets with one red or green throw. Then add two festive pillow covers and a garland with fairy lights on the headboard.",
       "title": "1. Start With the Bed",
       "body": "The bed is the biggest thing in the room, so it sets the mood. Changing just the duvet cover or adding a throw does more than any number of small decorations.\n\n- **Flannel or tartan plaid** says Christmas without being cartoonish.\n- **Neutral bedding plus one red or green throw** is the low-commitment version.\n- **Layer textures** (flannel, knit, velvet) for that cozy cabin feeling.\n\nRenter tip: Choose a pattern that still looks good in January and February. Plaid flannel works all winter, so you get more use from it.\n\nWatch out: Check the size. Duvet cover sizes vary between brands, so compare the listed measurements with your duvet insert.",
       "product": {
@@ -1230,6 +1931,7 @@ export const posts: Post[] = [
     },
     {
       "group": "How Should You Light a Christmas Bedroom?",
+      "groupAnswer": "Turn off the ceiling light and use warm 2700K lamps, fairy lights and a curtain of lights behind sheer curtains, all on a smart plug or timer so nothing stays on all night.",
       "title": "5. Switch to Warm, Low Light",
       "body": "Lighting matters more than decorations. Bright overhead lights make a room feel like an office. In the evening, switch off the ceiling light and use lamps, fairy lights and the tree.\n\n- Use **warm white bulbs** (around 2700K) in bedside lamps.\n- Put all your festive lights on **one smart plug**, so one tap or voice command turns everything on.\n- Set a **schedule** so lights switch off after you're asleep.\n\nRenter tip: A smart plug also works as a safety timer for anything plug-in, so nothing stays on all night.\n\nWatch out: Check that the smart plug works with your phone or speaker (Alexa or Google) before buying.",
       "product": {
@@ -1273,6 +1975,7 @@ export const posts: Post[] = [
     },
     {
       "group": "How Do You Make the Rest of the Bedroom Feel Festive?",
+      "groupAnswer": "Add a 2 ft tree on the dresser, style the nightstand in three heights, swap in one winter print, hang a wreath on the door and add a pine scent with a reed diffuser.",
       "title": "7. A Small Tree on the Dresser or Nightstand",
       "body": "A two-foot tree on the dresser gives you a Christmas tree in the bedroom without losing floor space. It also works as a soft night light.\n\nRenter tip: Raise it on a stack of books wrapped in linen or kraft paper. It looks taller and more special.\n\nWatch out: Keep it away from curtains and make sure it sits steadily, especially on a nightstand you bump in the dark.",
       "image": "/images/blog/cozy-christmas-bedroom-decor-ideas/mini-christmas-tree-bedroom-dresser.webp",
@@ -1479,6 +2182,7 @@ export const posts: Post[] = [
   "sections": [
     {
       "group": "What Kitchen Gifts Does a First Apartment Need?",
+      "groupAnswer": "A cast iron skillet and one sharp chef's knife cover most cooking. A compact air fryer, a French press or a gooseneck kettle are great extras that fit a small kitchen.",
       "title": "1. A Cast Iron Skillet",
       "body": "One good pan does almost everything: eggs, steak, roast vegetables, even cornbread. A 10-inch skillet is the right size for one or two people, big enough for dinner and small enough for a tiny sink. Cast iron lasts for decades and gets better the more it's used.\n\nGood to know: Wrap it with a chainmail scrubber and a short care note: no soaking, dry it on the stove, then rub in a drop of oil.",
       "image": "/images/blog/gifts-for-first-apartment/cast-iron-skillet-small-apartment-kitchen.webp",
@@ -1584,6 +2288,7 @@ export const posts: Post[] = [
     },
     {
       "group": "What Safety Gifts Do New Renters Forget?",
+      "groupAnswer": "A home fire extinguisher, a kitchen fire blanket, a first aid kit and a door stop alarm. Almost nobody buys these for themselves, so they're some of the most useful gifts you can give.",
       "title": "6. A Home Fire Extinguisher",
       "body": "Not exciting, but genuinely important, and almost nobody buys one for themselves. Every apartment kitchen should have one within reach of the stove, but not right next to it.\n\nGood to know: Pair it with a fire blanket. It's a thoughtful 'I care about you' gift, and they'll remember who gave it to them.",
       "product": {
@@ -1651,6 +2356,7 @@ export const posts: Post[] = [
     },
     {
       "group": "What Are the Best Practical Gifts for a Small Apartment?",
+      "groupAnswer": "A basic tool kit, smart plugs, a surge-protected power strip, a light stick vacuum, motion-sensor closet lights, slim hangers and damage-free adhesive hooks.",
       "title": "10. A Basic Tool Kit",
       "body": "Hanging a mirror, tightening a wobbly chair, building flat-pack furniture: everyone needs a screwdriver and a hammer in the first week.\n\nGood to know: A compact kit in a case fits under the sink or on a closet shelf. Add a picture hanging kit and they're set for every wall.",
       "product": {
@@ -1858,11 +2564,13 @@ export const posts: Post[] = [
   "sections": [
     {
       "group": "What Should You Check Before Decorating a Balcony?",
+      "groupAnswer": "Check your lease or building rules, keep the balcony door and exits clear, use only outdoor-rated lights, plan for wind, and use solar or battery lights if there's no outdoor outlet.",
       "title": "1. Check the Rules (and the Weather) First",
       "body": "Before buying anything, spend five minutes checking:\n\n- **Your lease or building rules.** Many buildings limit what can hang over the railing or face the street.\n- **Fire safety.** Never block the balcony door or an emergency exit, and never hang anything from fire sprinkler heads.\n- **Wind and weather.** Everything outside needs to be outdoor-rated and tied down.\n- **Power.** If there's no outdoor outlet, plan for solar or battery lights. Don't run an extension cord through a door you then close on it.\n\nRenter tip: Ask your building manager by email. A written yes is worth having if a neighbor complains.\n\nWatch out: Indoor lights aren't made for rain or cold. Check that every light you use outside is rated for outdoor use."
     },
     {
       "group": "How Do You Decorate a Balcony Railing?",
+      "groupAnswer": "Lay garland along the top rail and fasten it every 12 inches with reusable zip ties, keeping everything on the inside of the railing. Railing planters filled with evergreen branches add more color.",
       "title": "2. Garland Along the Railing",
       "body": "Railing garland is the classic balcony look. Wrap it along the top rail of your railing and secure it.\n\n1. Start at one end and lay the garland along the top of the rail.\n2. Fasten it every 12 inches with reusable zip ties.\n3. Weave outdoor lights through it, or use a pre-lit outdoor garland.\n4. Trim the tails of the ties or turn them to face inward.\n\nRenter tip: Reusable zip ties release with a small lever, so you can take everything down in January without cutting anything.\n\nWatch out: Keep everything on the inside of the railing. Garland hanging over the edge can fall onto balconies or people below in strong wind.",
       "image": "/images/blog/apartment-balcony-christmas-decor-ideas/balcony-railing-christmas-garland-lights.webp",
@@ -1903,6 +2611,7 @@ export const posts: Post[] = [
     },
     {
       "group": "How Do You Light a Balcony With No Outlet?",
+      "groupAnswer": "Use solar string lights that charge in daylight, battery lights with a timer, and outdoor adhesive clips to run them along the railing and door frame. Lanterns with flameless candles add a low glow.",
       "title": "4. Solar String Lights",
       "body": "If you don't have an outdoor outlet, solar lights are the easiest answer. They charge during the day and switch on at dusk by themselves.\n\nRenter tip: Place the small solar panel where it gets the most daylight. In winter, that's often the railing edge, not the corner.\n\nWatch out: Winter days are short, so solar lights may run for fewer hours. Battery lights with a timer are the backup.",
       "product": {
@@ -1957,6 +2666,7 @@ export const posts: Post[] = [
     },
     {
       "group": "How Do You Make a Small Balcony Feel Cozy?",
+      "groupAnswer": "Add an outdoor rug and a weatherproof cushion for a spot to sit with a hot drink, and decorate the balcony door glass from inside with a lighted star.",
       "title": "7. An Outdoor Rug for a Cozy Corner",
       "body": "If your balcony has room for a chair, an outdoor rug instantly makes it feel like a room. Add a weatherproof cushion and it becomes a spot for a hot drink on a cold evening.\n\nRenter tip: Reversible plastic rugs dry fast and roll up small for storage.\n\nWatch out: Make sure the rug doesn't block water drainage on the balcony floor.",
       "product": {

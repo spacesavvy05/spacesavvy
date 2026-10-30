@@ -69,6 +69,440 @@ export const CATEGORIES = [
 ] as const;
 
 export const posts: Post[] = [
+  // ---- Organization round (Oct 31, 2026) ----
+  {
+    "slug": "black-friday-home-organization-small-apartments",
+    "title": "Black Friday Home Organization Finds for Small Apartments (2026)",
+    "excerpt": "The small-apartment organizers worth grabbing this Black Friday: slim velvet hangers, vacuum bags, under-bed storage, over-the-door shoe pockets, no-drill hooks, clear bins and a slim rolling cart. All Amazon best-sellers with thousands of reviews.",
+    "category": "Curated Amazon Finds",
+    "publishDate": "October 31, 2026",
+    "readTime": "5 min read",
+    "takeaway": "The best Black Friday buys for a small apartment are the boring basics that free up space: slim velvet hangers, vacuum storage bags, under-bed storage bags, an over-the-door shoe organizer, no-drill adhesive hooks, clear bins and a slim rolling cart. Measure first, then stock up while prices are being cut.",
+    "featuredImageAlt": "Small apartment closet organized with slim velvet hangers, clear lidded bins and fabric cubes, with opened delivery boxes on the floor",
+    "featuredImageSrc": "/images/blog/black-friday-home-organization-small-apartments/black-friday-organization-small-apartment-cover.webp",
+    "intro": [
+      "Black Friday is the one time of year it makes sense to buy organizers in bulk. Hangers, bins and hooks are things you need a lot of, and they're the kind of everyday basics that tend to get discounted when everything else does.",
+      "We kept this list to things that actually make a small apartment feel bigger: they get clothes off the floor, use the space under the bed and behind the door, and stick to walls without drilling. Every pick is an Amazon best-seller with thousands of reviews. Prices change daily during sales, so click through to see today's price."
+    ],
+    "atAGlance": [
+      {
+        "label": "Best overall",
+        "pick": "Slim velvet hangers (#1). The cheapest way to fit far more into a small closet."
+      },
+      {
+        "label": "Best for bulky bedding",
+        "pick": "Vacuum storage bags (#2)"
+      },
+      {
+        "label": "Best for renters",
+        "pick": "No-drill utility hooks (#5) and clear adhesive hooks (#6)"
+      },
+      {
+        "label": "Best for awkward gaps",
+        "pick": "A slim rolling cart (#10)"
+      }
+    ],
+    "situations": [
+      {
+        "situation": "Your closet is packed",
+        "pick": "Slim velvet hangers (#1) and vacuum storage bags (#2)."
+      },
+      {
+        "situation": "Shoes cover the floor",
+        "pick": "An over-the-door shoe organizer (#4)."
+      },
+      {
+        "situation": "You can't drill holes",
+        "pick": "Adhesive utility hooks (#5) and clear heavy-duty hooks (#6)."
+      },
+      {
+        "situation": "Drawers are a mess",
+        "pick": "Clear drawer organizer trays (#7)."
+      },
+      {
+        "situation": "There's a narrow gap by the fridge or washer",
+        "pick": "A slim rolling cart (#10)."
+      }
+    ],
+    "sections": [
+      {
+        "group": "What Should You Buy on Black Friday to Organize a Small Closet?",
+        "groupAnswer": "Slim velvet hangers, vacuum storage bags, under-bed storage bags and an over-the-door shoe organizer. Together they fit more clothes on the rail, shrink bulky bedding and move shoes and spare linens out of the closet.",
+        "title": "Slim Velvet Hangers",
+        "body": "Swapping bulky plastic hangers for slim velvet ones is the easiest closet upgrade there is. They're thin, so clothes hang closer together, and the velvet stops shirts and dresses from sliding off onto the floor. Matching hangers also make a small closet look calm instead of cluttered.\n\nGood to know: Buy enough to replace every hanger at once. Mixing old and new ones loses most of the space you'd gain.",
+        "image": "/images/blog/black-friday-home-organization-small-apartments/velvet-hangers-small-closet.webp",
+        "imageAlt": "Narrow reach-in closet with matching slim black velvet hangers holding shirts, sweaters and trousers close together",
+        "product": {
+          "name": "Amazon Basics Slim Velvet Non-Slip Hangers",
+          "affiliateUrl": "https://www.amazon.com/dp/B00FXNAAW2?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "title": "Vacuum Storage Bags",
+        "body": "Duvets, winter coats and spare pillows take up whole shelves. Vacuum bags squeeze the air out so the same things lie flat, and then they stack on a top shelf or slide under the bed. This set comes with a hand pump, so you don't need a vacuum cleaner.\n\nGood to know: Don't vacuum-pack down jackets or wool for many months at a time. Squashing them for too long can flatten them for good.",
+        "image": "/images/blog/black-friday-home-organization-small-apartments/vacuum-storage-bags-closet-shelf.webp",
+        "imageAlt": "Top closet shelf with flat compressed vacuum storage bags full of duvets and sweaters, with a hand pump beside them",
+        "product": {
+          "name": "Vacuum Storage Bags With Hand Pump (20 Combo)",
+          "affiliateUrl": "https://www.amazon.com/dp/B0973DGD8P?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "title": "Under-Bed Storage Bags",
+        "body": "The space under the bed is the biggest empty storage spot in most small apartments. Soft fabric bags with zippers hold off-season clothes, towels and bedding, and the clear window shows what's inside without unzipping.\n\nGood to know: Measure the gap under your bed first. These need a few inches of clearance, and bed risers can add more.",
+        "image": "/images/blog/black-friday-home-organization-small-apartments/under-bed-storage-bags.webp",
+        "imageAlt": "Two grey fabric under-bed storage bags with clear windows pulled out from under a bed in a small studio",
+        "product": {
+          "name": "ZOBER Under-Bed Storage Bags (90L, 4-Pack)",
+          "affiliateUrl": "https://www.amazon.com/dp/B0DT517YGB?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "title": "An Over-the-Door Shoe Organizer",
+        "body": "Shoes on the floor make a small room look messy fast. A pocket organizer hangs over the top of any door, so it uses space you don't use for anything else, and the clear mesh pockets show every pair at a glance.\n\nGood to know: It isn't only for shoes. People use these for cleaning supplies, toiletries or kids' toys on a pantry or bathroom door.",
+        "image": "/images/blog/black-friday-home-organization-small-apartments/over-door-shoe-organizer.webp",
+        "imageAlt": "Clear mesh pocket shoe organizer hanging on the back of a bedroom door, filled with sneakers and flats",
+        "product": {
+          "name": "Amazon Basics 24-Pocket Over-the-Door Shoe Organizer",
+          "affiliateUrl": "https://www.amazon.com/dp/B07227PWVP?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "group": "What Are the Best No-Drill Organizers for Renters?",
+        "groupAnswer": "Removable adhesive utility hooks for coats and bags, and clear heavy-duty adhesive hooks for towels and robes. Both stick to the wall without holes and come off when you move out. For more ideas, see our guide to [adhesive hooks for rental walls](/blog/heavy-duty-adhesive-hooks-racks-rental-paint).",
+        "title": "Damage-Free Adhesive Utility Hooks",
+        "body": "If you rent, these are the hooks to stock up on. They stick to the wall with removable strips instead of screws, so they come off cleanly when you move out. Use them by the door for coats and bags, or inside a closet for belts and bags.\n\nGood to know: Clean the wall with rubbing alcohol first and wait an hour before hanging anything. That's what makes the strips hold.",
+        "image": "/images/blog/black-friday-home-organization-small-apartments/adhesive-utility-hooks-entryway.webp",
+        "imageAlt": "Small apartment entryway wall with large white adhesive hooks holding a coat, tote bag and umbrella",
+        "product": {
+          "name": "Command Large Utility Hooks (7 Hooks, 12 Strips)",
+          "affiliateUrl": "https://www.amazon.com/dp/B0753NHZVQ?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "title": "Clear Heavy-Duty Adhesive Hooks",
+        "body": "Clear hooks almost disappear on the wall, which matters in a small space where everything is on show. They're great in the bathroom for towels and robes, and in the kitchen for oven mitts and aprons.\n\nGood to know: Weight limits on adhesive hooks depend on a smooth, clean surface. They hold best on tile, glass and gloss paint, and worst on textured walls.",
+        "image": "/images/blog/black-friday-home-organization-small-apartments/clear-adhesive-hooks-bathroom.webp",
+        "imageAlt": "Clear adhesive hooks on a white tiled bathroom wall holding a bath towel, hand towel and robe",
+        "product": {
+          "name": "DDMY Clear Heavy-Duty Adhesive Wall Hooks (10-Pack)",
+          "affiliateUrl": "https://www.amazon.com/dp/B0BFMKYN12?tag=spacesavvy07-20"
+        },
+        "alsoGood": [
+          {
+            "label": "For holiday lights",
+            "name": "Command Clear Mini Light Clips (45 clips)",
+            "affiliateUrl": "https://www.amazon.com/dp/B076ZRRFD4?tag=spacesavvy07-20"
+          }
+        ]
+      },
+      {
+        "group": "What Are the Best Bins and Organizers for a Small Apartment?",
+        "groupAnswer": "Clear drawer trays for small things, fabric storage cubes for open shelves, clear lidded bins for closet shelves, and a slim rolling cart for narrow gaps. Clear and matching containers make a small space look tidy even when it's full.",
+        "title": "Clear Drawer Organizer Trays",
+        "body": "One messy drawer can make a whole kitchen or desk feel chaotic. A set of clear trays in different sizes gives every small thing its own spot: chargers, pens, makeup, cutlery, batteries. The rubber pads stop them sliding around.",
+        "image": "/images/blog/black-friday-home-organization-small-apartments/clear-drawer-organizers-vanity.webp",
+        "imageAlt": "Open desk drawer divided by clear plastic organizer trays holding pens, chargers, sticky notes and scissors",
+        "product": {
+          "name": "Vtopmart Clear Drawer Organizers (25-Pack, 4 Sizes)",
+          "affiliateUrl": "https://www.amazon.com/dp/B08KXKVT4K?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "title": "Fabric Storage Cubes",
+        "body": "Open cube shelves are common in small apartments, and they look cluttered fast. Fabric cubes slide into the squares and hide everything behind a clean front. They fold flat when you don't need them.\n\nGood to know: Measure the inside of your shelf squares before buying. Cube sizes vary, and a cube that's too big won't fit at all.",
+        "image": "/images/blog/black-friday-home-organization-small-apartments/fabric-storage-cubes-shelf.webp",
+        "imageAlt": "Living room cube bookshelf with grey and beige fabric storage cubes in some squares and books in others",
+        "product": {
+          "name": "Amazon Basics Collapsible Fabric Storage Cubes",
+          "affiliateUrl": "https://www.amazon.com/dp/B0711RQMNF?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "title": "Clear Storage Bins With Lids",
+        "body": "For closet shelves and the top of the wardrobe, clear lidded bins win. They stack safely, keep dust out, and you can see exactly what's inside without pulling everything down.",
+        "image": "/images/blog/black-friday-home-organization-small-apartments/clear-storage-bins-closet-shelf.webp",
+        "imageAlt": "Closet shelf with four clear plastic storage bins with lids stacked two-high, contents visible",
+        "product": {
+          "name": "IRIS USA Clear Storage Bins With Lids (13 Qt, 4-Pack)",
+          "affiliateUrl": "https://www.amazon.com/dp/B0F6FT397Y?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "title": "A Slim Rolling Storage Cart",
+        "body": "Almost every small apartment has a narrow gap: next to the fridge, beside the washer or between the toilet and the wall. A slim cart on wheels slides into that gap and turns it into three shelves of storage you can pull out when you need it.\n\nGood to know: Measure the gap's width and depth, then check the cart's size on the listing. A few millimeters decide whether it fits.",
+        "image": "/images/blog/black-friday-home-organization-small-apartments/slim-rolling-cart-gap.webp",
+        "imageAlt": "Slim white three-tier rolling cart pulled out from the gap between a washing machine and the wall",
+        "product": {
+          "name": "Slim 3-Tier Rolling Storage Cart",
+          "affiliateUrl": "https://www.amazon.com/dp/B09F6JPYSY?tag=spacesavvy07-20"
+        }
+      }
+    ],
+    "keyTakeaways": [
+      "Black Friday is the best time to buy organizers in bulk, because you need a lot of them.",
+      "Slim velvet hangers and vacuum bags free up the most closet space for the least money.",
+      "Renters should stock up on removable adhesive hooks instead of anything that needs drilling.",
+      "Measure under the bed, inside cube shelves and narrow gaps before you buy."
+    ],
+    "mistakes": [
+      "Buying bins before measuring the shelf or gap they're meant for.",
+      "Mixing new slim hangers with old bulky ones and losing the space you gained.",
+      "Hanging heavy things on adhesive hooks on textured or freshly painted walls.",
+      "Buying organizers for things you should declutter first."
+    ],
+    "faqs": [
+      {
+        "question": "What should I buy on Black Friday for a small apartment?",
+        "answer": "Space-saving basics you need in bulk: slim velvet hangers, vacuum storage bags, under-bed storage, an over-the-door shoe organizer, no-drill adhesive hooks and clear storage bins."
+      },
+      {
+        "question": "Are organizers cheaper on Black Friday?",
+        "answer": "Often, but not always. Prices change daily during sales, so check today's price on Amazon and compare it with what it normally costs before you buy."
+      },
+      {
+        "question": "What is the best organizer for a small closet?",
+        "answer": "Slim velvet hangers. They let you fit far more on the same rail and stop clothes slipping off."
+      },
+      {
+        "question": "How can renters add storage without drilling?",
+        "answer": "Use removable adhesive hooks, over-the-door organizers, under-bed storage bags and freestanding carts and bins."
+      }
+    ],
+    "related": [
+      "small-kitchen-organization-ideas-renters",
+      "holiday-storage-ideas-small-apartments",
+      "heavy-duty-adhesive-hooks-racks-rental-paint",
+      "stocking-stuffers-small-apartment"
+    ],
+    "pins": [
+      {
+        "src": "/images/pins/pin-bf-org-1-cover.webp",
+        "alt": "Pinterest pin: Black Friday home organization finds for small apartments",
+        "description": "Black Friday home organization finds for small apartments: slim velvet hangers, vacuum bags, under-bed storage, an over-the-door shoe organizer, no-drill hooks and clear bins. #blackfriday #homeorganization #smallapartment #amazonfinds"
+      }
+    ]
+  },
+  {
+    "slug": "small-kitchen-organization-ideas-renters",
+    "title": "Small Kitchen Organization Ideas: 10 Renter-Friendly Organizers (No Drilling)",
+    "excerpt": "Ten renter-friendly organizers for a small kitchen: a pull-out under-sink organizer, cabinet shelf risers, a lazy susan, a pot lid rack, over-the-door and under-shelf storage, an adhesive paper towel holder, fridge bins and airtight pantry containers.",
+    "category": "Kitchen & Dining",
+    "publishDate": "October 31, 2026",
+    "readTime": "4 min read",
+    "takeaway": "To organize a small kitchen without drilling, start inside the cabinets: a pull-out under-sink organizer, a shelf riser, a lazy susan and a pot lid rack. Then use the doors and the underside of shelves with over-the-door and under-shelf organizers, and finish with clear fridge bins and airtight pantry containers.",
+    "featuredImageAlt": "Small rental galley kitchen with lower cabinets open showing a pull-out under-sink organizer, a turntable and clear bins",
+    "featuredImageSrc": "/images/blog/small-kitchen-organization-ideas-renters/small-kitchen-organization-cover.webp",
+    "intro": [
+      "A small kitchen usually has enough space. It just has it in the wrong shape: deep cabinets where things get lost at the back, tall shelves with empty air on top, a sink cabinet full of pipes, and no wall you're allowed to drill into.",
+      "These ten organizers fix exactly those problems, and none of them need a single screw. Each one is an Amazon best-seller with thousands of reviews. Shopping on Black Friday? Our [Black Friday organization finds](/blog/black-friday-home-organization-small-apartments) cover the rest of the apartment too."
+    ],
+    "atAGlance": [
+      {
+        "label": "Best overall",
+        "pick": "A pull-out under-sink organizer (#1). It turns the messiest cabinet into the easiest one."
+      },
+      {
+        "label": "Best for deep cabinets",
+        "pick": "A lazy susan turntable (#3)"
+      },
+      {
+        "label": "Best for no counter space",
+        "pick": "An adhesive under-cabinet paper towel holder (#7)"
+      },
+      {
+        "label": "Best for the pantry",
+        "pick": "Airtight clear food storage containers (#9)"
+      }
+    ],
+    "situations": [
+      {
+        "situation": "The under-sink cabinet is chaos",
+        "pick": "A pull-out two-tier organizer (#1)."
+      },
+      {
+        "situation": "Things get lost at the back of cabinets",
+        "pick": "A lazy susan (#3)."
+      },
+      {
+        "situation": "Cabinets have empty space above the plates",
+        "pick": "A shelf riser (#2) or an under-shelf basket (#6)."
+      },
+      {
+        "situation": "Pans and lids fall out every time",
+        "pick": "A pot lid organizer rack (#4)."
+      },
+      {
+        "situation": "The counter is always cluttered",
+        "pick": "An adhesive paper towel holder (#7) and a sink caddy (#10)."
+      }
+    ],
+    "sections": [
+      {
+        "group": "How Do You Organize Small Kitchen Cabinets Without Drilling?",
+        "groupAnswer": "Use freestanding organizers that sit inside the cabinet: a pull-out organizer under the sink, a shelf riser to use the empty space above plates, a lazy susan for deep corners and a rack that holds pans and lids upright. None of them need screws.",
+        "title": "A Pull-Out Under-Sink Organizer",
+        "body": "The cabinet under the sink is usually the worst one in a small kitchen: pipes in the middle, bottles falling over, and everything at the back impossible to reach. An L-shaped two-tier organizer fits around the pipes, and the drawers slide out, so the back of the cabinet comes to you.\n\nGood to know: Measure the cabinet's width, depth and height, and note where the pipes are, before ordering. That's what decides whether it fits.",
+        "image": "/images/blog/small-kitchen-organization-ideas-renters/under-sink-pull-out-organizer.webp",
+        "imageAlt": "Open kitchen under-sink cabinet with a white L-shaped two-tier pull-out organizer fitted around the drain pipe",
+        "product": {
+          "name": "REALINN L-Shaped 2-Tier Pull-Out Under-Sink Organizer (2-Pack)",
+          "affiliateUrl": "https://www.amazon.com/dp/B0CFQFMC4F?tag=spacesavvy07-20"
+        },
+        "alsoGood": [
+          {
+            "label": "Alternative",
+            "name": "Thickened L-Shaped 2-Tier Pull-Out Cabinet Organizer",
+            "affiliateUrl": "https://www.amazon.com/dp/B0CHNL1JYB?tag=spacesavvy07-20"
+          }
+        ]
+      },
+      {
+        "title": "An Expandable Cabinet Shelf Riser",
+        "body": "Most kitchen cabinets have a lot of empty air between the top of a stack of plates and the next shelf. A riser adds a second level in that gap, so plates go underneath and bowls or mugs go on top. Expandable ones stretch to fit the cabinet width.",
+        "image": "/images/blog/small-kitchen-organization-ideas-renters/expandable-cabinet-shelf-riser.webp",
+        "imageAlt": "Inside a kitchen cabinet with an expandable shelf riser holding bowls and mugs above stacked plates",
+        "product": {
+          "name": "Expandable Kitchen Cabinet Shelf Organizers (Set of 2)",
+          "affiliateUrl": "https://www.amazon.com/dp/B0CVVPFN5F?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "title": "A Lazy Susan Turntable",
+        "body": "Deep and corner cabinets swallow things. A turntable means one spin brings the bottle from the back to the front. It's ideal for oils, sauces and spices, and it works in the pantry and the fridge too.\n\nGood to know: This 18-inch size suits corner and pantry cabinets. For narrower cabinets, a set of smaller turntables fits better.",
+        "image": "/images/blog/small-kitchen-organization-ideas-renters/lazy-susan-pantry-cabinet.webp",
+        "imageAlt": "Corner kitchen cabinet with a large white lazy susan holding oils, vinegars and sauces",
+        "product": {
+          "name": "Copco 18-Inch Non-Slip Lazy Susan Turntable",
+          "affiliateUrl": "https://www.amazon.com/dp/B0036OQU2E?tag=spacesavvy07-20"
+        },
+        "alsoGood": [
+          {
+            "label": "For smaller cabinets",
+            "name": "10-inch non-skid lazy susans (set of 4)",
+            "affiliateUrl": "https://www.amazon.com/dp/B0B3WSZ3QP?tag=spacesavvy07-20"
+          }
+        ]
+      },
+      {
+        "title": "A Pot and Pan Lid Organizer",
+        "body": "Stacked pans and loose lids are why opening a cabinet can feel like an avalanche. A simple metal rack holds pans and lids upright like files, so you can pull out one without moving all the others.",
+        "image": "/images/blog/small-kitchen-organization-ideas-renters/pot-lid-organizer-cabinet.webp",
+        "imageAlt": "Lower kitchen cabinet with a black metal rack holding glass pot lids and frying pans upright",
+        "product": {
+          "name": "Housolution Pot and Pan Lid Organizer Rack",
+          "affiliateUrl": "https://www.amazon.com/dp/B094JBXLWM?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "group": "How Do You Add Storage to a Small Kitchen With No Wall Space?",
+        "groupAnswer": "Use the doors and the undersides of shelves: an over-the-cabinet-door organizer for boards and wrap, an under-shelf basket that slides onto a shelf, and an adhesive paper towel holder under the upper cabinets to free the counter.",
+        "title": "An Over-the-Cabinet-Door Organizer",
+        "body": "The inside and outside of cabinet doors are free storage. This organizer hooks over the top of the door, with no screws, and holds a cutting board, foil and plastic wrap, or cleaning supplies under the sink.\n\nGood to know: Check that your cabinet door closes with the hook on it. There needs to be a small gap at the top of the door.",
+        "image": "/images/blog/small-kitchen-organization-ideas-renters/over-cabinet-door-organizer.webp",
+        "imageAlt": "White kitchen cabinet door with a silver over-the-door organizer holding a cutting board, foil and wrap",
+        "product": {
+          "name": "Simple Houseware Over-the-Cabinet-Door Organizer (2-Pack)",
+          "affiliateUrl": "https://www.amazon.com/dp/B081K9BSTB?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "title": "An Under-Shelf Basket",
+        "body": "This wire basket slides onto an existing shelf and hangs underneath it, using the empty space below. It's perfect for food bags, snacks, dish towels or wraps, and it moves to another shelf in seconds.",
+        "image": "/images/blog/small-kitchen-organization-ideas-renters/under-shelf-basket-cabinet.webp",
+        "imageAlt": "White wire basket hanging under a shelf inside an upper kitchen cabinet holding food bags and snacks",
+        "product": {
+          "name": "Simple Houseware Under-Shelf Wire Baskets (2-Pack)",
+          "affiliateUrl": "https://www.amazon.com/dp/B07K6TDCLT?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "title": "An Adhesive Under-Cabinet Paper Towel Holder",
+        "body": "A paper towel stand takes up a chunk of a small counter. Mount the roll under the upper cabinet with adhesive instead and that space comes back. It can also be screwed in if you're allowed to drill.\n\nGood to know: Clean the underside of the cabinet well before sticking it on, and let the adhesive set before loading a roll.",
+        "image": "/images/blog/small-kitchen-organization-ideas-renters/adhesive-paper-towel-holder-under-cabinet.webp",
+        "imageAlt": "Paper towel roll hanging from a black adhesive holder under an upper kitchen cabinet above a clear counter",
+        "product": {
+          "name": "Self-Adhesive Under-Cabinet Paper Towel Holder",
+          "affiliateUrl": "https://www.amazon.com/dp/B08L37BPBN?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "group": "How Do You Organize a Small Fridge, Pantry and Sink Area?",
+        "groupAnswer": "Group food in clear stackable bins in the fridge, move dry food into matching airtight containers in the pantry, and give sponges and brushes one caddy by the sink so the counter stays clear.",
+        "title": "Clear Fridge Organizer Bins",
+        "body": "In a small fridge, things hide behind each other and go bad. Clear stackable bins group yogurts, drinks, fruit and leftovers, so you see everything at once and can pull out a whole bin. Our [clear fridge bins guide](/blog/acrylic-refrigerator-bins-clear-stackable-organizers) goes deeper.",
+        "image": "/images/blog/small-kitchen-organization-ideas-renters/clear-fridge-organizer-bins.webp",
+        "imageAlt": "Open refrigerator with clear stackable organizer bins holding yogurts, drinks, fruit and vegetables",
+        "product": {
+          "name": "Stackable Clear Refrigerator Organizer Bins (6-Pack)",
+          "affiliateUrl": "https://www.amazon.com/dp/B08RSPW3B8?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "title": "Airtight Pantry Containers",
+        "body": "Half-open packets of pasta, rice and cereal waste a lot of shelf space. Matching airtight containers stack neatly, keep food fresh and show you exactly how much is left, which makes a narrow pantry shelf hold far more.",
+        "image": "/images/blog/small-kitchen-organization-ideas-renters/airtight-pantry-containers-shelf.webp",
+        "imageAlt": "Narrow pantry shelf lined with matching clear airtight containers of pasta, rice, oats, cereal and flour",
+        "product": {
+          "name": "Rubbermaid Brilliance Pantry Containers (10-Piece Set)",
+          "affiliateUrl": "https://www.amazon.com/dp/B0B1L79X41?tag=spacesavvy07-20"
+        }
+      },
+      {
+        "title": "A Sink Sponge Caddy",
+        "body": "Sponges, brushes and soap bottles scattered around the sink make a small kitchen look messy. A caddy keeps them together in one small footprint and lets the sponge drain and dry.\n\nGood to know: Stainless steel caddies like this one won't rust, which matters for something that's wet all day.",
+        "image": "/images/blog/small-kitchen-organization-ideas-renters/sink-sponge-caddy.webp",
+        "imageAlt": "Black stainless steel sponge caddy by a kitchen sink holding a sponge, dish brush and soap bottle",
+        "product": {
+          "name": "Cisily Stainless Steel Sink Sponge Holder With Brush Holder",
+          "affiliateUrl": "https://www.amazon.com/dp/B0C3QZ7SNF?tag=spacesavvy07-20"
+        }
+      }
+    ],
+    "keyTakeaways": [
+      "Start with the worst cabinet, usually the one under the sink, and give it a pull-out organizer.",
+      "Use the empty air in cabinets with shelf risers and under-shelf baskets.",
+      "Doors and the underside of upper cabinets are free storage, and none of it needs drilling.",
+      "Clear, matching containers make a small kitchen look tidy even when it's full."
+    ],
+    "mistakes": [
+      "Buying an under-sink organizer without measuring around the pipes.",
+      "Filling a small counter with stands and holders that could go under cabinets or on doors.",
+      "Buying a large lazy susan for a narrow cabinet.",
+      "Keeping half-empty packets instead of moving food into stackable containers."
+    ],
+    "faqs": [
+      {
+        "question": "How do I organize a small kitchen without drilling?",
+        "answer": "Use organizers that sit inside cabinets (a pull-out under-sink organizer, shelf risers, a lazy susan, a lid rack), hang over doors, slide onto shelves, or stick on with adhesive."
+      },
+      {
+        "question": "What is the best organizer for under the kitchen sink?",
+        "answer": "An L-shaped two-tier pull-out organizer. It fits around the pipes and the drawers slide out so nothing gets lost at the back."
+      },
+      {
+        "question": "How can I get more counter space in a small kitchen?",
+        "answer": "Move things off the counter: mount the paper towel holder under a cabinet, put a caddy by the sink for sponges, and store appliances you rarely use in a cabinet."
+      },
+      {
+        "question": "Are these organizers renter-friendly?",
+        "answer": "Yes. Every organizer on this list is freestanding, hangs over a door, slides onto a shelf or uses removable adhesive. None of them need screws."
+      }
+    ],
+    "related": [
+      "tiered-organizers-double-bathroom-under-sink-storage",
+      "7-invisible-corner-pantry-solutions-narrow-kitchens",
+      "acrylic-refrigerator-bins-clear-stackable-organizers",
+      "black-friday-home-organization-small-apartments"
+    ],
+    "pins": [
+      {
+        "src": "/images/pins/pin-kitchen-org-1-cover.webp",
+        "alt": "Pinterest pin: small kitchen organization ideas for renters",
+        "description": "Small kitchen organization ideas for renters: a pull-out under-sink organizer, a lazy susan, cabinet shelf risers, over-the-door storage, fridge bins and airtight pantry containers. No drilling needed. #kitchenorganization #smallkitchen #renterfriendly #organizationideas"
+      }
+    ]
+  },
   // ---- Gift guides (Oct 30, 2026) ----
 {
   "slug": "gifts-for-gamers-small-desk",

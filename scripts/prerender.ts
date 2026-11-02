@@ -16,6 +16,7 @@ import { posts, type Post } from '../src/data/posts';
 import {
   CLOSET_TOOL_PATH, CLOSET_TOOL_TITLE, CLOSET_TOOL_DESCRIPTION, CLOSET_TOOL_IMAGE,
   CLOSET_FAQS, CLOSET_SOURCES, CLOSET_RELATED, CLOSET_PRODUCT, HANGERS, WARDROBES,
+  CLOSET_TOOL_H1, CLOSET_QUICK_ANSWER, perFoot,
 } from '../src/data/closetCalculator';
 
 const SITE = 'https://spacesavvy-olive.vercel.app';
@@ -372,7 +373,7 @@ const toolPages: PageMeta[] = [
       {
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
-        name: 'Closet Space Calculator',
+        name: 'Closet Rod Calculator',
         url: SITE + CLOSET_TOOL_PATH,
         description: CLOSET_TOOL_DESCRIPTION,
         applicationCategory: 'UtilitiesApplication',
@@ -390,13 +391,18 @@ const toolPages: PageMeta[] = [
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' },
-          { '@type': 'ListItem', position: 2, name: 'Closet Space Calculator', item: SITE + CLOSET_TOOL_PATH },
+          { '@type': 'ListItem', position: 2, name: 'Closet Rod Calculator', item: SITE + CLOSET_TOOL_PATH },
         ],
       },
     ],
     body:
-      `<h1>Closet Space Calculator: How Many Clothes Fit?</h1>` +
+      `<h1>${esc(CLOSET_TOOL_H1)}</h1>` +
+      `<p>${esc(CLOSET_QUICK_ANSWER)}</p>` +
       `<p>${esc(CLOSET_TOOL_DESCRIPTION)}</p>` +
+      `<h2>How many hangers fit per foot of closet rod?</h2><table><thead><tr><th>Clothing</th>${HANGERS.map((h) => `<th>${esc(h.label)}</th>`).join('')}</tr></thead><tbody>` +
+      WARDROBES.filter((w) => w.id !== 'mixed').map((w) => `<tr><th>${esc(w.label)}</th>${HANGERS.map((h) => `<td>about ${perFoot(h, w)}</td>`).join('')}</tr>`).join('') +
+      `</tbody></table>` +
+      `<h2>How to measure your closet rod</h2><ol><li>Slide clothes to the middle so you can see both ends.</li><li>Measure along the top of the rod from wall to wall.</li><li>Measure each rod if you have two.</li></ol>` +
       `<h2>How we calculate it</h2><p>Every piece takes up its own hanging width plus the thickness of its hanger. We add the two together and count 90% of the rail, because closet designers recommend leaving 10 to 15% free.</p>` +
       `<ul>${HANGERS.map((h) => `<li>${esc(h.label)} hangers: ${esc(h.note)}</li>`).join('')}</ul>` +
       `<ul>${WARDROBES.filter((w) => w.id !== 'mixed').map((w) => `<li>${esc(w.label)}: ${esc(w.range)} of rail</li>`).join('')}</ul>` +

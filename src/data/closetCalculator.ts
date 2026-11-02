@@ -5,9 +5,12 @@ const TAG = 'spacesavvy07-20';
 const amz = (asin: string) => `https://www.amazon.com/dp/${asin}?tag=${TAG}`;
 
 export const CLOSET_TOOL_PATH = '/tools/closet-space-calculator';
-export const CLOSET_TOOL_TITLE = 'Closet Space Calculator: How Many Clothes Fit on Your Rail?';
+export const CLOSET_TOOL_TITLE = 'Closet Rod Calculator: How Many Hangers Per Foot? (Free Tool)';
+export const CLOSET_TOOL_H1 = 'Closet Rod Calculator: How Many Hangers Per Foot?';
 export const CLOSET_TOOL_DESCRIPTION =
-  'Free closet space calculator. Enter your closet rail width and hanger type to see roughly how many clothes fit, and how many more you could hang with slim velvet hangers.';
+  'Free closet rod calculator: see how many hangers fit per foot, how many clothes fit on your rail, and how many hangers you need. Works in inches or cm.';
+export const CLOSET_QUICK_ANSWER =
+  'On a closet rod you can fit about 11 shirts per foot on slim velvet hangers, about 9 on standard plastic hangers and about 4 on chunky wooden hangers. Pants, dresses and coats take more room, so fewer fit.';
 export const CLOSET_TOOL_IMAGE = '/images/tools/closet-space-calculator-cover.jpg';
 
 // Hanger thickness in inches (The Container Store hanger guide: slim 1/4", basic 1/2", coat 1-3/4").
@@ -19,9 +22,9 @@ export interface HangerType {
   note: string;
 }
 export const HANGERS: HangerType[] = [
-  { id: 'velvet', label: 'Slim velvet', short: 'Velvet', thickness: 0.25, note: 'about 1/4" thick' },
+  { id: 'velvet', label: 'Slim velvet', short: 'Slim velvet', thickness: 0.25, note: 'about 1/4" thick' },
   { id: 'plastic', label: 'Standard plastic', short: 'Plastic', thickness: 0.5, note: 'about 1/2" thick' },
-  { id: 'wood', label: 'Chunky wood / coat', short: 'Wood', thickness: 1.75, note: 'about 1-3/4" thick' },
+  { id: 'wood', label: 'Chunky wood / coat', short: 'Chunky wood', thickness: 1.75, note: 'about 1-3/4" thick' },
 ];
 
 // Hanging width of the garment itself in inches (Organized Living closet design guide ranges; we use the middle).
@@ -41,6 +44,16 @@ export const WARDROBES: WardrobeType[] = [
 
 // Closet designers recommend leaving 10-15% extra room, so we only count 90% of the rail.
 export const BREATHING_ROOM = 0.9;
+
+// Average pieces per foot of rod (rounded), used for the quick-answer table.
+export function perFoot(hanger: HangerType, wardrobe: WardrobeType): number {
+  return Math.round((12 * BREATHING_ROOM) / (wardrobe.width + hanger.thickness));
+}
+
+// Inches of rod needed for a number of pieces (includes the breathing room).
+export function railNeeded(pieces: number, hanger: HangerType, wardrobe: WardrobeType): number {
+  return (pieces * (wardrobe.width + hanger.thickness)) / BREATHING_ROOM;
+}
 
 export function itemsThatFit(railInches: number, hanger: HangerType, wardrobe: WardrobeType): number {
   if (!railInches || railInches <= 0) return 0;
@@ -64,29 +77,34 @@ export const CLOSET_SOURCES = [
 
 export const CLOSET_FAQS = [
   {
+    question: 'How many hangers fit per foot of closet rod?',
+    answer:
+      'About 11 shirts per foot on slim velvet hangers, about 9 on standard plastic hangers and about 4 on chunky wooden hangers, leaving a little breathing room. Pants fit about 5 to 6 per foot, dresses about 3 to 5 and coats only 2 to 3.',
+  },
+  {
+    question: 'How many hangers do I need?',
+    answer:
+      'One for every piece you want to hang, plus a few spares for new clothes. Count what you hang today, then use the "How many do I need?" mode above to see how much rod that takes.',
+  },
+  {
+    question: 'How much closet rod space does one person need?',
+    answer:
+      'Oregon State University Extension suggests at least four feet of rod per person. With slim hangers and a second rod for short pieces, a smaller closet can hold the same amount.',
+  },
+  {
     question: 'How many clothes fit on a 36-inch closet rod?',
     answer:
-      'About 32 shirts on slim velvet hangers, 25 on standard plastic hangers and 12 on chunky wooden hangers, leaving a little breathing room. Mixed wardrobes with pants, dresses and jackets fit fewer, because those pieces are wider.',
+      'About 32 shirts on slim velvet hangers, 25 on standard plastic hangers and 12 on chunky wooden hangers. Mixed wardrobes with pants, dresses and jackets fit fewer, because those pieces are wider.',
   },
   {
-    question: 'Do velvet hangers really save space?',
+    question: 'How thick are velvet hangers, and do they really save space?',
     answer:
-      'Yes. Slim velvet hangers are about 1/4 inch thick, half the thickness of a standard plastic hanger and much thinner than a chunky wooden one. The biggest gain is when you replace wooden or thick plastic hangers.',
-  },
-  {
-    question: 'How much rod space does one piece of clothing need?',
-    answer:
-      'Closet designers allow roughly 1/2 to 1 inch for a shirt, 1 to 2 inches for pants or a skirt, 1 to 3 inches for a dress and 2 to 6 inches for a coat, plus the thickness of the hanger.',
-  },
-  {
-    question: 'How can I fit more clothes in a small closet without remodeling?',
-    answer:
-      'Switch to matching slim velvet hangers, add a second hanging rod under the first for shirts and pants, and fold bulky sweaters onto a shelf instead of hanging them.',
+      'Slim velvet hangers are about 1/4 inch thick, half a standard plastic hanger and far thinner than a chunky wooden one (about 1-3/4 inches). The biggest gain comes from replacing wooden or thick plastic hangers.',
   },
   {
     question: 'How accurate is this calculator?',
     answer:
-      'It gives an estimate. Real clothes vary a lot in thickness, so treat the number as a good guide rather than an exact count. Measure your rail from wall to wall for the best result.',
+      'It gives an estimate. Real clothes vary in thickness, so treat the number as a good guide rather than an exact count. Measure your rod from wall to wall for the best result.',
   },
 ];
 

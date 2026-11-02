@@ -44,16 +44,20 @@ function Segmented<T extends string>({
   options,
   onChange,
   label,
+  layout = 'grid',
 }: {
   value: T;
   options: { id: T; label: string; hint?: string }[];
   onChange: (v: T) => void;
   label: string;
+  layout?: 'list' | 'grid';
 }) {
+  // 'list' = full-width rows (name left, detail right). 'grid' = two even columns, last odd item spans both.
   return (
-    <div role="radiogroup" aria-label={label} className="flex flex-wrap gap-2">
-      {options.map((o) => {
+    <div role="radiogroup" aria-label={label} className={layout === 'list' ? 'grid gap-2' : 'grid grid-cols-2 gap-2'}>
+      {options.map((o, i) => {
         const on = o.id === value;
+        const spanAll = layout === 'grid' && options.length % 2 === 1 && i === options.length - 1;
         return (
           <button
             key={o.id}
@@ -61,12 +65,14 @@ function Segmented<T extends string>({
             role="radio"
             aria-checked={on}
             onClick={() => onChange(o.id)}
-            className={`text-left px-4 py-2 rounded-2xl border text-[15px] leading-tight transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 ${
+            className={`min-w-0 rounded-2xl border px-3 sm:px-4 py-2.5 text-[15px] leading-tight transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 ${
+              layout === 'list' ? 'flex items-center justify-between gap-3 text-left' : 'text-center'
+            } ${spanAll ? 'col-span-2' : ''} ${
               on ? 'bg-amber-600 border-amber-600 text-white shadow-sm' : 'bg-white border-stone-200 text-stone-800 hover:border-amber-400'
             }`}
           >
             <span className="font-semibold">{o.label}</span>
-            {o.hint && <span className={`block text-xs mt-0.5 ${on ? 'text-amber-100' : 'text-stone-500'}`}>{o.hint}</span>}
+            {o.hint && <span className={`text-sm whitespace-nowrap ${on ? 'text-amber-100' : 'text-stone-500'}`}>{o.hint}</span>}
           </button>
         );
       })}
@@ -191,7 +197,7 @@ export default function ClosetCalculator() {
   };
 
   const inputCls =
-    'w-28 text-2xl font-bold text-stone-900 bg-white border border-stone-200 rounded-2xl px-4 py-2.5 tabular-nums shadow-inner focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200';
+    'w-24 sm:w-28 text-2xl font-bold text-stone-900 bg-white border border-stone-200 rounded-2xl px-4 py-2.5 tabular-nums shadow-inner focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200';
 
   const pinUrl = (() => {
     const params = new URLSearchParams({
@@ -232,7 +238,7 @@ export default function ClosetCalculator() {
               {CLOSET_TOOL_H1}
             </h1>
             <p className="mt-4 text-base sm:text-lg text-white/85 leading-relaxed">{CLOSET_QUICK_ANSWER}</p>
-            <a href="#calculator" className="mt-6 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-full shadow-md transition inline-flex items-center gap-2">
+            <a href="#calculator" className="mt-6 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-full shadow-md transition inline-flex items-center justify-center gap-2">
               Try the calculator
             </a>
           </div>
@@ -246,10 +252,10 @@ export default function ClosetCalculator() {
             <div className="grid grid-cols-2 w-full sm:w-auto gap-1 bg-white/80 border border-stone-200 rounded-full p-1" role="tablist" aria-label="Calculator mode">
               {([
                 ['fit', 'How many fit on my rod?', 'How many fit?'],
-                ['need', 'How many hangers do I need?', 'How many do I need?'],
+                ['need', 'How many hangers do I need?', 'Hangers I need'],
               ] as [Mode, string, string][]).map(([m, l, short]) => (
                 <button key={m} role="tab" type="button" aria-selected={mode === m} onClick={() => setMode(m)}
-                  className={`px-3 sm:px-6 py-2.5 rounded-full text-[14px] sm:text-[15px] font-bold whitespace-nowrap transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 ${
+                  className={`min-w-0 px-2 sm:px-6 py-2.5 rounded-full text-[14px] sm:text-[15px] font-bold whitespace-nowrap text-center transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 ${
                     mode === m ? 'bg-amber-600 text-white shadow-sm' : 'text-stone-600 hover:text-stone-900'
                   }`}>
                   <span className="sm:hidden">{short}</span>
@@ -265,7 +271,7 @@ export default function ClosetCalculator() {
               {mode === 'fit' ? (
                 <div>
                   <label htmlFor="rail" className="block font-bold text-stone-900 mb-2">Rod width, wall to wall</label>
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-3">
                     <input id="rail" type="number" inputMode="decimal" min={1} value={width} onChange={(e) => setWidth(e.target.value)} className={inputCls} />
                     <div className="inline-flex rounded-full border border-stone-200 bg-stone-50 p-1" role="group" aria-label="Unit">
                       {(['in', 'cm'] as const).map((u) => (
@@ -288,8 +294,8 @@ export default function ClosetCalculator() {
 
               <div>
                 <p className="font-bold text-stone-900 mb-2">{mode === 'fit' ? 'Hangers you use now' : 'Hangers you plan to use'}</p>
-                <Segmented label="Hanger type" value={hangerId} onChange={setHangerId}
-                  options={HANGERS.map((h) => ({ id: h.id, label: h.label, hint: h.note }))} />
+                <Segmented label="Hanger type" layout="list" value={hangerId} onChange={setHangerId}
+                  options={HANGERS.map((h) => ({ id: h.id, label: h.label, hint: h.note.replace('about ', '') }))} />
               </div>
 
               <div>
@@ -377,8 +383,10 @@ export default function ClosetCalculator() {
                     </p>
                   </div>
                   <a href={CLOSET_PRODUCT.affiliateUrl} target="_blank" rel="sponsored nofollow noopener noreferrer"
-                    className="mt-5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-full shadow-md transition inline-flex items-center gap-2">
-                    Check velvet hanger prices on Amazon <span aria-hidden="true">↗</span>
+                    className="mt-5 w-full sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-full shadow-md transition flex sm:inline-flex items-center justify-center text-center gap-2">
+                    <span className="sm:hidden">Check prices on Amazon</span>
+                    <span className="hidden sm:inline">Check velvet hanger prices on Amazon</span>
+                    <span aria-hidden="true">↗</span>
                   </a>
                 </>
               )}
@@ -400,22 +408,22 @@ export default function ClosetCalculator() {
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-stone-900 tracking-tight">How many hangers fit per foot of closet rod?</h2>
           <p className="mt-3 text-[17px] text-stone-600 leading-relaxed">About how many pieces fit on each foot of rod, rounded, with a little breathing room left between them.</p>
           <div className="mt-5 overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
-            <table className="w-full text-left text-[15px]">
+            <table className="w-full text-left text-[14px] sm:text-[15px]">
               <caption className="sr-only">Pieces per foot of closet rod by hanger type</caption>
               <thead>
                 <tr className="bg-[#F4EFE6]">
-                  <th scope="col" className="px-3 sm:px-5 py-3.5 font-bold text-stone-900">Clothing</th>
+                  <th scope="col" className="px-2 sm:px-5 py-3.5 font-bold text-stone-900">Clothing</th>
                   {HANGERS.map((h) => (
-                    <th key={h.id} scope="col" className={`px-3 sm:px-5 py-3.5 font-bold ${h.id === 'velvet' ? 'bg-amber-600 text-white' : 'text-stone-900'}`}>{h.short}</th>
+                    <th key={h.id} scope="col" className={`px-2 sm:px-5 py-3.5 font-bold ${h.id === 'velvet' ? 'bg-amber-600 text-white' : 'text-stone-900'}`}>{h.short}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {WARDROBES.filter((w) => w.id !== 'mixed').map((w) => (
                   <tr key={w.id} className="border-t border-stone-100">
-                    <th scope="row" className="px-3 sm:px-5 py-3.5 font-medium text-stone-800">{w.label}</th>
+                    <th scope="row" className="px-2 sm:px-5 py-3.5 font-medium text-stone-800">{w.label}</th>
                     {HANGERS.map((h) => (
-                      <td key={h.id} className={`px-3 sm:px-5 py-3.5 tabular-nums text-lg ${h.id === 'velvet' ? 'bg-amber-50 font-bold text-amber-800' : 'text-stone-700'}`}>
+                      <td key={h.id} className={`px-2 sm:px-5 py-3.5 tabular-nums text-lg ${h.id === 'velvet' ? 'bg-amber-50 font-bold text-amber-800' : 'text-stone-700'}`}>
                         {perFoot(h, w)}
                       </td>
                     ))}
@@ -453,12 +461,12 @@ export default function ClosetCalculator() {
           <dl className="mt-5 grid sm:grid-cols-2 gap-x-8 gap-y-1 text-[15px]">
             {HANGERS.map((h) => (
               <div key={h.id} className="flex justify-between gap-4 border-b border-stone-300/60 py-2">
-                <dt className="text-stone-600">{h.label} hanger</dt><dd className="font-bold text-stone-900">{h.note.replace('about ', '')}</dd>
+                <dt className="text-stone-600 min-w-0">{h.label} hanger</dt><dd className="font-bold text-stone-900 whitespace-nowrap">{h.note.replace('about ', '')}</dd>
               </div>
             ))}
             {WARDROBES.filter((w) => w.id !== 'mixed').map((w) => (
               <div key={w.id} className="flex justify-between gap-4 border-b border-stone-300/60 py-2">
-                <dt className="text-stone-600">{w.label}</dt><dd className="font-bold text-stone-900">{w.range} wide</dd>
+                <dt className="text-stone-600 min-w-0">{w.label}</dt><dd className="font-bold text-stone-900 whitespace-nowrap">{w.range} wide</dd>
               </div>
             ))}
           </dl>

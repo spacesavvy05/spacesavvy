@@ -21,6 +21,7 @@ export default function SitemapPage() {
         { name: "Editorial Homepage", path: "/" },
         { name: "Shop The Look Blueprint (Curated Catalog)", path: "/shop" },
         { name: "About SpaceSavvy & Editorial Manifesto", path: "/about" },
+        { name: "Closet Space Calculator (Free Tool)", path: "/tools/closet-space-calculator" },
         { name: "HTML Sitemap Index", path: "/sitemap" },
       ],
     },

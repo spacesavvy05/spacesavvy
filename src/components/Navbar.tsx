@@ -32,6 +32,7 @@ export default function Navbar() {
     { label: 'Gaming', path: '/category/gaming-setups' },
     { label: 'Holiday', path: '/category/holiday-decor' },
     { label: 'Amazon Finds', path: '/category/amazon-finds' },
+    { label: 'Free Tools', path: '/tools/closet-space-calculator' },
     { label: 'About', path: '/about' },
   ];
 
@@ -42,20 +43,20 @@ export default function Navbar() {
           {/* Brand Logo */}
           <Link
             to="/"
-            className="font-serif text-2xl font-black tracking-tight text-stone-950 hover:text-amber-800 transition-colors"
+            className="shrink-0 font-serif text-2xl font-black tracking-tight text-stone-950 hover:text-amber-800 transition-colors"
           >
             SpaceSavvy
           </Link>
 
           {/* Navigation Links (Desktop) */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-7 mx-4">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.path;
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`font-semibold text-sm transition tracking-normal ${
+                  className={`font-semibold text-[13px] xl:text-sm whitespace-nowrap transition tracking-normal ${
                     isActive
                       ? 'text-amber-800 font-bold'
                       : 'text-stone-900 hover:text-amber-700'
@@ -80,7 +81,7 @@ export default function Navbar() {
             </button>
             <Link
               to="/shop"
-              className="bg-stone-900 hover:bg-stone-800 text-white text-xs font-bold px-4 py-2 rounded-full transition shadow-sm"
+              className="whitespace-nowrap bg-stone-900 hover:bg-stone-800 text-white text-xs font-bold px-4 py-2 rounded-full transition shadow-sm"
             >
               Shop Finds
             </Link>

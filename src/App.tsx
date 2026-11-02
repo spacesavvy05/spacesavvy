@@ -10,6 +10,7 @@ import Terms from './pages/Terms';
 import AIDisclaimer from './pages/AIDisclaimer';
 import About from './pages/About';
 import SitemapPage from './pages/Sitemap';
+import ClosetCalculator from './pages/ClosetCalculator';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -44,6 +45,7 @@ export default function App() {
             <Route path="/ai-disclaimer" element={<AIDisclaimer />} />
             <Route path="/about" element={<About />} />
             <Route path="/sitemap" element={<SitemapPage />} />
+            <Route path="/tools/closet-space-calculator" element={<ClosetCalculator />} />
           </Routes>
         </main>
 

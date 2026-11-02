@@ -129,7 +129,7 @@ export const posts: Post[] = [
         "group": "What Should You Buy on Black Friday to Organize a Small Closet?",
         "groupAnswer": "Slim velvet hangers, vacuum storage bags, under-bed storage bags and an over-the-door shoe organizer. Together they fit more clothes on the rail, shrink bulky bedding and move shoes and spare linens out of the closet.",
         "title": "Slim Velvet Hangers",
-        "body": "Swapping bulky plastic hangers for slim velvet ones is the easiest closet upgrade there is. They're thin, so clothes hang closer together, and the velvet stops shirts and dresses from sliding off onto the floor. Matching hangers also make a small closet look calm instead of cluttered.\n\nGood to know: Buy enough to replace every hanger at once. Mixing old and new ones loses most of the space you'd gain.",
+        "body": "Swapping bulky plastic hangers for slim velvet ones is the easiest closet upgrade there is. They're thin, so clothes hang closer together, and the velvet stops shirts and dresses from sliding off onto the floor. Matching hangers also make a small closet look calm instead of cluttered. Not sure how much you'd gain? Try our free [closet space calculator](/tools/closet-space-calculator).\n\nGood to know: Buy enough to replace every hanger at once. Mixing old and new ones loses most of the space you'd gain.",
         "image": "/images/blog/black-friday-home-organization-small-apartments/velvet-hangers-small-closet.webp",
         "imageAlt": "Narrow reach-in closet with matching slim black velvet hangers holding shirts, sweaters and trousers close together",
         "product": {

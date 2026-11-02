@@ -13,6 +13,10 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { posts, type Post } from '../src/data/posts';
+import {
+  CLOSET_TOOL_PATH, CLOSET_TOOL_TITLE, CLOSET_TOOL_DESCRIPTION, CLOSET_TOOL_IMAGE,
+  CLOSET_FAQS, CLOSET_SOURCES, CLOSET_RELATED, CLOSET_PRODUCT, HANGERS, WARDROBES,
+} from '../src/data/closetCalculator';
 
 const SITE = 'https://spacesavvy-olive.vercel.app';
 const SANITY_URL =
@@ -357,6 +361,52 @@ const categoryPages: PageMeta[] = [
   { path: '/category/amazon-finds', title: 'Curated Amazon Finds for Small Apartments', description: 'Renter-friendly Amazon storage and organization picks for small apartments.' },
 ];
 
+// ---------- Free tools ----------
+const toolPages: PageMeta[] = [
+  {
+    path: CLOSET_TOOL_PATH,
+    title: CLOSET_TOOL_TITLE,
+    description: CLOSET_TOOL_DESCRIPTION,
+    image: SITE + CLOSET_TOOL_IMAGE,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebApplication',
+        name: 'Closet Space Calculator',
+        url: SITE + CLOSET_TOOL_PATH,
+        description: CLOSET_TOOL_DESCRIPTION,
+        applicationCategory: 'UtilitiesApplication',
+        operatingSystem: 'Any',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        publisher: { '@type': 'Organization', name: 'SpaceSavvy', url: SITE },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: CLOSET_FAQS.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' },
+          { '@type': 'ListItem', position: 2, name: 'Closet Space Calculator', item: SITE + CLOSET_TOOL_PATH },
+        ],
+      },
+    ],
+    body:
+      `<h1>Closet Space Calculator: How Many Clothes Fit?</h1>` +
+      `<p>${esc(CLOSET_TOOL_DESCRIPTION)}</p>` +
+      `<h2>How we calculate it</h2><p>Every piece takes up its own hanging width plus the thickness of its hanger. We add the two together and count 90% of the rail, because closet designers recommend leaving 10 to 15% free.</p>` +
+      `<ul>${HANGERS.map((h) => `<li>${esc(h.label)} hangers: ${esc(h.note)}</li>`).join('')}</ul>` +
+      `<ul>${WARDROBES.filter((w) => w.id !== 'mixed').map((w) => `<li>${esc(w.label)}: ${esc(w.range)} of rail</li>`).join('')}</ul>` +
+      `<p>Our pick: <a href="${esc(CLOSET_PRODUCT.affiliateUrl)}" rel="sponsored nofollow">${esc(CLOSET_PRODUCT.name)}</a></p>` +
+      `<h2>Questions people ask</h2>${CLOSET_FAQS.map((f) => `<h3>${esc(f.question)}</h3><p>${esc(f.answer)}</p>`).join('')}` +
+      `<h2>Sources</h2><ul>${CLOSET_SOURCES.map((s) => `<li><a href="${esc(s.url)}">${esc(s.label)}</a></li>`).join('')}</ul>` +
+      `<h2>Keep reading</h2><ul>${CLOSET_RELATED.map((a) => `<li><a href="${esc(a.href)}">${esc(a.title)}</a></li>`).join('')}</ul>`,
+  },
+];
+
 // ---------- Run ----------
 const sanity = await sanityArticles();
 const staticSlugs = new Set(posts.map((p) => p.slug));
@@ -375,13 +425,14 @@ write(
       '</ul>',
   }),
 );
-for (const p of [...staticPages, ...categoryPages]) write(p.path, render(p));
+for (const p of [...staticPages, ...categoryPages, ...toolPages]) write(p.path, render(p));
 for (const a of articles) write(`/blog/${a.slug}`, render(articlePage(a)));
 
 // Sitemap
 const urls = [
   { loc: '/', pri: '1.0' },
   ...categoryPages.map((p) => ({ loc: p.path, pri: '0.8' })),
+  ...toolPages.map((p) => ({ loc: p.path, pri: '0.8' })),
   ...articles.map((a) => ({ loc: `/blog/${a.slug}`, pri: '0.9' })),
   ...staticPages.map((p) => ({ loc: p.path, pri: '0.5' })),
 ];
@@ -394,4 +445,4 @@ writeFileSync(
     `\n</urlset>\n`,
 );
 
-console.log(`[prerender] wrote ${articles.length} articles, ${staticPages.length + categoryPages.length + 1} other pages, sitemap with ${urls.length} URLs`);
+console.log(`[prerender] wrote ${articles.length} articles, ${staticPages.length + categoryPages.length + toolPages.length + 1} other pages, sitemap with ${urls.length} URLs`);

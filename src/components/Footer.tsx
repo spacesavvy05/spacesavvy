@@ -123,6 +123,14 @@ export default function Footer() {
                   Curated Amazon Finds
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/tools/closet-space-calculator"
+                  className="hover:text-amber-400 transition-colors duration-150 block"
+                >
+                  Closet Space Calculator
+                </Link>
+              </li>
             </ul>
           </div>
 
